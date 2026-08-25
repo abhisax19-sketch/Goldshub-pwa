@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GOLDShub Admin Dashboard</title>
+
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#050505">
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050505;
+  color:#f5f5f5;
+}
+
+.container{
+  width:100%;
+  max-width:1150px;
+  margin:auto;
+  padding:0 16px;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* HEADER */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,5,.97);
+  border-bottom:1px solid #292929;
+  backdrop-filter:blur(10px);
+}
+
+.header-inner{
+  min-height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#d8a92e;
+}
+
+.admin-badge{
+  color:#dcb340;
+  border:1px solid #5b481b;
+  background:#151209;
+  padding:7px 11px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+/* HERO */
+
+.hero{
+  padding:30px 0 20px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:28px;
+}
+
+.hero h1 span{
+  color:#dfb63e;
+}
+
+.hero p{
+  color:#929292;
+  font-size:13px;
+  line-height:1.6;
+  margin:8px 0 0;
+}
+
+/* STATUS */
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:15px;
+  color:#aaa;
+  font-size:12px;
+}
+
+.status-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#36c275;
+  box-shadow:0 0 8px #36c275;
+}
+
+/* SECTION */
+
+.section{
+  padding:18px 0;
+}
+
+.section-title{
+  margin-bottom:13px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:19px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.stat{
+  background:linear-gradient(145deg,#171717,#0c0c0c);
+  border:1px solid #292929;
+  border-radius:17px;
+  padding:18px;
+}
+
+.stat-icon{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.stat-label{
+  color:#999;
+  font-size:12px;
+}
+
+.stat-value{
+  font-size:27px;
+  font-weight:800;
+  margin-top:6px;
+  color:#f1f1f1;
+}
+
+.stat-change{
+  margin-top:7px;
+  color:#dcb340;
+  font-size:11px;
+}
+
+/* PANELS */
+
+.panel-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.panel{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:17px;
+  padding:18px;
+}
+
+.panel h3{
+  margin:0 0 15px;
+  font-size:17px;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  border-bottom:1px solid #242424;
+  font-size:13px;
+}
+
+.row:last-child{
+  border-bottom:0;
+}
+
+.row span{
+  color:#999;
+}
+
+.row strong{
+  color:#ddd;
+}
+
+/* BAR */
+
+.bar-box{
+  margin-top:12px;
+}
+
+.bar-label{
+  display:flex;
+  justify-content:space-between;
+  color:#aaa;
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+.bar{
+  height:8px;
+  background:#242424;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.bar-fill{
+  height:100%;
+  background:#d4aa39;
+  border-radius:10px;
+}
+
+/* QUICK ACTIONS */
+
+.actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.action{
+  display:block;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:15px;
+  padding:17px;
+  transition:.2s;
+}
+
+.action:hover{
+  border-color:#8d6a20;
+  transform:translateY(-2px);
+}
+
+.action-icon{
+  font-size:24px;
+  margin-bottom:9px;
+}
+
+.action strong{
+  display:block;
+  font-size:14px;
+}
+
+.action span{
+  display:block;
+  color:#888;
+  font-size:11px;
+  margin-top:5px;
+  line-height:1.5;
+}
+
+/* INSTALL BOX */
+
+.install-box{
+  background:linear-gradient(145deg,#17140c,#0d0d0d);
+  border:1px solid #4b3b17;
+  border-radius:18px;
+  padding:20px;
+}
+
+.install-box h2{
+  margin:0 0 8px;
+  color:#e1b83e;
+  font-size:19px;
+}
+
+.install-box p{
+  color:#999;
+  font-size:13px;
+  line-height:1.6;
+  margin:0;
+}
+
+.install-number{
+  font-size:34px;
+  font-weight:800;
+  margin-top:14px;
+}
+
+/* SECURITY */
+
+.warning{
+  background:#120f08;
+  border:1px solid #4c3d1d;
+  border-radius:15px;
+  padding:15px;
+  color:#aaa;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.warning strong{
+  color:#e0b73c;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:30px 0 50px;
+  color:#666;
+  font-size:11px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .panel-grid{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:450px){
+
+  .container{
+    padding:0 12px;
+  }
+
+  .hero h1{
+    font-size:24px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .stat{
+    padding:14px;
+  }
+
+  .stat-value{
+    font-size:23px;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      GOLD<span>Shub</span>
+    </a>
+
+    <div class="admin-badge">
+      🔐 ADMIN
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="container">
+
+    <h1>
+      GOLD<span>Shub</span> Admin Dashboard
+    </h1>
+
+    <p>
+      Website traffic, visitors, PWA installs और
+      GoldShub performance monitoring.
+    </p>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      Dashboard Online
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN STATS -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📊 Website Overview</h2>
+    </div>
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <div class="stat-icon">👥</div>
+
+        <div class="stat-label">
+          Total Visitors
+        </div>
+
+        <div class="stat-value">
+          —
+        </div>
+
+        <div class="stat-change">
+          Analytics connect होने पर data आएगा
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">📅</div>
+
+        <div class="stat-label">
+          Today's Visitors
+        </div>
+
+        <div class="stat-value">
+          —
+        </div>
+
+        <div class="stat-change">
+          Daily data pending
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">📲</div>
+
+        <div class="stat-label">
+          PWA Installs
+        </div>
+
+        <div class="stat-value">
+          —
+        </div>
+
+        <div class="stat-change">
+          Install tracking pending
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">📄</div>
+
+        <div class="stat-label">
+          Page Views
+        </div>
+
+        <div class="stat-value">
+          —
+        </div>
+
+        <div class="stat-change">
+          Analytics connect होने पर data आएगा
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TRAFFIC -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="panel-grid">
+
+      <div class="panel">
+
+        <h3>📈 Traffic Overview</h3>
+
+        <div class="row">
+          <span>Today</span>
+          <strong>—</strong>
+        </div>
+
+        <div class="row">
+          <span>Yesterday</span>
+          <strong>—</strong>
+        </div>
+
+        <div class="row">
+          <span>Last 7 Days</span>
+          <strong>—</strong>
+        </div>
+
+        <div class="row">
+          <span>Last 30 Days</span>
+          <strong>—</strong>
+        </div>
+
+      </div>
+
+
+      <div class="panel">
+
+        <h3>📱 Device Overview</h3>
+
+        <div class="row">
+          <span>Mobile</span>
+          <strong>—</strong>
+        </div>
+
+        <div class="row">
+          <span>Desktop</span>
+          <strong>—</strong>
+        </div>
+
+        <div class="row">
+          <span>Tablet</span>
+          <strong>—</strong>
+        </div>
+
+        <div class="row">
+          <span>PWA Users</span>
+          <strong>—</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PWA INSTALL -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="install-box">
+
+      <h2>
+        📲 GoldShub PWA Installation
+      </h2>
+
+      <p>
+        कितने visitors ने GoldShub को अपने mobile
+        पर install किया, यह संख्या यहाँ दिखाई जाएगी।
+      </p>
+
+      <div class="install-number">
+        —
+      </div>
+
+      <p>
+        PWA install tracking अभी connect नहीं है।
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- POPULAR PAGES -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>🔥 Popular Pages</h2>
+    </div>
+
+    <div class="panel">
+
+      <div class="row">
+        <span>Gold Price</span>
+        <strong>— views</strong>
+      </div>
+
+      <div class="row">
+        <span>Silver Price</span>
+        <strong>— views</strong>
+      </div>
+
+      <div class="row">
+        <span>Investment</span>
+        <strong>— views</strong>
+      </div>
+
+      <div class="row">
+        <span>Gold Loan</span>
+        <strong>— views</strong>
+      </div>
+
+      <div class="row">
+        <span>Calculators</span>
+        <strong>— views</strong>
+      </div>
+
+      <div class="row">
+        <span>Gold Knowledge</span>
+        <strong>— views</strong>
+      </div>
+
+      <div class="row">
+        <span>Gold Research</span>
+        <strong>— views</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>⚡ Quick Actions</h2>
+    </div>
+
+    <div class="actions">
+
+      <a href="index.html" class="action">
+
+        <div class="action-icon">🏠</div>
+
+        <strong>Open Website</strong>
+
+        <span>
+          GoldShub homepage खोलें
+        </span>
+
+      </a>
+
+
+      <a href="gold-price.html" class="action">
+
+        <div class="action-icon">🪙</div>
+
+        <strong>Gold Price</strong>
+
+        <span>
+          Gold price page देखें
+        </span>
+
+      </a>
+
+
+      <a href="silver-price.html" class="action">
+
+        <div class="action-icon">🥈</div>
+
+        <strong>Silver Price</strong>
+
+        <span>
+          Silver price page देखें
+        </span>
+
+      </a>
+
+
+      <a href="calculators.html" class="action">
+
+        <div class="action-icon">🧮</div>
+
+        <strong>Calculators</strong>
+
+        <span>
+          Gold और Silver calculators
+        </span>
+
+      </a>
+
+
+      <a href="investment.html" class="action">
+
+        <div class="action-icon">📈</div>
+
+        <strong>Investment</strong>
+
+        <span>
+          Investment page खोलें
+        </span>
+
+      </a>
+
+
+      <a href="gold-knowledge.html" class="action">
+
+        <div class="action-icon">📚</div>
+
+        <strong>Knowledge</strong>
+
+        <span>
+          Gold knowledge section
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SECURITY WARNING -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="warning">
+
+      <strong>🔐 Security Notice:</strong><br>
+
+      यह एक static GitHub Pages dashboard है।
+      इसमें कोई real admin authentication या private
+      database नहीं है। इसलिए इस page पर password,
+      API secret, Google Analytics secret या कोई
+      confidential information HTML में नहीं डालनी चाहिए।
+
+      Real admin control के लिए secure authentication
+      और backend/database की आवश्यकता होगी।
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    © 2026 GOLDShub Admin Dashboard
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
