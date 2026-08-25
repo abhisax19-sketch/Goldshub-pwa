@@ -2,18 +2,31 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<meta name="theme-color" content="#0b0b0b">
-<meta name="description" content="GoldShub - Gold Price, Gold Investment, Gold Loan, Digital Gold, Research और Gold Calculators की हिंदी जानकारी।">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="GoldShub - Gold Price, Investment, Gold Loan, Calculators और Gold Research">
 <link rel="manifest" href="manifest.json">
-
-<title>GOLDShub – Gold Price, Investment & Gold Loan</title>
+<title>GoldShub - Gold Price, Investment & Gold Loan</title>
 
 <style>
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --gold:#d4af37;
+  --gold2:#f5c542;
+  --gold3:#ffda63;
+  --black:#050505;
+  --dark:#0d0d0f;
+  --card:#121214;
+  --card2:#18181b;
+  --border:#29292d;
+  --text:#ffffff;
+  --muted:#a6a6ad;
+  --green:#21c77a;
 }
 
 html{
@@ -21,10 +34,14 @@ html{
 }
 
 body{
-  margin:0;
-  background:#f8f8f7;
-  color:#171717;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  sans-serif;
+  background:#050505;
+  color:var(--text);
   padding-bottom:82px;
 }
 
@@ -35,762 +52,651 @@ a{
 
 button{
   font-family:inherit;
+  border:0;
 }
 
-/* ================= HEADER ================= */
+/* HEADER */
 
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:#080808;
-  color:white;
-  border-bottom:1px solid #222;
+  background:rgba(5,5,5,.96);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #252525;
 }
 
 .header{
-  height:82px;
+  height:72px;
   max-width:1100px;
   margin:auto;
-  padding:0 28px;
+  padding:0 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
 }
 
-.menu-btn,
-.notification{
-  width:48px;
-  height:48px;
-  border:0;
-  background:none;
-  color:#fff;
+.menu{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#111;
+  color:white;
+  font-size:25px;
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-.menu-btn{
-  font-size:35px;
   cursor:pointer;
 }
 
-.notification{
-  position:relative;
-  font-size:29px;
-}
-
-.notification-dot{
-  position:absolute;
-  right:4px;
-  top:3px;
-  width:11px;
-  height:11px;
-  border-radius:50%;
-  background:#e53935;
-}
-
-.brand{
+.logo{
   text-align:center;
 }
 
-.logo{
-  font-size:45px;
-  line-height:1;
-  font-weight:950;
-  letter-spacing:-2px;
+.logo h1{
+  font-size:27px;
+  line-height:27px;
+  letter-spacing:-1px;
 }
 
-.logo-gold{
-  color:#f0b90b;
+.logo h1 span{
+  color:var(--gold);
 }
 
-.logo-white{
-  color:#fff;
+.logo p{
+  color:#bdbdbd;
+  font-size:10px;
+  margin-top:4px;
 }
 
-.tag{
-  margin-top:7px;
-  font-size:17px;
-  color:#eee;
+.notify{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:#111;
+  color:white;
+  font-size:21px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
 }
 
-/* ================= MAIN ================= */
+.notify i{
+  width:7px;
+  height:7px;
+  background:#e53935;
+  border-radius:50%;
+  position:absolute;
+  top:7px;
+  right:8px;
+}
 
-main{
+/* CONTAINER */
+
+.container{
   width:100%;
   max-width:1100px;
   margin:auto;
-  padding:9px 26px 35px;
+  padding:16px;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 
 .hero{
-  min-height:345px;
-  margin-top:0;
-  border-radius:23px;
+  min-height:310px;
+  border:1px solid #453710;
+  border-radius:24px;
   overflow:hidden;
   position:relative;
+  background:
+    radial-gradient(circle at 80% 30%,rgba(212,175,55,.28),transparent 32%),
+    radial-gradient(circle at 70% 90%,rgba(212,175,55,.12),transparent 30%),
+    linear-gradient(120deg,#090909,#171208 55%,#050505);
   display:flex;
   align-items:center;
-  background:
-    radial-gradient(circle at 78% 40%,rgba(240,185,11,.28),transparent 22%),
-    radial-gradient(circle at 91% 90%,rgba(240,185,11,.18),transparent 30%),
-    linear-gradient(110deg,#090909,#17130a 58%,#3b2604);
-  color:white;
-  padding:30px 38px;
-  box-shadow:0 5px 20px rgba(0,0,0,.16);
+  padding:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:-100px;
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  border:1px solid rgba(212,175,55,.28);
+  box-shadow:
+    0 0 0 45px rgba(212,175,55,.03),
+    0 0 0 90px rgba(212,175,55,.02);
 }
 
 .hero-content{
-  width:55%;
+  width:58%;
   position:relative;
-  z-index:5;
+  z-index:2;
 }
 
-.hero h1{
-  margin:0 0 14px;
-  font-size:38px;
-  line-height:1.22;
-  font-weight:950;
+.badge{
+  display:inline-block;
+  border:1px solid #715b1d;
+  color:var(--gold3);
+  border-radius:30px;
+  padding:7px 13px;
+  font-size:11px;
+  margin-bottom:14px;
+  background:rgba(212,175,55,.06);
 }
 
-.hero h1 span{
-  color:#f0b90b;
+.hero h2{
+  font-size:clamp(28px,6vw,52px);
+  line-height:1.08;
+  margin-bottom:14px;
+}
+
+.hero h2 span{
+  color:var(--gold2);
 }
 
 .hero p{
-  margin:0;
+  color:#c2c2c2;
+  font-size:14px;
+  line-height:1.7;
   max-width:520px;
-  font-size:18px;
-  line-height:1.55;
-  color:#f1f1f1;
 }
 
-.hero-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  margin-top:20px;
-  padding:14px 20px;
-  border-radius:10px;
-  background:#f0b90b;
-  color:#111;
-  font-size:16px;
-  font-weight:900;
-  box-shadow:0 6px 18px rgba(240,185,11,.25);
+.hero-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:22px;
+  flex-wrap:wrap;
 }
 
-/* ================= GOLD VISUAL ================= */
+.btn{
+  background:linear-gradient(135deg,var(--gold2),#b98b14);
+  color:#080808;
+  padding:13px 19px;
+  border-radius:12px;
+  font-weight:800;
+  cursor:pointer;
+}
 
-.gold-scene{
-  position:absolute;
-  right:0;
-  bottom:0;
-  width:48%;
-  height:100%;
+.btn-outline{
+  background:#111;
+  border:1px solid #80691f;
+  color:var(--gold3);
+}
+
+/* GOLD PRICE */
+
+.price-card{
+  margin-top:16px;
+  border-radius:22px;
+  padding:22px;
+  background:
+    linear-gradient(135deg,#241b07,#0f0e0b);
+  border:1px solid #574616;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
   overflow:hidden;
 }
 
-/* rising bars */
-
-.gold-chart{
-  position:absolute;
-  right:30px;
-  bottom:52px;
-  width:310px;
-  height:190px;
-  opacity:.75;
-  transform:skewY(-12deg);
+.price-label{
+  color:#aaa;
+  font-size:13px;
 }
 
-.chart-bar{
-  position:absolute;
-  bottom:0;
-  width:25px;
-  background:linear-gradient(to top,#9c6500,#ffd94c);
-  border-radius:4px 4px 0 0;
+.price-title{
+  font-size:18px;
+  font-weight:700;
+  margin-top:5px;
 }
 
-.cb1{height:35px;left:20px}
-.cb2{height:55px;left:58px}
-.cb3{height:75px;left:96px}
-.cb4{height:100px;left:134px}
-.cb5{height:125px;left:172px}
-.cb6{height:155px;left:210px}
-.cb7{height:180px;left:248px}
-
-.chart-line{
-  position:absolute;
-  left:15px;
-  bottom:155px;
-  width:280px;
-  height:100px;
-  border-top:5px solid #ffd84a;
-  transform:rotate(-24deg);
-  border-radius:50%;
+.price{
+  font-size:36px;
+  font-weight:850;
+  margin-top:8px;
 }
 
-/* gold bars */
-
-.gold-bar{
-  position:absolute;
-  border-radius:8px;
-  background:linear-gradient(
-    145deg,
-    #fff3a5 0%,
-    #f5c42a 40%,
-    #bd7b00 75%,
-    #7b4d00 100%
-  );
-  box-shadow:
-    inset 0 2px 4px rgba(255,255,255,.8),
-    0 14px 25px rgba(0,0,0,.45);
+.price-change{
+  color:var(--green);
+  font-size:13px;
 }
 
-.gold-bar:after{
-  content:"FINE GOLD";
-  position:absolute;
-  inset:0;
+.chart{
+  width:45%;
+  min-height:120px;
   display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#815500;
-  font-size:12px;
-  font-weight:950;
+  align-items:flex-end;
+  gap:5px;
 }
 
-.bar1{
-  width:175px;
-  height:80px;
-  right:105px;
-  bottom:78px;
-  transform:rotate(-16deg);
+.bar{
+  flex:1;
+  border-radius:5px 5px 0 0;
+  background:linear-gradient(to top,var(--gold),#f8d96c);
+  opacity:.85;
 }
 
-.bar2{
-  width:125px;
-  height:62px;
-  right:0;
-  bottom:50px;
-  transform:rotate(10deg);
+/* SECTION */
+
+.section{
+  margin-top:28px;
 }
-
-/* coins */
-
-.gold-coin{
-  position:absolute;
-  width:54px;
-  height:54px;
-  border-radius:50%;
-  border:3px solid #eab72c;
-  background:
-    radial-gradient(circle at 32% 28%,#fff3a4,#f0b90b 55%,#895700);
-  box-shadow:0 8px 16px rgba(0,0,0,.45);
-}
-
-.gold-coin:after{
-  content:"₹";
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#805200;
-  font-size:27px;
-  font-weight:950;
-}
-
-.coin1{right:270px;bottom:28px}
-.coin2{right:205px;bottom:18px;transform:scale(.82)}
-.coin3{right:140px;bottom:13px;transform:scale(.72)}
-.coin4{right:70px;bottom:18px;transform:scale(.9)}
-
-/* ================= SECTION HEAD ================= */
 
 .section-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  margin:25px 8px 12px;
+  align-items:center;
+  margin-bottom:13px;
 }
 
 .section-head h2{
-  margin:0;
-  font-size:24px;
-  font-weight:900;
+  font-size:20px;
 }
 
 .section-head a{
-  color:#5d1682;
-  font-size:15px;
-  font-weight:850;
+  color:var(--gold2);
+  font-size:12px;
 }
 
-/* ================= CATEGORY ================= */
+/* EXPLORE */
 
-.categories{
+.grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
-.category{
-  min-height:250px;
-  background:#fff;
-  border:1px solid #e7e0ca;
-  border-radius:20px;
-  padding:18px 14px 14px;
+.tile{
+  background:linear-gradient(145deg,#171719,#0d0d0e);
+  border:1px solid var(--border);
+  border-radius:17px;
+  min-height:125px;
+  padding:17px 10px;
   text-align:center;
-  box-shadow:0 4px 13px rgba(0,0,0,.07);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  transition:.2s;
 }
 
-.category-icon{
-  width:74px;
-  height:74px;
-  margin:0 auto 10px;
+.tile:active{
+  transform:scale(.97);
+}
+
+.icon{
+  width:43px;
+  height:43px;
+  margin:auto;
+  border-radius:13px;
   display:flex;
+  align-items:center;
   justify-content:center;
-  align-items:center;
-  color:#d99d00;
-  font-size:43px;
-  font-weight:950;
+  font-size:23px;
+  color:var(--gold2);
+  border:1px solid #4b3c17;
+  background:#0c0c0c;
 }
 
-.category h3{
-  margin:0 0 9px;
-  font-size:21px;
-  font-weight:900;
+.tile h3{
+  font-size:14px;
+  margin-top:10px;
 }
 
-.category p{
-  margin:0;
-  color:#555;
-  font-size:15px;
-  line-height:1.55;
+.tile p{
+  color:#8e8e95;
+  font-size:10px;
+  margin-top:5px;
 }
 
-.category-link{
-  margin-top:auto;
-  padding-top:12px;
-  color:#55117a;
-  font-size:17px;
-  font-weight:900;
-}
+/* CALCULATORS */
 
-/* ================= CALCULATORS ================= */
-
-.calculator-scroll{
+.calc-row{
   display:flex;
-  gap:13px;
+  gap:10px;
   overflow-x:auto;
   scrollbar-width:none;
-  padding:2px 2px 9px;
 }
 
-.calculator-scroll::-webkit-scrollbar{
+.calc-row::-webkit-scrollbar{
   display:none;
 }
 
 .calc{
-  flex:0 0 150px;
-  min-height:168px;
-  background:#fff;
-  border:1px solid #e5dfd1;
-  border-radius:17px;
-  padding:13px 9px;
-  text-align:center;
-  box-shadow:0 3px 10px rgba(0,0,0,.05);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  min-width:145px;
+  background:#111113;
+  border:1px solid #28282c;
+  border-radius:16px;
+  padding:16px 12px;
 }
 
-.calc-icon{
-  font-size:40px;
-  color:#d79b00;
-  margin-bottom:7px;
+.calc .icon{
+  margin:0 0 11px;
 }
 
-.calc-title{
-  font-size:15px;
-  line-height:1.35;
-  font-weight:850;
+.calc strong{
+  font-size:12px;
 }
 
-/* ================= ARTICLES ================= */
+.calc small{
+  display:block;
+  color:#85858b;
+  margin-top:5px;
+  line-height:1.4;
+}
 
-.articles{
-  background:#fff;
-  border:1px solid #e4e4e4;
+/* NEWS */
+
+.news{
+  background:#111113;
+  border:1px solid #27272b;
   border-radius:18px;
   overflow:hidden;
-  box-shadow:0 3px 12px rgba(0,0,0,.05);
 }
 
-.article{
-  min-height:105px;
+.news-item{
   display:flex;
   align-items:center;
-  gap:15px;
-  padding:9px;
-  border-bottom:1px solid #e8e8e8;
+  gap:12px;
+  padding:13px;
+  border-bottom:1px solid #242428;
 }
 
-.article:last-child{
+.news-item:last-child{
   border-bottom:0;
 }
 
-.article-image{
-  width:175px;
-  height:90px;
-  flex:0 0 175px;
-  border-radius:12px;
-  position:relative;
-  overflow:hidden;
+.news-img{
+  width:72px;
+  height:58px;
+  flex:none;
+  border-radius:10px;
   background:
-    radial-gradient(circle at 50% 45%,#ffe780,transparent 13%),
-    radial-gradient(circle at 30% 70%,#d49300,transparent 20%),
-    linear-gradient(135deg,#0c0c0b,#b27600);
+    radial-gradient(circle at 50% 35%,#f2ca4d,#8d6410 35%,#211807 70%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
 }
 
-.article-image:before{
-  content:"🪙";
-  position:absolute;
-  left:35px;
-  top:23px;
-  font-size:42px;
-}
-
-.article-image:after{
-  content:"GOLD";
-  position:absolute;
-  right:8px;
-  bottom:7px;
-  color:#ffd34b;
-  font-size:16px;
-  font-weight:950;
-}
-
-.article-info{
+.news-content{
   flex:1;
 }
 
-.article-title{
-  font-size:17px;
-  line-height:1.3;
-  font-weight:850;
-  margin-bottom:5px;
-}
-
-.article-meta{
-  color:#777;
+.news-content h3{
   font-size:13px;
+  line-height:1.35;
 }
 
-.article-arrow{
-  color:#641687;
-  font-size:38px;
+.news-content p{
+  color:#85858b;
+  font-size:10px;
+  margin-top:5px;
 }
 
-/* ================= MORE LINKS ================= */
+.arrow{
+  color:var(--gold2);
+  font-size:21px;
+}
 
-.more-links{
+/* LIST SECTIONS */
+
+.link-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
 }
 
-.more-link{
-  background:#fff;
-  border:1px solid #e5e1d7;
-  border-radius:15px;
-  padding:15px;
-  font-size:15px;
-  font-weight:750;
+.link-card{
+  background:#101012;
+  border:1px solid #252529;
+  border-radius:13px;
+  padding:13px;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
 }
 
-/* ================= FOOTER ================= */
+.link-card span{
+  color:var(--gold2);
+}
+
+/* INVESTMENT */
+
+.invest-card{
+  background:
+    radial-gradient(circle at 90% 20%,rgba(212,175,55,.16),transparent 35%),
+    #111113;
+  border:1px solid #302813;
+  border-radius:20px;
+  padding:20px;
+}
+
+.invest-card h3{
+  font-size:18px;
+}
+
+.invest-card p{
+  color:#96969c;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:6px;
+}
+
+.invest-options{
+  margin-top:16px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+}
+
+.option{
+  background:#09090a;
+  border:1px solid #27272a;
+  padding:12px;
+  border-radius:12px;
+  font-size:12px;
+}
+
+.option b{
+  display:block;
+  color:var(--gold2);
+  margin-bottom:3px;
+}
+
+/* LOAN */
+
+.loan{
+  margin-top:15px;
+  background:linear-gradient(135deg,#211904,#0d0d0d);
+  border:1px solid #554415;
+  border-radius:20px;
+  padding:20px;
+}
+
+.loan h3{
+  font-size:20px;
+}
+
+.loan p{
+  color:#a8a8ad;
+  font-size:12px;
+  margin:7px 0 15px;
+}
+
+.loan-features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.loan-feature{
+  text-align:center;
+  background:#111;
+  border:1px solid #2c281b;
+  border-radius:11px;
+  padding:10px 4px;
+  font-size:9px;
+}
+
+.loan-feature b{
+  display:block;
+  color:var(--gold2);
+  font-size:17px;
+  margin-bottom:4px;
+}
+
+/* FOOTER */
 
 footer{
+  margin-top:35px;
+  padding:30px 15px;
   text-align:center;
-  padding:30px 10px 15px;
+  border-top:1px solid #242424;
   color:#777;
-  font-size:13px;
-  line-height:1.7;
+  font-size:11px;
 }
 
-/* ================= BOTTOM NAV ================= */
+footer strong{
+  color:var(--gold2);
+}
+
+/* BOTTOM NAV */
 
 .bottom-nav{
   position:fixed;
   z-index:2000;
+  bottom:0;
   left:0;
   right:0;
-  bottom:0;
-  height:78px;
+  height:70px;
+  background:rgba(8,8,9,.97);
+  backdrop-filter:blur(18px);
+  border-top:1px solid #292929;
   display:flex;
-  justify-content:space-around;
-  background:rgba(255,255,255,.98);
-  backdrop-filter:blur(12px);
-  border-top:1px solid #ddd;
-  box-shadow:0 -4px 17px rgba(0,0,0,.1);
+  justify-content:center;
+}
+
+.nav-inner{
+  width:100%;
+  max-width:700px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
 }
 
 .nav-item{
-  width:16.66%;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  color:#777;
+  font-size:10px;
   gap:4px;
-  color:#222;
-  font-size:12px;
-  font-weight:800;
 }
 
-.nav-icon{
-  font-size:26px;
-  line-height:1;
+.nav-item span:first-child{
+  font-size:20px;
 }
 
 .nav-item.active{
-  color:#c18b00;
+  color:var(--gold2);
 }
 
-/* ================= SIDE MENU ================= */
+/* DESKTOP */
 
-.menu-panel{
-  position:fixed;
-  z-index:3000;
-  top:0;
-  left:-320px;
-  width:300px;
-  height:100vh;
-  padding:22px;
-  background:#111;
-  color:white;
-  transition:.25s;
-  box-shadow:8px 0 25px rgba(0,0,0,.4);
-}
+@media(min-width:800px){
 
-.menu-panel.open{
-  left:0;
-}
-
-.menu-close{
-  float:right;
-  font-size:32px;
-  cursor:pointer;
-}
-
-.menu-title{
-  clear:both;
-  padding-top:28px;
-  margin-bottom:22px;
-  font-size:28px;
-  font-weight:950;
-}
-
-.menu-title span{
-  color:#f0b90b;
-}
-
-.menu-link{
-  display:block;
-  padding:14px 3px;
-  border-bottom:1px solid #333;
-  color:#eee;
-  font-size:15px;
-  font-weight:700;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:760px){
-
-  .header{
-    height:72px;
-    padding:0 14px;
+  .grid{
+    grid-template-columns:repeat(6,1fr);
   }
 
-  .logo{
-    font-size:29px;
-    letter-spacing:-1px;
-  }
-
-  .tag{
-    font-size:11px;
-  }
-
-  main{
-    padding:8px 12px 30px;
+  .tile{
+    min-height:145px;
   }
 
   .hero{
-    min-height:360px;
-    padding:25px 18px;
-    border-radius:21px;
+    min-height:370px;
   }
 
   .hero-content{
-    width:73%;
+    width:55%;
   }
 
-  .hero h1{
-    font-size:27px;
+  .price{
+    font-size:44px;
   }
 
-  .hero p{
-    font-size:14px;
-  }
-
-  .hero-btn{
-    font-size:13px;
-    padding:12px 14px;
-  }
-
-  .gold-scene{
-    width:50%;
-  }
-
-  .gold-chart{
-    right:-90px;
-    transform:scale(.7) skewY(-12deg);
-    transform-origin:bottom right;
-  }
-
-  .bar1{
-    width:130px;
-    height:65px;
-    right:-5px;
-    bottom:115px;
-  }
-
-  .bar2{
-    width:100px;
-    height:53px;
-    right:-15px;
-    bottom:65px;
-  }
-
-  .coin1{
-    right:125px;
-    bottom:35px;
-  }
-
-  .coin2{
-    right:92px;
-  }
-
-  .coin3{
-    right:55px;
-  }
-
-  .coin4{
-    right:12px;
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .category{
-    min-height:205px;
-    padding:14px 8px;
-  }
-
-  .category-icon{
-    width:55px;
-    height:55px;
-    font-size:31px;
-  }
-
-  .category h3{
-    font-size:17px;
-  }
-
-  .category p{
-    font-size:12px;
-  }
-
-  .category-link{
-    font-size:14px;
-  }
-
-  .section-head h2{
-    font-size:20px;
-  }
-
-  .more-links{
-    grid-template-columns:1fr 1fr;
+  .link-grid{
+    grid-template-columns:repeat(3,1fr);
   }
 }
 
-/* ================= SMALL MOBILE ================= */
+/* SMALL MOBILE */
 
-@media(max-width:480px){
+@media(max-width:430px){
+
+  .container{
+    padding:12px;
+  }
 
   .hero{
-    min-height:355px;
+    min-height:330px;
+    padding:22px;
   }
 
-  .hero h1{
-    font-size:24px;
+  .hero-content{
+    width:100%;
   }
 
-  .hero p{
-    font-size:13px;
-  }
-
-  .hero-btn{
-    padding:11px 12px;
-  }
-
-  .article{
-    gap:9px;
-  }
-
-  .article-image{
-    width:105px;
-    height:70px;
-    flex-basis:105px;
-  }
-
-  .article-image:before{
-    left:18px;
-    top:18px;
-    font-size:32px;
-  }
-
-  .article-title{
-    font-size:14px;
-  }
-
-  .article-meta{
-    font-size:10px;
-  }
-
-  .article-arrow{
+  .hero h2{
     font-size:28px;
   }
 
-  .more-links{
-    grid-template-columns:1fr;
+  .hero:after{
+    width:300px;
+    height:300px;
+    right:-170px;
   }
 
-  .nav-item{
-    font-size:10px;
+  .price-card{
+    padding:18px;
   }
 
-  .nav-icon{
-    font-size:22px;
+  .price{
+    font-size:30px;
+  }
+
+  .chart{
+    width:38%;
+  }
+
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .tile{
+    min-height:112px;
+    padding:12px 5px;
+  }
+
+  .tile h3{
+    font-size:12px;
+  }
+
+  .tile p{
+    font-size:9px;
+  }
+
+  .icon{
+    width:37px;
+    height:37px;
+    font-size:19px;
+  }
+
+  .loan-features{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 </style>
@@ -798,656 +704,496 @@ footer{
 
 <body>
 
-<!-- ================= SIDE MENU ================= -->
-
-<div class="menu-panel" id="menuPanel">
-
-  <div class="menu-close" onclick="closeMenu()">×</div>
-
-  <div class="menu-title">
-    <span>GOLD</span>Shub
-  </div>
-
-  <a class="menu-link" href="https://www.goldshub.com/">
-    🌐 GoldShub Home
-  </a>
-
-  <a class="menu-link" href="https://www.goldshub.com/p/live-gold-silver-price-today.html">
-    🪙 Gold & Silver Price
-  </a>
-
-  <a class="menu-link" href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">
-    📈 Gold Investment
-  </a>
-
-  <a class="menu-link" href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html">
-    🏦 Gold Loan
-  </a>
-
-  <a class="menu-link" href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html">
-    📜 RBI Gold Loan Rules
-  </a>
-
-  <a class="menu-link" href="https://www.goldshub.com/">
-    📊 Gold Research
-  </a>
-
-  <a class="menu-link" href="https://forms.zohopublic.in/contactgold1/form/Untitled/formperma/TV3zJQDYZVLZCD9vwAZbVu3i2M-TN5lZ7pxYOL0pSC4">
-    ✉️ Contact GoldShub
-  </a>
-
-</div>
-
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header>
-
   <div class="header">
 
-    <button class="menu-btn"
-            onclick="openMenu()"
-            aria-label="Open Menu">
-      ☰
-    </button>
+    <button class="menu" onclick="alert('GoldShub Menu')">☰</button>
 
-    <div class="brand">
-
-      <div class="logo">
-        <span class="logo-gold">GOLD</span><span class="logo-white">Shub</span>
-      </div>
-
-      <div class="tag">
-        Gold • Investment • Loan • Research
-      </div>
-
+    <div class="logo">
+      <h1><span>GOLD</span>Shub</h1>
+      <p>Gold • Investment • Loan • Research</p>
     </div>
 
-    <div class="notification">
+    <div class="notify">
       🔔
-      <span class="notification-dot"></span>
+      <i></i>
     </div>
 
   </div>
-
 </header>
 
-<!-- ================= MAIN ================= -->
 
-<main>
+<main class="container">
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
   <div class="hero-content">
 
-    <h1>
-      सोने का भाव, निवेश,
-      गोल्ड लोन और रिसर्च
-      <span>एक जगह</span>
-    </h1>
+    <div class="badge">✦ PREMIUM GOLD PLATFORM</div>
+
+    <h2>
+      सोने की दुनिया की
+      <span>पूरी जानकारी</span>
+      एक जगह
+    </h2>
 
     <p>
-      Gold price, gold investment,
-      gold loan, digital gold और
-      gold research की आसान हिंदी जानकारी।
+      Gold Price, Investment, Gold Loan,
+      Digital Gold, Calculators और Gold Research
+      की आसान हिंदी जानकारी।
     </p>
 
-    <a class="hero-btn"
-       href="https://www.goldshub.com/">
-      🌐 GoldShub.com खोलें →
-    </a>
+    <div class="hero-buttons">
 
-  </div>
+      <a class="btn" href="https://www.goldshub.com/" target="_blank">
+        🌐 GoldShub.com खोलें →
+      </a>
 
-  <div class="gold-scene">
+      <a class="btn btn-outline" href="#price">
+        Live Gold Price
+      </a>
 
-    <div class="gold-chart">
-      <div class="chart-bar cb1"></div>
-      <div class="chart-bar cb2"></div>
-      <div class="chart-bar cb3"></div>
-      <div class="chart-bar cb4"></div>
-      <div class="chart-bar cb5"></div>
-      <div class="chart-bar cb6"></div>
-      <div class="chart-bar cb7"></div>
-      <div class="chart-line"></div>
     </div>
-
-    <div class="gold-bar bar1"></div>
-    <div class="gold-bar bar2"></div>
-
-    <div class="gold-coin coin1"></div>
-    <div class="gold-coin coin2"></div>
-    <div class="gold-coin coin3"></div>
-    <div class="gold-coin coin4"></div>
 
   </div>
 
 </section>
 
-<!-- ================= CATEGORIES ================= -->
 
-<div class="section-head">
+<!-- LIVE PRICE -->
 
-  <h2>GoldShub Categories</h2>
+<section class="price-card" id="price">
 
-  <a href="https://www.goldshub.com/">
-    सभी देखें →
-  </a>
+  <div>
 
-</div>
+    <div class="price-label">
+      🇮🇳 India • Live Gold Price
+    </div>
 
-<div class="categories">
+    <div class="price-title">
+      24K Gold (10 Gram)
+    </div>
 
-  <a class="category"
-     href="https://www.goldshub.com/p/live-gold-silver-price-today.html">
+    <div class="price">
+      ₹ ——
+    </div>
 
-    <div class="category-icon">₹</div>
+    <div class="price-change">
+      ● Price updates available on GoldShub
+    </div>
 
-    <h3>Gold Price</h3>
+  </div>
+
+  <div class="chart">
+
+    <div class="bar" style="height:35%"></div>
+    <div class="bar" style="height:48%"></div>
+    <div class="bar" style="height:42%"></div>
+    <div class="bar" style="height:58%"></div>
+    <div class="bar" style="height:53%"></div>
+    <div class="bar" style="height:70%"></div>
+    <div class="bar" style="height:63%"></div>
+    <div class="bar" style="height:82%"></div>
+    <div class="bar" style="height:92%"></div>
+
+  </div>
+
+</section>
+
+
+<!-- EXPLORE -->
+
+<section class="section">
+
+  <div class="section-head">
+    <h2>Explore GoldShub</h2>
+    <a href="https://www.goldshub.com/" target="_blank">View All →</a>
+  </div>
+
+  <div class="grid">
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">▣</div>
+      <h3>Gold Price</h3>
+      <p>आज का सोने का भाव</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">↗</div>
+      <h3>Investment</h3>
+      <p>Gold investment guides</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">₹</div>
+      <h3>Gold Loan</h3>
+      <p>Loan & eligibility</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">▥</div>
+      <h3>Calculators</h3>
+      <p>Gold & loan tools</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">◇</div>
+      <h3>Gold Savings</h3>
+      <p>Save & invest</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">▤</div>
+      <h3>Research</h3>
+      <p>Gold market research</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">▥</div>
+      <h3>News</h3>
+      <p>Latest gold updates</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">◇</div>
+      <h3>Offers</h3>
+      <p>Gold related offers</p>
+    </a>
+
+    <a class="tile" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">•••</div>
+      <h3>More</h3>
+      <p>Explore everything</p>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- CALCULATORS -->
+
+<section class="section">
+
+  <div class="section-head">
+    <h2>Calculators</h2>
+    <a href="https://www.goldshub.com/" target="_blank">सभी देखें →</a>
+  </div>
+
+  <div class="calc-row">
+
+    <a class="calc" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">▣</div>
+      <strong>Gold Loan Eligibility</strong>
+      <small>आप कितना loan ले सकते हैं?</small>
+    </a>
+
+    <a class="calc" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">▤</div>
+      <strong>Gold Loan EMI</strong>
+      <small>Monthly EMI calculate करें</small>
+    </a>
+
+    <a class="calc" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">⚖</div>
+      <strong>Gold Per Gram</strong>
+      <small>Gold value calculate करें</small>
+    </a>
+
+    <a class="calc" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">↗</div>
+      <strong>Gold SIP</strong>
+      <small>Investment returns</small>
+    </a>
+
+    <a class="calc" href="https://www.goldshub.com/" target="_blank">
+      <div class="icon">₹</div>
+      <strong>Gold Price</strong>
+      <small>Price calculator</small>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- LATEST NEWS -->
+
+<section class="section">
+
+  <div class="section-head">
+    <h2>आज का Gold Update</h2>
+    <a href="https://www.goldshub.com/" target="_blank">और पढ़ें →</a>
+  </div>
+
+  <div class="news">
+
+    <a class="news-item" href="https://www.goldshub.com/" target="_blank">
+
+      <div class="news-img">🪙</div>
+
+      <div class="news-content">
+        <h3>Gold Price Today: आज सोने के भाव से जुड़ी ताजा जानकारी</h3>
+        <p>Gold Price • GoldShub</p>
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a class="news-item" href="https://www.goldshub.com/" target="_blank">
+
+      <div class="news-img">📈</div>
+
+      <div class="news-content">
+        <h3>Gold Investment Guide: ETF, Digital Gold और SGB</h3>
+        <p>Investment • GoldShub</p>
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+
+    <a class="news-item" href="https://www.goldshub.com/" target="_blank">
+
+      <div class="news-img">🏦</div>
+
+      <div class="news-content">
+        <h3>Gold Loan: Interest Rate, Eligibility और Documents</h3>
+        <p>Gold Loan • GoldShub</p>
+      </div>
+
+      <div class="arrow">›</div>
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- GOLD PRICE -->
+
+<section class="section">
+
+  <div class="section-head">
+    <h2>Gold & Silver Price</h2>
+    <a href="https://www.goldshub.com/" target="_blank">Live Price →</a>
+  </div>
+
+  <div class="link-grid">
+
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🪙 आज का Gold Price <span>→</span>
+    </a>
+
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🇮🇳 India Gold Rate <span>→</span>
+    </a>
+
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🏙️ Delhi Gold Rate <span>→</span>
+    </a>
+
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🏙️ Lucknow Gold Rate <span>→</span>
+    </a>
+
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🏙️ Meerut Gold Rate <span>→</span>
+    </a>
+
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🏙️ Varanasi Gold Rate <span>→</span>
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- INVESTMENT -->
+
+<section class="section">
+
+  <div class="section-head">
+    <h2>Gold Investment</h2>
+    <a href="https://www.goldshub.com/" target="_blank">Investment Guide →</a>
+  </div>
+
+  <div class="invest-card">
+
+    <h3>💰 Gold में Investment कैसे करें?</h3>
 
     <p>
-      भारत में सोने के भाव और
-      price updates देखें।
+      Digital Gold, Gold ETF, Sovereign Gold Bond,
+      Physical Gold और Gold Savings से जुड़ी जानकारी
+      GoldShub पर आसान हिंदी में पढ़ें।
     </p>
 
-    <div class="category-link">
-      देखें →
+    <div class="invest-options">
+
+      <a class="option" href="https://www.goldshub.com/" target="_blank">
+        <b>Digital Gold</b>
+        24K digital gold
+      </a>
+
+      <a class="option" href="https://www.goldshub.com/" target="_blank">
+        <b>Gold ETF</b>
+        ETF investment
+      </a>
+
+      <a class="option" href="https://www.goldshub.com/" target="_blank">
+        <b>SGB</b>
+        Sovereign Gold Bond
+      </a>
+
+      <a class="option" href="https://www.goldshub.com/" target="_blank">
+        <b>Physical Gold</b>
+        Coins & Bars
+      </a>
+
     </div>
 
-  </a>
+  </div>
 
-  <a class="category"
-     href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">
+</section>
 
-    <div class="category-icon">↗</div>
 
-    <h3>Gold Investment</h3>
+<!-- GOLD LOAN -->
+
+<section class="section">
+
+  <div class="section-head">
+    <h2>Gold Loan</h2>
+    <a href="https://www.goldshub.com/" target="_blank">Full Guide →</a>
+  </div>
+
+  <div class="loan">
+
+    <h3>🏦 Gold Loan की पूरी जानकारी</h3>
 
     <p>
-      Gold ETF, digital gold
-      और investment guides।
+      Interest rate, eligibility, LTV, documents,
+      EMI और Gold Loan से जुड़ी जानकारी।
     </p>
 
-    <div class="category-link">
-      पढ़ें →
-    </div>
+    <div class="loan-features">
 
-  </a>
-
-  <a class="category"
-     href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html">
-
-    <div class="category-icon">🏦</div>
-
-    <h3>Gold Loan</h3>
-
-    <p>
-      Gold loan, interest,
-      eligibility और calculators।
-    </p>
-
-    <div class="category-link">
-      जानें →
-    </div>
-
-  </a>
-
-  <a class="category"
-     href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html">
-
-    <div class="category-icon">▥</div>
-
-    <h3>Gold Research</h3>
-
-    <p>
-      Gold market और investment
-      research हिंदी में।
-    </p>
-
-    <div class="category-link">
-      Research →
-    </div>
-
-  </a>
-
-</div>
-
-<!-- ================= CALCULATORS ================= -->
-
-<div class="section-head">
-
-  <h2>Calculators</h2>
-
-  <a href="https://www.goldshub.com/">
-    सभी देखें →
-  </a>
-
-</div>
-
-<div class="calculator-scroll">
-
-  <a class="calc"
-     href="https://www.goldshub.com/p/gold-loan-calculator.html">
-    <div class="calc-icon">🧮</div>
-    <div class="calc-title">
-      Gold Loan<br>
-      Eligibility<br>
-      Calculator
-    </div>
-  </a>
-
-  <a class="calc"
-     href="https://www.goldshub.com/p/gold-loan-emi-calculater.html">
-    <div class="calc-icon">💳</div>
-    <div class="calc-title">
-      Gold Loan<br>
-      EMI<br>
-      Calculator
-    </div>
-  </a>
-
-  <a class="calc"
-     href="https://www.goldshub.com/p/gold-loan-per-gram-calculator-2026.html">
-    <div class="calc-icon">⚖️</div>
-    <div class="calc-title">
-      Gold Loan<br>
-      Per Gram<br>
-      Calculator
-    </div>
-  </a>
-
-  <a class="calc"
-     href="https://www.goldshub.com/p/gold-sip-calculator-2026-100-monthly.html">
-    <div class="calc-icon">📈</div>
-    <div class="calc-title">
-      Gold SIP<br>
-      Calculator
-    </div>
-  </a>
-
-  <a class="calc"
-     href="https://www.goldshub.com/p/live-gold-silver-price-today.html">
-    <div class="calc-icon">₹</div>
-    <div class="calc-title">
-      Live Gold &<br>
-      Silver Price
-    </div>
-  </a>
-
-  <a class="calc"
-     href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html">
-    <div class="calc-icon">📜</div>
-    <div class="calc-title">
-      RBI Gold Loan<br>
-      New Rules<br>
-      2026
-    </div>
-  </a>
-
-</div>
-
-<!-- ================= LATEST ARTICLES ================= -->
-
-<div class="section-head">
-
-  <h2>ताजा लेख</h2>
-
-  <a href="https://www.goldshub.com/">
-    और पढ़ें →
-  </a>
-
-</div>
-
-<div class="articles">
-
-  <a class="article"
-     href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html">
-
-    <div class="article-image"></div>
-
-    <div class="article-info">
-
-      <div class="article-title">
-        RBI Gold Loan New Rules 2026: अब कितना Gold Loan मिलेगा?
+      <div class="loan-feature">
+        <b>₹</b>
+        Loan Value
       </div>
 
-      <div class="article-meta">
-        RBI Rules • Gold Loan • 2026
+      <div class="loan-feature">
+        <b>%</b>
+        Interest
+      </div>
+
+      <div class="loan-feature">
+        <b>✓</b>
+        Eligibility
+      </div>
+
+      <div class="loan-feature">
+        <b>▣</b>
+        EMI
       </div>
 
     </div>
 
-    <div class="article-arrow">›</div>
+    <br>
 
-  </a>
+    <a class="btn" href="https://www.goldshub.com/" target="_blank">
+      Gold Loan Guide →
+    </a>
 
-  <a class="article"
-     href="https://www.goldshub.com/2026/08/lucknow-gold-loan.html">
+  </div>
 
-    <div class="article-image"></div>
+</section>
 
-    <div class="article-info">
 
-      <div class="article-title">
-        लखनऊ में Gold Loan कहाँ से लें? ब्याज दर, EMI और Best Lenders
-      </div>
+<!-- RESEARCH -->
 
-      <div class="article-meta">
-        Lucknow • Gold Loan • 2026
-      </div>
+<section class="section">
 
-    </div>
+  <div class="section-head">
+    <h2>Gold Research</h2>
+    <a href="https://www.goldshub.com/" target="_blank">Research →</a>
+  </div>
 
-    <div class="article-arrow">›</div>
+  <div class="link-grid">
 
-  </a>
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      📊 Gold Market Research <span>→</span>
+    </a>
 
-  <a class="article"
-     href="https://www.goldshub.com/2026/08/meerut-gold-loan.html">
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      📈 Gold Price Analysis <span>→</span>
+    </a>
 
-    <div class="article-image"></div>
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      🌎 Global Gold Market <span>→</span>
+    </a>
 
-    <div class="article-info">
+    <a class="link-card" href="https://www.goldshub.com/" target="_blank">
+      💰 Investment Research <span>→</span>
+    </a>
 
-      <div class="article-title">
-        मेरठ में Gold Loan कहाँ से लें? ब्याज दर, Loan और EMI
-      </div>
+  </div>
 
-      <div class="article-meta">
-        Meerut • Gold Loan • 2026
-      </div>
+</section>
 
-    </div>
-
-    <div class="article-arrow">›</div>
-
-  </a>
-
-  <a class="article"
-     href="https://www.goldshub.com/2026/07/gold-loan-interest-rate-india.html">
-
-    <div class="article-image"></div>
-
-    <div class="article-info">
-
-      <div class="article-title">
-        Gold Loan Interest Rate 2026 – Live Gold Rate + RBI LTV
-      </div>
-
-      <div class="article-meta">
-        Interest Rate • RBI LTV
-      </div>
-
-    </div>
-
-    <div class="article-arrow">›</div>
-
-  </a>
-
-</div>
-
-<!-- ================= GOLD PRICE ================= -->
-
-<div class="section-head">
-
-  <h2>🪙 Gold & Silver Price</h2>
-
-  <a href="https://www.goldshub.com/p/live-gold-silver-price-today.html">
-    Live Price →
-  </a>
-
-</div>
-
-<div class="more-links">
-
-  <a class="more-link"
-     href="https://www.goldshub.com/p/live-gold-silver-price-today.html">
-    🪙 आज का Gold & Silver Price
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/03/india-gold-rate-today.html">
-    🇮🇳 India Gold Rate Today
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/04/today-gold-price-delhi.html">
-    🏙️ Delhi Gold Rate
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/03/lucknow-gold-price-today.html">
-    🏙️ Lucknow Gold Rate
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/03/meerut-gold-rate-today.html">
-    🏙️ Meerut Gold Rate
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/04/today-gold-price-varanasi.html">
-    🏙️ Varanasi Gold Rate
-  </a>
-
-</div>
-
-<!-- ================= INVESTMENT ================= -->
-
-<div class="section-head">
-
-  <h2>📈 Gold Investment</h2>
-
-  <a href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">
-    Investment Guide →
-  </a>
-
-</div>
-
-<div class="more-links">
-
-  <a class="more-link"
-     href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">
-    💰 Gold Investment Guide 2026
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/05/gold-etf-kya-hai-sip-investment-2040-price-prediction.html">
-    📈 Gold ETF क्या है?
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/03/physical-gold-vs-digital-gold-vs-sgbs.html">
-    🪙 Physical vs Digital Gold vs SGB
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/07/500-gold-sip-jar-paytm-groww.html">
-    💵 ₹500 से Gold SIP
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/06/gold-vs-stocks-investment-2025.html">
-    📊 Gold vs Stocks
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/p/wealth-creation-guide-2026-1.html">
-    💰 Wealth Creation Guide
-  </a>
-
-</div>
-
-<!-- ================= GOLD LOAN ================= -->
-
-<div class="section-head">
-
-  <h2>🏦 Gold Loan</h2>
-
-  <a href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html">
-    Full Guide →
-  </a>
-
-</div>
-
-<div class="more-links">
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/03/what-is-gold-loan.html">
-    🏦 Gold Loan क्या है?
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/04/gold-loan-company-vs-jewellers.html">
-    ⚖️ Company vs Jeweller
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/04/sbi-hdfc-muthoot-icici-19-2025.html">
-    💰 1 Gram Gold पर कितना Loan?
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/02/gold-loan-per-gram-2026-10-gram.html">
-    ⚖️ Gold Loan Per Gram
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/06/gold-loan-auction-guide-india.html">
-    🔨 Gold Loan Auction
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/04/cibil.html">
-    📊 Gold Loan & CIBIL
-  </a>
-
-</div>
-
-<!-- ================= RESEARCH ================= -->
-
-<div class="section-head">
-
-  <h2>📊 Gold Research & Analysis</h2>
-
-  <a href="https://www.goldshub.com/">
-    सभी पढ़ें →
-  </a>
-
-</div>
-
-<div class="more-links">
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html">
-    🌍 Recession में Gold Price
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/05/gold-price-prediction-2030-2040-2045-2050.html">
-    🔮 Gold Price Prediction 2050
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2026/05/gold-price-prediction-2045-india.html">
-    🔮 Gold Price Prediction 2045
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/12/sona-kyu-bhartiyon-ki-pahli-pasand-gold-price-history.html">
-    📚 100 साल का Gold History
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/03/gold-ki-history.html">
-    🏛️ Gold का इतिहास
-  </a>
-
-  <a class="more-link"
-     href="https://www.goldshub.com/2025/10/gold-price-crash-history-in-india.html">
-    📉 Gold Price Crash History
-  </a>
-
-</div>
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
-
-  <strong>GOLDShub</strong>
-
-  <br>
-
-  Gold Price • Investment • Gold Loan • Research
-
+  <strong>GOLDShub</strong><br><br>
+  Gold Price • Investment • Loan • Research • Tools
   <br><br>
-
-  <a href="https://www.goldshub.com/"
-     style="font-weight:800;color:#68168f;">
-    GoldShub.com
-  </a>
-
-  <br><br>
-
   © 2026 GoldShub. All Rights Reserved.
-
 </footer>
 
 </main>
 
-<!-- ================= BOTTOM NAV ================= -->
+
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-  <a class="nav-item active" href="#">
-    <div class="nav-icon">⌂</div>
-    Home
-  </a>
+  <div class="nav-inner">
 
-  <a class="nav-item"
-     href="https://www.goldshub.com/p/live-gold-silver-price-today.html">
-    <div class="nav-icon">₹</div>
-    Gold Price
-  </a>
+    <a class="nav-item active" href="#">
+      <span>⌂</span>
+      Home
+    </a>
 
-  <a class="nav-item"
-     href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">
-    <div class="nav-icon">↗</div>
-    Investment
-  </a>
+    <a class="nav-item" href="#price">
+      <span>₹</span>
+      Gold Price
+    </a>
 
-  <a class="nav-item"
-     href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html">
-    <div class="nav-icon">🏦</div>
-    Gold Loan
-  </a>
+    <a class="nav-item" href="#investment">
+      <span>↗</span>
+      Investment
+    </a>
 
-  <a class="nav-item"
-     href="https://www.goldshub.com/p/gold-loan-calculator.html">
-    <div class="nav-icon">🧮</div>
-    Calculators
-  </a>
+    <a class="nav-item" href="#loan">
+      <span>▥</span>
+      Gold Loan
+    </a>
 
-  <a class="nav-item"
-     href="https://www.goldshub.com/">
-    <div class="nav-icon">•••</div>
-    More
-  </a>
+    <a class="nav-item" href="https://www.goldshub.com/" target="_blank">
+      <span>•••</span>
+      More
+    </a>
+
+  </div>
 
 </nav>
-
-<script>
-
-function openMenu(){
-  document.getElementById("menuPanel").classList.add("open");
-}
-
-function closeMenu(){
-  document.getElementById("menuPanel").classList.remove("open");
-}
-
-</script>
 
 </body>
 </html>
