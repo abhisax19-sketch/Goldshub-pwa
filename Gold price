@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gold Price Today 2026 | आज का सोने का भाव | GOLDShub</title>
+
+<meta name="description"
+content="आज का 24K, 22K और 18K Gold Price देखें। Gold Rate, शहरवार सोने का भाव, Gold Price History और सोने की कीमत से जुड़ी जानकारी GOLDShub पर पाएं।">
+
+<meta name="theme-color" content="#050505">
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050505;
+  color:#f5f5f5;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:0 16px;
+}
+
+/* HEADER */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,5,.96);
+  border-bottom:1px solid #292929;
+  backdrop-filter:blur(10px);
+}
+
+.header-inner{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.logo span{
+  color:#d8a92e;
+}
+
+.back{
+  border:1px solid #383838;
+  background:#111;
+  color:#ddd;
+  padding:9px 13px;
+  border-radius:10px;
+  font-size:13px;
+}
+
+/* HERO */
+
+.hero{
+  padding:35px 0 20px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:30px;
+  background:#15120a;
+  border:1px solid #6f571d;
+  color:#e4bd51;
+  font-size:12px;
+  margin-bottom:14px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:31px;
+  line-height:1.3;
+}
+
+.hero h1 span{
+  color:#e2b638;
+}
+
+.hero p{
+  max-width:720px;
+  margin:12px auto 0;
+  color:#a8a8a8;
+  line-height:1.7;
+  font-size:14px;
+}
+
+/* PRICE CARDS */
+
+.price-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:25px;
+}
+
+.price-card{
+  background:linear-gradient(145deg,#161616,#0c0c0c);
+  border:1px solid #2c2c2c;
+  border-radius:18px;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.price-card:before{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-50px;
+  top:-50px;
+  border-radius:50%;
+  background:#b88919;
+  opacity:.08;
+}
+
+.price-title{
+  color:#aaa;
+  font-size:13px;
+}
+
+.price{
+  font-size:25px;
+  font-weight:800;
+  margin:9px 0;
+  color:#e5bb42;
+}
+
+.price small{
+  color:#888;
+  font-size:11px;
+  font-weight:normal;
+}
+
+.change{
+  display:inline-block;
+  font-size:11px;
+  padding:5px 8px;
+  border-radius:7px;
+  background:#101d12;
+  color:#73c77b;
+}
+
+/* SECTION */
+
+.section{
+  padding:25px 0;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:21px;
+}
+
+.section-title span{
+  color:#d8aa35;
+  font-size:12px;
+}
+
+/* QUICK LINKS */
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.quick{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:14px;
+  padding:15px 10px;
+  text-align:center;
+  transition:.2s;
+}
+
+.quick:hover{
+  border-color:#8d6a20;
+  transform:translateY(-2px);
+}
+
+.quick-icon{
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+.quick-name{
+  font-size:12px;
+  color:#ddd;
+}
+
+/* TABLE */
+
+.table-wrap{
+  overflow-x:auto;
+  border:1px solid #292929;
+  border-radius:16px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:550px;
+}
+
+th,
+td{
+  padding:14px 12px;
+  text-align:left;
+  border-bottom:1px solid #252525;
+  font-size:13px;
+}
+
+th{
+  background:#141414;
+  color:#dcb340;
+}
+
+td{
+  color:#ddd;
+}
+
+tr:last-child td{
+  border-bottom:0;
+}
+
+/* CITY */
+
+.city-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.city{
+  padding:15px;
+  background:#111;
+  border:1px solid #292929;
+  border-radius:13px;
+  transition:.2s;
+}
+
+.city:hover{
+  border-color:#8d6a20;
+}
+
+.city strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.city span{
+  color:#dcb13b;
+  font-size:12px;
+}
+
+/* INFO */
+
+.info{
+  background:linear-gradient(145deg,#15130d,#0d0d0d);
+  border:1px solid #4b3b17;
+  border-radius:17px;
+  padding:20px;
+}
+
+.info h2{
+  margin:0 0 12px;
+  color:#e1b83e;
+  font-size:20px;
+}
+
+.info p{
+  color:#aaa;
+  line-height:1.75;
+  font-size:14px;
+  margin:9px 0;
+}
+
+.note{
+  margin-top:14px;
+  padding:12px;
+  border-left:3px solid #d4aa39;
+  background:#111;
+  color:#aaa;
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* ARTICLES */
+
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.article{
+  background:#111;
+  border:1px solid #292929;
+  border-radius:15px;
+  padding:17px;
+  transition:.2s;
+}
+
+.article:hover{
+  border-color:#8d6a20;
+}
+
+.article-tag{
+  color:#dcb13b;
+  font-size:11px;
+  margin-bottom:8px;
+}
+
+.article h3{
+  font-size:15px;
+  line-height:1.45;
+  margin:0 0 8px;
+}
+
+.article p{
+  margin:0;
+  color:#999;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.read{
+  display:inline-block;
+  margin-top:12px;
+  color:#e0b43d;
+  font-size:12px;
+}
+
+/* FAQ */
+
+.faq{
+  border:1px solid #292929;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+details{
+  background:#111;
+  border-bottom:1px solid #292929;
+}
+
+details:last-child{
+  border-bottom:0;
+}
+
+summary{
+  cursor:pointer;
+  padding:16px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+details p{
+  margin:0;
+  padding:0 16px 16px;
+  color:#999;
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:25px;
+  padding:28px 0 90px;
+  border-top:1px solid #252525;
+  text-align:center;
+}
+
+.footer-logo{
+  font-size:21px;
+  font-weight:bold;
+}
+
+.footer-logo span{
+  color:#dcb13b;
+}
+
+.footer p{
+  color:#777;
+  font-size:12px;
+  line-height:1.6;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:999;
+  display:flex;
+  justify-content:space-around;
+  background:rgba(10,10,10,.98);
+  border-top:1px solid #292929;
+  padding:8px 5px;
+}
+
+.bottom-nav a{
+  text-align:center;
+  color:#999;
+  font-size:10px;
+}
+
+.nav-icon{
+  display:block;
+  font-size:19px;
+  margin-bottom:3px;
+}
+
+.bottom-nav .active{
+  color:#dfb63e;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+  .hero h1{
+    font-size:26px;
+  }
+
+  .price-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .city-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .article-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:400px){
+
+  .container{
+    padding:0 12px;
+  }
+
+  .price-card{
+    padding:16px;
+  }
+
+  .price{
+    font-size:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      GOLD<span>Shub</span>
+    </a>
+
+    <a href="index.html" class="back">
+      ← Home
+    </a>
+
+  </div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="container">
+
+    <div class="badge">🪙 GOLD PRICE</div>
+
+    <h1>
+      आज का <span>Gold Price</span>
+    </h1>
+
+    <p>
+      24K, 22K और 18K सोने का भाव, शहरवार Gold Rate,
+      Gold Price History और सोने की कीमत से जुड़ी महत्वपूर्ण जानकारी।
+    </p>
+
+  </div>
+</section>
+
+
+<!-- CURRENT GOLD PRICE -->
+
+<section class="section">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>आज का सोने का भाव</h2>
+      <span>Gold Rate</span>
+    </div>
+
+    <div class="price-grid">
+
+      <div class="price-card">
+
+        <div class="price-title">24K Gold</div>
+
+        <div class="price">
+          ₹1,61,600
+          <small>/ 10 ग्राम</small>
+        </div>
+
+        <span class="change">
+          ● Current Rate
+        </span>
+
+      </div>
+
+
+      <div class="price-card">
+
+        <div class="price-title">22K Gold</div>
+
+        <div class="price">
+          ₹1,48,133
+          <small>/ 10 ग्राम</small>
+        </div>
+
+        <span class="change">
+          ● Current Rate
+        </span>
+
+      </div>
+
+
+      <div class="price-card">
+
+        <div class="price-title">18K Gold</div>
+
+        <div class="price">
+          ₹1,21,200
+          <small>/ 10 ग्राम</small>
+        </div>
+
+        <span class="change">
+          ● Current Rate
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="note">
+      Gold rate indicative है। GST, making charges, local charges और
+      jeweller के charges अलग हो सकते हैं। खरीदने से पहले अपने स्थानीय
+      jeweller से current rate verify करें।
+    </div>
+
+  </div>
+</section>
+
+
+<!-- QUICK NAVIGATION -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Gold Price जानकारी</h2>
+      <span>Explore</span>
+    </div>
+
+    <div class="quick-grid">
+
+      <a href="#today" class="quick">
+        <div class="quick-icon">💰</div>
+        <div class="quick-name">आज का भाव</div>
+      </a>
+
+      <a href="#city" class="quick">
+        <div class="quick-icon">🏙️</div>
+        <div class="quick-name">City Rates</div>
+      </a>
+
+      <a href="#history" class="quick">
+        <div class="quick-icon">📈</div>
+        <div class="quick-name">Price History</div>
+      </a>
+
+      <a href="#factors" class="quick">
+        <div class="quick-icon">📊</div>
+        <div class="quick-name">Price Factors</div>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RATE TABLE -->
+
+<section class="section" id="today">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Gold Rate Table</h2>
+      <span>Per 10 Gram</span>
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Gold Purity</th>
+            <th>1 ग्राम</th>
+            <th>10 ग्राम</th>
+            <th>100 ग्राम</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>24K Gold</td>
+            <td>₹16,160</td>
+            <td>₹1,61,600</td>
+            <td>₹16,16,000</td>
+          </tr>
+
+          <tr>
+            <td>22K Gold</td>
+            <td>₹14,813</td>
+            <td>₹1,48,133</td>
+            <td>₹14,81,330</td>
+          </tr>
+
+          <tr>
+            <td>18K Gold</td>
+            <td>₹12,120</td>
+            <td>₹1,21,200</td>
+            <td>₹12,12,000</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CITY RATES -->
+
+<section class="section" id="city">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>शहरवार Gold Rate</h2>
+      <span>India</span>
+    </div>
+
+    <div class="city-grid">
+
+      <a href="#" class="city">
+        <strong>Delhi</strong>
+        <span>Gold Rate →</span>
+      </a>
+
+      <a href="#" class="city">
+        <strong>Mumbai</strong>
+        <span>Gold Rate →</span>
+      </a>
+
+      <a href="#" class="city">
+        <strong>Jaipur</strong>
+        <span>Gold Rate →</span>
+      </a>
+
+      <a href="#" class="city">
+        <strong>Kolkata</strong>
+        <span>Gold Rate →</span>
+      </a>
+
+      <a href="#" class="city">
+        <strong>Ahmedabad</strong>
+        <span>Gold Rate →</span>
+      </a>
+
+      <a href="#" class="city">
+        <strong>Chennai</strong>
+        <span>Gold Rate →</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PRICE HISTORY -->
+
+<section class="section" id="history">
+
+  <div class="container">
+
+    <div class="info">
+
+      <h2>📈 Gold Price History</h2>
+
+      <p>
+        Gold की कीमत समय के साथ लगातार बदलती रहती है। Historical Gold
+        Price को देखने से long-term trend और market movement को समझने
+        में मदद मिल सकती है।
+      </p>
+
+      <p>
+        International gold prices, US dollar movement, interest rates,
+        inflation, central-bank demand, geopolitical events और भारतीय
+        बाजार की demand जैसे factors Gold Rate को प्रभावित कर सकते हैं।
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PRICE FACTORS -->
+
+<section class="section" id="factors">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>सोने की कीमत किन चीजों से बदलती है?</h2>
+      <span>Important</span>
+    </div>
+
+    <div class="info">
+
+      <p>
+        <strong>🌍 International Gold Price:</strong>
+        Global bullion market में होने वाली movement का भारतीय gold
+        price पर असर पड़ता है।
+      </p>
+
+      <p>
+        <strong>💵 US Dollar:</strong>
+        Dollar और international gold price के movement का भारतीय
+        market पर प्रभाव पड़ सकता है।
+      </p>
+
+      <p>
+        <strong>📈 Interest Rates:</strong>
+        Global interest-rate expectations investor demand को प्रभावित
+        कर सकती हैं।
+      </p>
+
+      <p>
+        <strong>🏦 Central Bank Buying:</strong>
+        Central banks की gold demand global market sentiment को प्रभावित
+        कर सकती है।
+      </p>
+
+      <p>
+        <strong>🌐 Geopolitical Events:</strong>
+        Global uncertainty के समय gold की demand में बदलाव हो सकता है।
+      </p>
+
+      <p>
+        <strong>🇮🇳 Indian Demand:</strong>
+        Jewellery demand, festivals, weddings और local market conditions
+        भी कीमत को प्रभावित कर सकती हैं।
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RELATED ARTICLES -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Gold Price से जुड़े Articles</h2>
+      <span>GoldShub</span>
+    </div>
+
+    <div class="article-grid">
+
+      <a
+        href="https://www.goldshub.com/2025/11/ghar-par-sona-banaya-ja-sakta-hai-science-truth-investment.html"
+        class="article">
+
+        <div class="article-tag">
+          GOLD KNOWLEDGE
+        </div>
+
+        <h3>
+          क्या घर पर सोना बनाया जा सकता है?
+          वैज्ञानिक सच्चाई और सुरक्षित निवेश
+        </h3>
+
+        <p>
+          सोना बनाने की scientific reality और gold investment
+          से जुड़ी महत्वपूर्ण जानकारी जानें।
+        </p>
+
+        <span class="read">
+          पूरा लेख पढ़ें →
+        </span>
+
+      </a>
+
+
+      <a href="investment.html" class="article">
+
+        <div class="article-tag">
+          GOLD INVESTMENT
+        </div>
+
+        <h3>
+          Gold Investment कैसे करें?
+        </h3>
+
+        <p>
+          Physical Gold, Gold ETF और दूसरे gold investment options
+          के बारे में जानकारी देखें।
+        </p>
+
+        <span class="read">
+          Investment Guide →
+        </span>
+
+      </a>
+
+
+      <a href="#" class="article">
+
+        <div class="article-tag">
+          GOLD PRICE
+        </div>
+
+        <h3>
+          सोने की कीमत क्यों बढ़ती और घटती है?
+        </h3>
+
+        <p>
+          Gold price को प्रभावित करने वाले प्रमुख factors को
+          आसान भाषा में समझें।
+        </p>
+
+        <span class="read">
+          पढ़ें →
+        </span>
+
+      </a>
+
+
+      <a href="#" class="article">
+
+        <div class="article-tag">
+          GOLD KNOWLEDGE
+        </div>
+
+        <h3>
+          24K और 22K Gold में क्या अंतर है?
+        </h3>
+
+        <p>
+          Gold purity और karat को आसान भाषा में समझें।
+        </p>
+
+        <span class="read">
+          पढ़ें →
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Gold Price FAQ</h2>
+      <span>Questions</span>
+    </div>
+
+    <div class="faq">
+
+      <details>
+
+        <summary>
+          24K और 22K Gold में क्या अंतर है?
+        </summary>
+
+        <p>
+          24K Gold अधिक शुद्धता वाला gold माना जाता है, जबकि 22K gold
+          में अन्य metals मिलाए जाते हैं और इसका उपयोग jewellery में
+          काफी किया जाता है।
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          क्या Gold Rate हर शहर में एक जैसा होता है?
+        </summary>
+
+        <p>
+          Base market price समान दिशा में हो सकता है, लेकिन local
+          taxes, transportation, dealer margin और अन्य charges के कारण
+          अलग-अलग शहरों में quoted rate अलग हो सकता है।
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          Jewellery का final price Gold Rate से ज्यादा क्यों होता है?
+        </summary>
+
+        <p>
+          Jewellery की final कीमत में making charges, applicable taxes,
+          design charges और अन्य applicable costs शामिल हो सकते हैं।
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          क्या Gold Price हमेशा बढ़ता है?
+        </summary>
+
+        <p>
+          नहीं। Gold price में भी market fluctuations होते हैं और
+          short-term में कीमत ऊपर या नीचे जा सकती है।
+        </p>
+
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DISCLAIMER -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="note">
+
+      <strong>Disclaimer:</strong>
+      GoldShub पर दिखाए गए rates केवल informational purpose के लिए हैं।
+      वास्तविक खरीद-बिक्री की कीमत jeweller, location, purity, taxes,
+      making charges और market conditions के अनुसार अलग हो सकती है।
+      किसी financial decision से पहले current rate और applicable charges
+      की पुष्टि करें।
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="footer-logo">
+      GOLD<span>Shub</span>
+    </div>
+
+    <p>
+      Gold Price • Gold Investment • Gold Loan • Gold Knowledge • Gold Research
+    </p>
+
+    <p>
+      © 2026 GoldShub. All Rights Reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+  <a href="index.html">
+    <span class="nav-icon">🏠</span>
+    Home
+  </a>
+
+  <a href="gold-price.html" class="active">
+    <span class="nav-icon">🪙</span>
+    Gold
+  </a>
+
+  <a href="calculators.html">
+    <span class="nav-icon">🧮</span>
+    Calculator
+  </a>
+
+  <a href="investment.html">
+    <span class="nav-icon">📈</span>
+    Invest
+  </a>
+
+  <a href="gold-knowledge.html">
+    <span class="nav-icon">📚</span>
+    Knowledge
+  </a>
+
+</nav>
+
+</body>
+</html>
