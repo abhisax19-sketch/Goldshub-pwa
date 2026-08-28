@@ -1,0 +1,6 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GoldShub Articles</title></head><body><h1>GoldShub — Articles</h1><div id="articles">Loading latest Blogger posts…</div><script>
+const rules={loan:/gold loan|loan|rbi|ltv|emi|cibil|muthoot|iifl|manappuram|capri/i,rate:/gold rate|gold price|सोने का भाव|सोने की कीमत/i,silver:/silver|चांदी/i,invest:/investment|invest|etf|sgb|sip|digital gold|mutual fund/i,research:/analysis|prediction|forecast|recession|history|outlook/i};
+function cat(t){for(const [k,r] of Object.entries(rules))if(r.test(t))return k;return"knowledge"}
+window.goldShubFeed=function(d){const e=d.feed?.entry||[];document.getElementById("articles").innerHTML=e.map(p=>{let u=(p.link||[]).find(x=>x.rel==="alternate")?.href||"#";let t=p.title?.$t||"Untitled";return `<p><b>${cat(t)}</b> — <a href="${u}" target="_blank" rel="noopener">${t}</a></p>`}).join("")||"No posts found."};
+const s=document.createElement("script");s.src="https://www.goldshub.com/feeds/posts/default?alt=json-in-script&max-results=150&callback=goldShubFeed";document.body.appendChild(s);
+</script><p><a href="01_index_home.html">← Home</a></p></body></html>
