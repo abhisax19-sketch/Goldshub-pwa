@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="GoldShub — Gold Loan, Investment, Live Gold & Silver Rates, Calculators and Knowledge">
+<title>GoldShub — Home</title>
+
+<style>
+:root{
+  --bg:#070707;--card:#111214;--card2:#151618;--line:#2b2c30;
+  --gold:#f5b51b;--gold2:#ffd45a;--text:#f7f7f7;--muted:#a9aaae;
+  --green:#49d17d;--red:#ff6969;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#050505;color:var(--text);font-family:Arial,system-ui,sans-serif;line-height:1.45}
+a{color:inherit}
+.app{max-width:1100px;margin:auto;padding:0 14px 90px}
+.topbar{
+  position:sticky;top:0;z-index:50;background:rgba(5,5,5,.94);
+  backdrop-filter:blur(14px);border-bottom:1px solid #202124
+}
+.topbar-inner{max-width:1100px;margin:auto;padding:13px 14px 8px}
+.brand{font-size:25px;font-weight:900;letter-spacing:-1px}
+.brand .g{color:var(--gold)}
+.top-actions{float:right;margin-top:-29px;display:flex;gap:18px;font-size:25px}
+.top-actions a{text-decoration:none}
+.nav{
+  max-width:1100px;margin:auto;display:flex;gap:8px;overflow:auto;
+  padding:5px 14px 12px;scrollbar-width:none
+}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  flex:0 0 auto;text-decoration:none;color:#ddd;border:1px solid #292b2f;
+  border-radius:999px;padding:7px 12px;font-size:12px;background:#0d0e10
+}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+
+.hero{
+  margin-top:18px;border:1px solid #5a4615;border-radius:20px;overflow:hidden;
+  min-height:330px;position:relative;background:
+  linear-gradient(90deg,rgba(7,7,7,.98) 0%,rgba(7,7,7,.88) 46%,rgba(7,7,7,.30) 100%),
+  url("https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1400&q=85") center/cover
+}
+.hero-content{padding:36px 28px;max-width:610px}
+.eyebrow{color:var(--gold);font-weight:800;font-size:12px;letter-spacing:.7px;text-transform:uppercase}
+.hero h1{font-size:38px;line-height:1.12;margin:9px 0 14px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:#ddd;max-width:540px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:800;padding:12px 17px;
+  border-radius:11px;background:linear-gradient(#ffd05a,#eaa719);color:#17120a
+}
+.btn.dark{background:#151618;color:#fff;border:1px solid #4a4b4e}
+
+.section{margin-top:28px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.section-head h2{margin:0;font-size:23px}
+.section-head a{color:var(--gold);text-decoration:none;font-weight:800}
+.muted{color:var(--muted);font-size:13px}
+
+.quick-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.quick{
+  min-height:108px;text-decoration:none;text-align:center;padding:15px 8px;
+  background:linear-gradient(145deg,#171819,#0d0e0f);border:1px solid var(--line);
+  border-radius:17px;transition:.2s
+}
+.quick:hover{transform:translateY(-2px);border-color:#6b5319}
+.quick .ico{font-size:31px;color:var(--gold);height:45px}
+.quick b{display:block;font-size:14px}
+
+.rate-panel{
+  background:linear-gradient(145deg,#151719,#0c0d0e);border:1px solid var(--line);
+  border-radius:20px;padding:18px
+}
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:1px solid #34363a;background:#111214;color:#ddd;padding:9px 15px;border-radius:10px;cursor:pointer}
+.tab.active{background:linear-gradient(#ffd05a,#eaa719);color:#17120a;border-color:#dca51f;font-weight:800}
+.rate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.rate{
+  border:1px solid #303236;border-radius:13px;padding:15px;background:#101113
+}
+.rate small{display:block;color:#ddd;font-size:14px}
+.rate strong{display:block;font-size:25px;margin:3px 0}
+.up{color:var(--green);font-size:13px}
+
+.category-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.category{
+  text-decoration:none;border:1px solid var(--line);border-radius:17px;
+  padding:17px 10px;text-align:center;background:linear-gradient(145deg,#171819,#0e0f10)
+}
+.category .ico{font-size:37px;color:var(--gold)}
+.category b{display:block;color:var(--gold);font-size:16px;margin-top:6px}
+.category span{display:block;color:#ddd;font-size:12px;margin-top:5px}
+
+.article-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.search{
+  flex:1;min-width:230px;padding:13px 15px;border-radius:12px;
+  border:1px solid var(--line);background:#0d0e10;color:#fff;font-size:15px;outline:none
+}
+.search:focus{border-color:#7a5d18}
+.filter{
+  padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+  background:#0d0e10;color:#fff
+}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.article{
+  background:linear-gradient(145deg,#151618,#0d0e0f);border:1px solid var(--line);
+  border-radius:16px;padding:15px;min-height:150px
+}
+.tag{
+  display:inline-block;background:#f3c44e;color:#17120a;border-radius:999px;
+  padding:4px 8px;font-size:10px;font-weight:900;margin-bottom:9px
+}
+.article h3{font-size:15px;line-height:1.35;margin:0 0 11px}
+.article .open{color:var(--gold);text-decoration:none;font-weight:800;font-size:12px}
+.count{color:var(--muted);font-size:13px}
+
+.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.tool{
+  padding:17px;background:linear-gradient(145deg,#151618,#0d0e0f);
+  border:1px solid var(--line);border-radius:16px
+}
+.tool h3{margin:5px 0;font-size:17px}
+.tool p{color:#bbb;font-size:13px;margin:5px 0 13px}
+.tool a{color:var(--gold);text-decoration:none;font-weight:800;font-size:13px}
+
+.info{
+  margin-top:26px;padding:18px;border:1px solid #5a4615;border-radius:17px;
+  background:#17140b
+}
+.info code{color:var(--gold2);word-break:break-all}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:22px 4px;color:var(--muted);font-size:12px}
+
+.bottom{
+  position:fixed;left:0;right:0;bottom:0;z-index:100;
+  display:flex;justify-content:center;gap:28px;padding:9px 8px calc(9px + env(safe-area-inset-bottom));
+  background:rgba(8,8,8,.97);border-top:1px solid #292a2c;backdrop-filter:blur(12px)
+}
+.bottom a{text-decoration:none;color:#ddd;text-align:center;font-size:11px;min-width:58px}
+.bottom b{display:block;color:#bbb;font-size:20px;line-height:22px}
+.bottom a:first-child,.bottom a:hover{color:var(--gold)}
+.bottom a:first-child b{color:var(--gold)}
+
+@media(max-width:900px){
+  .quick-grid{grid-template-columns:repeat(4,1fr)}
+  .category-grid{grid-template-columns:repeat(3,1fr)}
+  .article-grid{grid-template-columns:repeat(2,1fr)}
+  .tool-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .app{padding-left:10px;padding-right:10px}
+  .topbar-inner{padding-left:10px;padding-right:10px}
+  .hero{min-height:370px;background-position:65% center}
+  .hero-content{padding:27px 18px}
+  .hero h1{font-size:29px;max-width:370px}
+  .hero p{font-size:13px;max-width:350px}
+  .quick-grid{grid-template-columns:repeat(4,1fr);gap:7px}
+  .quick{min-height:92px;padding:10px 4px}
+  .quick .ico{font-size:25px;height:35px}
+  .quick b{font-size:11px}
+  .rate-grid{grid-template-columns:repeat(2,1fr)}
+  .category-grid{grid-template-columns:repeat(2,1fr)}
+  .article-grid,.tool-grid{grid-template-columns:1fr}
+  .section-head h2{font-size:20px}
+  .bottom{gap:8px;justify-content:space-around}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="g">GOLD</span>SHub</div>
+    <div class="top-actions">
+      <a href="#articles" aria-label="Search">⌕</a>
+      <a href="#menu" aria-label="Menu">☰</a>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#home">Home</a>
+    <a href="#rates">Live Rate</a>
+    <a href="#loan">Gold Loan</a>
+    <a href="#investment">Investment</a>
+    <a href="#calculators">Calculators</a>
+    <a href="#articles">Articles</a>
+  </nav>
+</header>
+
+<main class="app" id="home">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">GoldShub App</div>
+    <h1>Gold की जानकारी,<br><span>Loan, Investment</span><br>और Latest Rates — सब एक जगह</h1>
+    <p>Gold loan, investment, live gold & silver rates, calculators और GoldShub के knowledge articles को एक साफ mobile-app style home page में व्यवस्थित किया गया है।</p>
+    <div class="btns">
+      <a class="btn" href="https://www.goldshub.com/p/live-gold-silver-price-today.html">Live Gold & Silver Rate</a>
+      <a class="btn dark" href="https://www.goldshub.com/p/gold-loan-calculator.html">Gold Loan Calculator</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="quick-grid">
+    <a class="quick" href="#loan"><div class="ico">🏦</div><b>Gold Loan</b></a>
+    <a class="quick" href="#investment"><div class="ico">📈</div><b>Investment</b></a>
+    <a class="quick" href="#rates"><div class="ico">🪙</div><b>Rates</b></a>
+    <a class="quick" href="#calculators"><div class="ico">🧮</div><b>Calculators</b></a>
+    <a class="quick" href="#knowledge"><div class="ico">📖</div><b>Knowledge</b></a>
+    <a class="quick" href="#analysis"><div class="ico">📊</div><b>Analysis</b></a>
+    <a class="quick" href="https://forms.zohopublic.in/contactgold1/form/Untitled/formperma/TV3zJQDYZVLZCD9vwAZbVu3i2M-TN5lZ7pxYOL0pSC4"><div class="ico">☎</div><b>Contact Us</b></a>
+  </div>
+</section>
+
+<section class="section" id="rates">
+  <div class="section-head"><h2>Live Gold & Silver Rates</h2><a href="https://www.goldshub.com/p/live-gold-silver-price-today.html">View All</a></div>
+  <div class="rate-panel">
+    <div class="tabs">
+      <button class="tab active">Gold Rate</button>
+      <button class="tab">Silver Rate</button>
+      <button class="tab">City Rates</button>
+    </div>
+    <div class="rate-grid">
+      <div class="rate"><small>24K Gold</small><strong>Live</strong><span class="up">▲ GoldShub</span></div>
+      <div class="rate"><small>22K Gold</small><strong>Live</strong><span class="up">▲ GoldShub</span></div>
+      <div class="rate"><small>18K Gold</small><strong>Live</strong><span class="up">▲ GoldShub</span></div>
+      <div class="rate"><small>Silver 999</small><strong>Live</strong><span class="up">▲ GoldShub</span></div>
+    </div>
+    <p class="muted">Latest live rates के लिए GoldShub का official rates page खोलें।</p>
+    <a class="btn" href="https://www.goldshub.com/p/live-gold-silver-price-today.html">Open Live Rates →</a>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="section-head"><h2>Top Categories</h2><a href="#articles">View All</a></div>
+  <div class="category-grid">
+    <a class="category" href="#loan"><div class="ico">🏦</div><b>Gold Loan</b><span>Eligibility, EMI, Per Gram Loan & More</span></a>
+    <a class="category" href="#investment"><div class="ico">🪙</div><b>Investment</b><span>SIP, ETF, SGB, Mutual Funds & More</span></a>
+    <a class="category" href="#rates"><div class="ico">📈</div><b>Rates</b><span>Gold & Silver Rates • Live Updates</span></a>
+    <a class="category" href="#calculators"><div class="ico">🧮</div><b>Calculators</b><span>Loan, SIP, EMI, Tax & More</span></a>
+    <a class="category" href="#knowledge"><div class="ico">📖</div><b>Knowledge</b><span>Guides, Tips, Rules & Education</span></a>
+  </div>
+</section>
+
+<section class="section" id="loan">
+  <div class="section-head"><h2>Gold Loan</h2><a href="#articles" data-category-link="Gold Loan">View Articles</a></div>
+  <div class="tool-grid">
+    <div class="tool"><div class="tag">CALCULATOR</div><h3>Gold Loan Calculator</h3><p>Gold loan eligibility और amount check करें।</p><a href="https://www.goldshub.com/p/gold-loan-calculator.html">Open →</a></div>
+    <div class="tool"><div class="tag">EMI</div><h3>Gold Loan EMI Calculator</h3><p>EMI, interest और total repayment calculate करें।</p><a href="https://www.goldshub.com/p/gold-loan-emi-calculater.html">Open →</a></div>
+    <div class="tool"><div class="tag">PER GRAM</div><h3>Gold Loan Per Gram Calculator</h3><p>आज के हिसाब से per gram loan value देखें।</p><a href="https://www.goldshub.com/p/gold-loan-per-gram-calculator-2026.html">Open →</a></div>
+    <div class="tool"><div class="tag">GUIDE</div><h3>UP Gold Loan Guide</h3><p>उत्तर प्रदेश के gold loan की पूरी जानकारी।</p><a href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html">Open →</a></div>
+    <div class="tool"><div class="tag">CLOSURE</div><h3>Loan Closure Calculator</h3><p>Day-wise interest, penalty और closing amount।</p><a href="https://www.goldshub.com/p/goldshub-npa-loan-closure-calculator.html">Open →</a></div>
+  </div>
+</section>
+
+<section class="section" id="investment">
+  <div class="section-head"><h2>Investment</h2><a href="#articles" data-category-link="Investment">View Articles</a></div>
+  <div class="tool-grid">
+    <div class="tool"><div class="tag">SIP</div><h3>Gold SIP Calculator</h3><p>Monthly gold investment का calculation।</p><a href="https://www.goldshub.com/p/gold-sip-calculator-2026-100-monthly.html">Open →</a></div>
+    <div class="tool"><div class="tag">GUIDE</div><h3>Gold Investment Guide</h3><p>ETF, Digital Gold, SGB, SIP और strategies।</p><a href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">Open →</a></div>
+    <div class="tool"><div class="tag">DIGITAL GOLD</div><h3>Digital Gold SIP Calculator</h3><p>₹10 से daily, weekly और monthly saving का हिसाब।</p><a href="https://www.goldshub.com/p/digital-gold-sip-calculator-10-daily.html">Open →</a></div>
+    <div class="tool"><div class="tag">WEALTH</div><h3>Wealth Creation Guide</h3><p>Long-term wealth creation strategy।</p><a href="https://www.goldshub.com/p/wealth-creation-guide-2026-1.html">Open →</a></div>
+    <div class="tool"><div class="tag">TAX</div><h3>Gold Capital Gains Tax</h3><p>Gold capital gains tax calculation page।</p><a href="https://www.goldshub.com/p/gold-capital-gains-tax-calculator.html">Open →</a></div>
+  </div>
+</section>
+
+<section class="section" id="calculators">
+  <div class="section-head"><h2>Calculators & Pages</h2><span class="count">Official GoldShub links</span></div>
+  <div class="tool-grid">
+    <div class="tool"><div class="tag">RATE</div><h3>Live Gold & Silver Price</h3><p>Gold और silver का live rate page।</p><a href="https://www.goldshub.com/p/live-gold-silver-price-today.html">Open →</a></div>
+    <div class="tool"><div class="tag">LOAN</div><h3>Gold Loan Calculator</h3><p>Gold weight के आधार पर loan amount।</p><a href="https://www.goldshub.com/p/gold-loan-calculator.html">Open →</a></div>
+    <div class="tool"><div class="tag">EMI</div><h3>Gold Loan EMI Calculator</h3><p>EMI और total repayment calculation।</p><a href="https://www.goldshub.com/p/gold-loan-emi-calculater.html">Open →</a></div>
+    <div class="tool"><div class="tag">SIP</div><h3>Gold SIP Calculator</h3><p>1–50 years monthly investment calculator।</p><a href="https://www.goldshub.com/p/gold-sip-calculator-2026-100-monthly.html">Open →</a></div>
+    <div class="tool"><div class="tag">INVESTMENT</div><h3>Gold Investment Guide</h3><p>ETF, Digital Gold, SGB और SIP guide।</p><a href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html">Open →</a></div>
+    <div class="tool"><div class="tag">WEALTH</div><h3>Wealth Creation Guide</h3><p>₹1 लाख से wealth creation strategy।</p><a href="https://www.goldshub.com/p/wealth-creation-guide-2026-1.html">Open →</a></div>
+    <div class="tool"><div class="tag">DIGITAL GOLD</div><h3>Digital Gold SIP Calculator</h3><p>Daily, weekly और monthly saving calculator।</p><a href="https://www.goldshub.com/p/digital-gold-sip-calculator-10-daily.html">Open →</a></div>
+    <div class="tool"><div class="tag">PER GRAM</div><h3>Gold Loan Per Gram Calculator</h3><p>1 gram gold loan value check करें।</p><a href="https://www.goldshub.com/p/gold-loan-per-gram-calculator-2026.html">Open →</a></div>
+    <div class="tool"><div class="tag">UP GUIDE</div><h3>UP Gold Loan Guide</h3><p>UP के सभी major cities की gold loan जानकारी।</p><a href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html">Open →</a></div>
+    <div class="tool"><div class="tag">TAX</div><h3>Gold Capital Gains Tax</h3><p>Capital gains tax calculator।</p><a href="https://www.goldshub.com/p/gold-capital-gains-tax-calculator.html">Open →</a></div>
+    <div class="tool"><div class="tag">CLOSURE</div><h3>Loan Closure Calculator</h3><p>Closing amount और penalty calculation।</p><a href="https://www.goldshub.com/p/goldshub-npa-loan-closure-calculator.html">Open →</a></div>
+  </div>
+</section>
+
+<section class="section" id="articles">
+  <div class="section-head">
+    <h2>Latest Articles</h2><span id="status" class="count">Loading…</span>
+  </div>
+  <div class="article-tools">
+    <input id="search" class="search" placeholder="Article search करें…">
+    <select id="filter" class="filter">
+      <option value="">All Folders</option>
+      <option>Gold Loan</option><option>Gold Rate</option><option>Silver Rate</option>
+      <option>Investment</option><option>Gold Analysis</option><option>Gold Knowledge</option>
+      <option>Loan Knowledge</option><option>Silver Analysis</option>
+    </select>
+  </div>
+  <div id="articleGrid" class="article-grid"></div>
+</section>
+
+<section class="section" id="knowledge">
+  <div class="section-head"><h2>Knowledge & Education</h2><a href="#articles">View Articles</a></div>
+  <div class="category-grid">
+    <a class="category" href="#articles" data-category-link="Gold Knowledge"><div class="ico">📖</div><b>Gold Knowledge</b><span>Gold history, purity, hallmark और basics</span></a>
+    <a class="category" href="#articles" data-category-link="Loan Knowledge"><div class="ico">💳</div><b>Loan Knowledge</b><span>Loan comparison और borrowing guides</span></a>
+    <a class="category" href="#analysis" data-category-link="Gold Analysis"><div class="ico">📊</div><b>Gold Analysis</b><span>Price history और future analysis</span></a>
+    <a class="category" href="#articles" data-category-link="Silver Analysis"><div class="ico">🥈</div><b>Silver Analysis</b><span>Silver price outlook और analysis</span></a>
+  </div>
+</section>
+
+<section class="section" id="analysis">
+  <div class="section-head"><h2>Gold & Silver Analysis</h2><a href="#articles">View Articles</a></div>
+  <div class="category-grid">
+    <a class="category" href="#articles" data-category-link="Gold Analysis"><div class="ico">📈</div><b>Gold Analysis</b><span>Long-term price trends, forecasts & data</span></a>
+    <a class="category" href="#articles" data-category-link="Silver Analysis"><div class="ico">🥈</div><b>Silver Analysis</b><span>Forecasts, crashes & outlook</span></a>
+  </div>
+</section>
+
+<section class="info">
+  <b>🔄 Automatic Blogger Sync</b>
+  <p class="muted">नए Blogger posts को उनके Labels के अनुसार सही folder में रखा जाएगा। Labels ही category का source of truth हैं।</p>
+  <p class="muted">Feed endpoint: <code>https://www.goldshub.com/feeds/posts/default?alt=json&max-results=150</code></p>
+  <p class="muted">Recommended labels: <b>Gold Loan, Gold Rate, Silver Rate, Investment, Gold Analysis, Gold Knowledge, Loan Knowledge, Silver Analysis</b>.</p>
+</section>
+
+<footer>
+  <b>GoldShub</b><br>
+  Home structure • Tools • Category folders • Article library
+</footer>
+</main>
+
+<nav class="bottom">
+  <a href="#home"><b>⌂</b>Home</a>
+  <a href="#loan"><b>♜</b>Gold Loan</a>
+  <a href="#rates"><b>↗</b>Rates</a>
+  <a href="#investment"><b>◉</b>Investment</a>
+  <a href="#calculators"><b>▣</b>Calculators</a>
+  <a href="#menu"><b>☰</b>Menu</a>
+</nav>
+
+<script>
+/*
+  GOLDShub article folders.
+  Every article is stored with its Blogger label, so the app puts it
+  in the same category as the Blogger label.
+*/
+const seed = [
+["Gold Loan","Gold Loan Requirement Documents 2026: Gold Loan के लिए कौन-कौन से Documents चाहिए?","https://www.goldshub.com/2026/07/gold-loan-requirement-documents.html"],
+["Gold Loan","Gold Loan Interest Rate 2026 (Live Gold Rate + RBI LTV)","https://www.goldshub.com/2026/07/gold-loan-interest-rate-india.html"],
+["Gold Rate","आज मुरादाबाद में सोने का भाव – 24K, 22K Gold Rate Today Muradabad (Live Update 2026)","https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html"],
+["Gold Loan","मुरादाबाद Gold Loan 2026: प्रति ग्राम कितना लोन मिलेगा? ब्याज दर, EMI Calculator और Best Companies","https://www.goldshub.com/2026/07/best-gold-loan-in-muradabad.html"],
+["Gold Rate","आज बरेली में सोने का भाव – 24K, 22K Gold Rate Today Bareilly (Live Update 2026)","https://www.goldshub.com/2026/07/today-gold-price-bareilly.html"],
+["Gold Loan","गोल्ड लोन क्या है? 2026 का पूरा गाइड — ब्याज, LTV, RBI नियम, फायदे, जोखिम और सही चुनाव","https://www.goldshub.com/2025/03/what-is-gold-loan.html"],
+["Gold Loan","Gold Loan Auction क्या है? आपका सोना कब और क्यों नीलाम होता है? (2026)","https://www.goldshub.com/2026/06/gold-loan-auction-guide-india.html"],
+["Gold Loan","उन्नाव Gold Loan 2026: ब्याज दर, प्रति ग्राम लोन, EMI Calculator और Best Gold Loan Companies","https://www.goldshub.com/2026/06/best-gold-loan-in-unnao.html"],
+["Gold Loan","2026 में भारत के Top 5 Gold Loan Providers – सबसे सस्ता ब्याज, RBI Rules, Eligibility, Interest Rate Comparison","https://www.goldshub.com/2025/03/indias-best-gold-loan-providers-2025.html"],
+["Gold Loan","भारत में Gold Loan Industry 2026: ₹15 ट्रिलियन Market, RBI Rules, Top Companies और 2030 Outlook","https://www.goldshub.com/2025/05/2025-gold-loan-apply-digital-rural.html"],
+["Gold Loan","Kanpur Gold Loan 2026: ब्याज दर, प्रति ग्राम कितना लोन मिलेगा, EMI Calculator और Best Gold Loan Companies","https://www.goldshub.com/2025/03/best-gold-loan-in-kanpur-in-2025.html"],
+["Loan Knowledge","Home Loan vs Personal Loan 2026: कौन सा लोन बेहतर है? Interest Rate, EMI और पूरी तुलना","https://www.goldshub.com/2025/03/home-loan-vs-personal-loan-in-india.html"],
+["Investment","₹5 लाख से ₹40 लाख तक का सफर: Portfolio Diversification, Gold, SIP और Mutual Fund Strategy (2026 Guide)","https://www.goldshub.com/2025/06/2025065-lakh-to-40-lakh-portfolio-plan.html"],
+["Investment","Gold Locker App क्या है? डिजिटल गोल्ड को सुरक्षित रखने का नया तरीका","https://www.goldshub.com/2025/06/gold-locker-app-kya-hai-digital-gold-investment.html"],
+["Investment","Gold ETF क्या है? 2026 में ₹1000 की SIP से कितना पैसा बन सकता है? जानें 2040 तक सोने का भविष्य","https://www.goldshub.com/2025/05/gold-etf-kya-hai-sip-investment-2040-price-prediction.html"],
+["Investment","Physical Gold vs Digital Gold vs SGB: 2026 में ₹1 लाख कहाँ निवेश करें? चौंकाने वाला अंतर","https://www.goldshub.com/2025/03/physical-gold-vs-digital-gold-vs-sgbs.html"],
+["Gold Analysis","अगर दुनिया में मंदी आ गई तो सोने का भाव क्या होगा? ₹1.20 लाख गिरेगा या ₹2 लाख पहुंचेगा?","https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html"],
+["Gold Knowledge","100 साल में सोना ₹10 से ₹1.56 लाख तक: आखिर भारतीय Gold पर इतना भरोसा क्यों करते हैं?","https://www.goldshub.com/2025/12/sona-kyu-bhartiyon-ki-pahli-pasand-gold-price-history.html"],
+["Gold Rate","आज कानपुर में सोने का भाव (Live) – 24K, 22K, 18K Gold Rate Today","https://www.goldshub.com/2025/12/today-gold-price-kanpur.html"],
+["Gold Analysis","20 साल में ₹7,000 से ₹1.6 लाख: क्या 2050 तक सोना ₹15 लाख प्रति 10 ग्राम पहुंच सकता है?","https://www.goldshub.com/2026/05/gold-price-prediction-2030-2040-2045-2050.html"],
+["Gold Analysis","20 साल में सोना ₹7,000 से ₹1,60,000: अगर यही रफ्तार रही तो 2045 तक कितना होगा?","https://www.goldshub.com/2026/05/gold-price-prediction-2045-india.html"],
+["Gold Loan","10 ग्राम सोना गिरवी रखकर 2026 में कितना लोन मिलेगा? ₹95,000 तक Funding का पूरा सच","https://www.goldshub.com/2026/02/gold-loan-per-gram-2026-10-gram.html"],
+["Gold Loan","Best Gold Loan in India 2026 – SBI vs HDFC vs ICICI vs Muthoot Comparison, Interest Rate & Loan Amount","https://www.goldshub.com/2025/04/sbi-hdfc-icici-vs-muthoot-gold-loan.html"],
+["Investment","Jar App Review 2026 – क्या Digital Gold Safe है? Live Gold Rate, Charges और Buy/Sell Difference","https://www.goldshub.com/2025/06/jar-app-se-10-rs-me-digital-gold-kharide-pura-review.html"],
+["Gold Loan","Gold Loan Eligibility 2026: 22K Gold पर कितना Loan मिलेगा? RBI Rules, Calculator & Hidden Reality","https://www.goldshub.com/2025/03/gold-loan-eligibility-calculator-2025.html"],
+["Gold Knowledge","9K Gold Jewellery का पूरा सच | 9K vs 22K vs 24K Gold में क्या फर्क है?","https://www.goldshub.com/2025/11/9k-gold-jewellery-kya-hai.html"],
+["Gold Analysis","Gold Price Prediction 2040: क्या 10 ग्राम सोना ₹7 लाख तक पहुंच सकता है?","https://www.goldshub.com/2025/03/future-gold-price-predictionwill-gold.html"],
+["Silver Rate","आज का चांदी का भाव वाराणसी (2026) – Varanasi Silver Rate Today 999 Price per Kg & Gram","https://www.goldshub.com/2026/04/today-silver-price-varanasi.html"],
+["Gold Rate","आज नोएडा में सोने का भाव (Live) – 24K, 22K, 18K Gold Rate Today","https://www.goldshub.com/2026/05/noida-gold-rate-today.html"],
+["Gold Rate","दिल्ली में आज सोने का भाव (Live) – 24K, 22K Gold Rate Today 2026 Update","https://www.goldshub.com/2026/04/today-gold-price-delhi.html"],
+["Gold Rate","वाराणसी में आज का सोने का भाव (Live 2026) – 24K, 22K, 18K Gold Rate Today","https://www.goldshub.com/2026/04/today-gold-price-varanasi.html"],
+["Silver Rate","आज का चांदी का भाव आगरा – Live Silver Rate Today 999 Price per Kg & Gram (2026)","https://www.goldshub.com/2026/04/agra-silver-rate-today.html"],
+["Gold Rate","आज का सोने का भाव लखनऊ (Live 2026) – Lucknow Gold Rate Today 24K, 22K, 18K","https://www.goldshub.com/2026/03/lucknow-gold-price-today.html"],
+["Gold Rate","आज का सोने का भाव मेरठ (Live) – Meerut Gold Rate Today 24K, 22K, 18K","https://www.goldshub.com/2026/03/meerut-gold-rate-today.html"],
+["Silver Rate","आज का चांदी का भाव मेरठ (Live) – Meerut Silver Rate Today 999 Silver Price","https://www.goldshub.com/2026/03/meerut-silver-rate-today.html"],
+["Gold Rate","आज का सोने का भाव भारत (Live) – India Gold Rate Today 24K 22K 18K","https://www.goldshub.com/2026/03/india-gold-rate-today.html"],
+["Silver Rate","आज का चांदी का भाव लखनऊ – Lucknow Silver Rate Today","https://www.goldshub.com/2026/03/today-silver-price-lucknow.html"],
+["Silver Rate","आज का चांदी का भाव कानपुर (2026) – Kanpur Silver Rate Today 999 Silver Price","https://www.goldshub.com/2026/03/today-silver-price-kanpur.html"],
+["Gold Rate","आज का सोने का भाव आगरा – Agra Gold Rate Today (24K, 22K, 18K)","https://www.goldshub.com/2026/03/today-gold-price-agra.html"],
+["Gold Analysis","₹1.56 लाख से ₹3 लाख? 2025–2030 गोल्ड प्राइस ट्रेंड और 2030 की असली भविष्यवाणी","https://www.goldshub.com/2025/06/2025-to-2030-gold-price-prediction-india.html"],
+["Gold Analysis","2026 में केंद्रीय बैंकों की गोल्ड खरीदारी से सोने की कीमत कहाँ तक जा सकती है? पूरा डेटा विश्लेषण","https://www.goldshub.com/2025/04/blog-post_3.html"],
+["Silver Rate","आज का चांदी का भाव उत्तर प्रदेश (Live) – UP Silver Rate Today 999 Silver Price","https://www.goldshub.com/2026/01/upsilver-rate.html"],
+["Investment","भारत के टॉप 5 म्यूचुअल फंड्स (2025): रिटर्न, तुलना और 15 साल की भविष्य की संभावनाएँ","https://www.goldshub.com/2025/11/top-5-mutual-funds-india.html"],
+["Silver Analysis","चांदी ₹4.10 लाख से गिरकर ₹2.30 लाख के पास — 40% crash के बाद अब आगे क्या?","https://www.goldshub.com/2026/01/silver-price-outlook-2026-india.html"],
+["Gold Loan","Capri Gold Loan Per Gram Rate Today (Feb 2026) – 22K Gold पर कितना Loan मिलेगा? Live Calculator","https://www.goldshub.com/2026/02/capri-gold-loan-per-gram-rate-today.html"],
+["Gold Loan","Gold Loan Strategy 2026: 8.25% Interest Reality, Repayment Flexibility & Digital Gold Risk Analysis","https://www.goldshub.com/2026/02/gold-loan-strategy-2026.html"],
+["Gold Loan","₹9,590 प्रति ग्राम Gold Loan? Capri Global सच में इतना देता है? (2026 Ground Report)","https://www.goldshub.com/2025/05/capri-global-gold-loan-2025-6300gm-rate.html"],
+["Investment","Sovereign Gold Bond 2026: क्या अब भी निवेश फायदेमंद है? पुराने SGB से कमाई का पूरा सच","https://www.goldshub.com/2025/05/2025-return-tax-benefits.html"],
+["Gold Loan","RBI Update 2026: Silver Loan India me Legal hai ya nahi?","https://www.goldshub.com/2026/01/silver-loan-india-legal.html"],
+["Gold Loan","भारत में गोल्ड लोन पर टैक्स बेनिफिट (FY 2025–26): पूरा प्रोफेशनल गाइड – नियम, सच्चाई और वास्तविक उदाहरण","https://www.goldshub.com/2025/03/gold-loan-tax-benefit-for-business.html"],
+["Silver Analysis","2035 में चांदी ₹10 लाख तक? | Silver Price Forecast India (Gold से बड़ा रिटर्न?)","https://www.goldshub.com/2026/01/silver-price-forecast-2035.html"],
+["Gold Loan","Muthoot Gold Loan Calculator 2026 we by GoldShub — कितना सोना चाहिए? Eligibility & Per Gram Rate","https://www.goldshub.com/2025/11/muthoot-gold-loan-calculator-2025.html"],
+["Investment","Role of Gold & Silver in Retirement Planning: A Complete Guide for India","https://www.goldshub.com/2025/04/retirement-planning-mein-gold-ka-role.html"],
+["Investment","चांदी में निवेश कैसे करें? शुरुआती निवेशकों के लिए पूरी गाइड (2026)","https://www.goldshub.com/2026/01/chandi-me-nivesh-kaise-kare.html"],
+["Gold Loan","गोल्ड लोन लेते समय CIBIL स्कोर का क्या महत्व है? (2026 की Ground Reality Guide)","https://www.goldshub.com/2025/04/cibil.html"],
+["Investment","मुथूट, IIFL और मनप्पुरम NCD 2025: FD से ज़्यादा रिटर्न या छुपा हुआ खतरा? पूरी सच्चाई","https://www.goldshub.com/2025/12/muthoot-iifl-manappuram-ncd.html"],
+["Gold Knowledge","BIS Hallmark 2025: असली सोना कैसे पहचानें? HUID की पूरी सच्चाई उजागर","https://www.goldshub.com/2025/12/bis-hallmark-kya-hai-huid-guide-2025.html"],
+["Loan Knowledge","Gold Loan vs Personal Loan (2025): कौन सा Loan आपके लिए सस्ता और सुरक्षित है? Complete Hindi Guide","https://www.goldshub.com/2025/03/gold-loan-vs-personal-loan.html"],
+["Investment","2025 में सोने में निवेश कैसे करें? Expert Guide + Safe Strategy (हर निवेशक ज़रूर पढ़े)","https://www.goldshub.com/2025/03/gold-investment-guide.html"],
+["Gold Analysis","2010 से 2025 तक सोने की कीमतें: ₹16,350 से ₹1,30,000 तक — पूरी कहानी, रिटर्न और 2035 तक का प्रेडिक्शन","https://www.goldshub.com/2025/08/gold-price-history-future-prediction-sone-ki-keemat.html"],
+["Gold Knowledge","Gold का इतिहास: 6000+ साल की कहानी — Varna से Digital Gold तक","https://www.goldshub.com/2025/03/gold-ki-history.html"],
+["Gold Knowledge","असली सोने की पहचान घर पर कैसे करें? 2025 की सबसे आसान और 100% भरोसेमंद गाइड","https://www.goldshub.com/2025/11/asli-sone-ki-pehchan-guide.html"],
+["Investment","Sovereign Gold Bond 2025 Update: क्या सरकार स्कीम बंद कर रही है? RBI की लेटेस्ट घोषणा और निवेश के नए विकल्प","https://www.goldshub.com/2025/11/sovereign-gold-bond-2025-rbi-policy.html"],
+["Gold Knowledge","क्या घर पर सोना बनाया जा सकता है? असली सच जो कोई नहीं बताता","https://www.goldshub.com/2025/11/ghar-par-sona-banaya-ja-sakta-hai-science-truth-investment.html"],
+["Gold Analysis","भारत में गोल्ड प्राइस क्रैश इतिहास (1964–2025): सोने की कीमतों में कब-कब आई बड़ी गिरावट","https://www.goldshub.com/2025/10/gold-price-crash-history-in-india.html"],
+["Gold Analysis","Gold ₹70,000? हकीकत या डर — GoldShub का Exclusive डेटा विश्लेषण (Oct 2025)","https://www.goldshub.com/2025/10/can-gold-fall-to-60000-70000-india.html"],
+["Gold Analysis","सोने की चमक 2025: भारत में सोना दुनिया से 10% ज़्यादा महंगा क्यों? असली वजह चौंका देगी!","https://www.goldshub.com/2025/10/india-gold-price-2025-analysis.html"],
+["Investment","₹500 से Gold SIP कैसे शुरू करें? Jar, Paytm, Groww की तुलना और ₹5 लाख तक का गोल्ड फंड प्लान (2025)","https://www.goldshub.com/2025/07/500-gold-sip-jar-paytm-groww.html"],
+["Investment","₹1 लाख बनेंगे ₹45 लाख! 2025 में Gold vs Stocks में कहां लगाएं पैसा?","https://www.goldshub.com/2025/06/gold-vs-stocks-investment-2025.html"],
+["Gold Knowledge","भारत में सबसे सस्ता गोल्ड ज्वेलरी कहां से खरीदें? केरल, डिजिटल गोल्ड और ब्रांड्स की 2025 तुलना","https://www.goldshub.com/2025/06/202506cheapest-gold-jewelry-in-india.html"],
+["Gold Loan","IIFL फाइनेंस की गोल्ड लोन में ज़ोरदार वापसी: RBI बैन हटने के बाद गोल्ड लोन मार्केट में फिर से पकड़!","https://www.goldshub.com/2025/06/iifl-gold-loan-rbi-ban-removed-2024-recovery-2025.html"],
+["Gold Loan","Muthoot Finance Review 2025: भारत की No.1 गोल्ड लोन कंपनी की सच्चाई और फायदे","https://www.goldshub.com/2025/05/muthoot-finance-review-gold-loan-india-2025.html"],
+["Gold Knowledge","सोना खरीदने का सही समय कब है? (2025 Ultimate Guide)","https://www.goldshub.com/2025/05/sona-kab-kharide.html"],
+["Investment","छोटे पैसे से बड़ा मुनाफा: ₹2000/महीना Gold vs Stock निवेश से 15 साल में कौन बनेगा लाखपति?","https://www.goldshub.com/2025/05/2000-gold-vs-stock-15.html"],
+["Loan Knowledge","Gold Loan vs Personal Loan 2025 – ₹29,000 की बचत! जानिए सस्ता और स्मार्ट विकल्प","https://www.goldshub.com/2025/05/gold-loan-vs-personal-loan-2025-29000.html"],
+["Gold Loan","Gold Loan Company vs Jewellers – कहां से सोने पर लोन लेना बेहतर है?","https://www.goldshub.com/2025/05/gold-loan-company-vs-jewellers.html"],
+["Gold Loan","Best Gold Loan Provider in Lucknow 2025 | लखनऊ में बेस्ट गोल्ड लोन कहाँ मिलेगा?","https://www.goldshub.com/2025/05/best-gold-loan-provider-in-lucknow-2025.html"],
+["Investment","Gold ETF vs Gold Bond – बेहतर सुरक्षा कौन देता है? पूरी तुलना 2025 के हिसाब से","https://www.goldshub.com/2025/05/gold-etf-vs-gold-bond-2025.html"],
+["Gold Loan","टॉप 10 एनबीएफसी जो आज के दिन में सबसे ज्यादा गोल्ड लोन प्रति ग्राम रेट दे रहे हैं (2025 में डेली अपडेटेड)","https://www.goldshub.com/2025/04/10-2025.html"],
+["Gold Loan","घर पर गोल्ड लोन कैसे लें? Muthoot और IIFL से 18K–24K ज्वेलरी पर लोन | 2025 गाइड","https://www.goldshub.com/2025/04/muthoot-iifl-18k24k-2025.html"],
+["Gold Loan","2025 में Gold Loan के फायदे – जानिए क्यों यह सबसे आसान और सुरक्षित लोन विकल्प है!","https://www.goldshub.com/2025/04/2025-gold-loan.html"],
+["Gold Loan","Gold Loan Eligibility Calculator – कितना लोन मिलेगा आपके सोने पर? (April 2025)","https://www.goldshub.com/2025/04/gold-loan-eligibility-calculator-april.html"],
+["Gold Loan","2025 में 1 ग्राम सोने पर कितना लोन मिलेगा? (SBI, HDFC, Muthoot, ICICI - 19 अप्रैल 2025)","https://www.goldshub.com/2025/04/2025-1-sbi-hdfc-muthoot-icici-19-2025.html"],
+["Investment","गोल्ड लोन बनाम गोल्ड ईटीएफ: 2025 में आपके लिए कौन सा बेहतर विकल्प है?","https://www.goldshub.com/2025/04/2025_15.html"],
+["Gold Loan","डिजिटल गोल्ड पर लोन क्या है? पूरी जानकारी (2025 गाइड)","https://www.goldshub.com/2025/04/2025_11.html"],
+["Gold Loan","गोल्ड लोन लेते समय ये 7 बड़ी गलतियां कभी न करें (2026 Guide)","https://www.goldshub.com/2025/04/7.html"],
+["Gold Loan","2026 में Gold Loan Transfer कैसे करें? पूरी प्रक्रिया, फायदे, पात्रता, Documents और Best Lenders","https://www.goldshub.com/2025/04/2025_8.html"],
+["Gold Analysis","2025 में सोने की कीमत क्या होगी? जानें भविष्यवाणी, आंकड़े और निवेश सलाह","https://www.goldshub.com/2025/04/2025.html"],
+["Gold Analysis","सोने की कीमतें क्यों बढ़ती या गिरती हैं? जानें केंद्रीय बैंकों की भूमिका","https://www.goldshub.com/2025/04/blog-post.html"],
+["Gold Loan","आगरा में Gold Loan कहाँ से लें? ब्याज दर, प्रति ग्राम लोन, EMI, Documents और Best Companies (2026)","https://www.goldshub.com/2026/07/agra-gold-loan.html"],
+["Gold Loan","मेरठ में Gold Loan कहाँ से लें? ब्याज दर, प्रति ग्राम Loan, EMI और Best Gold Loan Companies (2026)","https://www.goldshub.com/2026/08/meerut-gold-loan.html"],
+["Gold Loan","लखनऊ में Gold Loan कहाँ से लें? ब्याज दर, प्रति ग्राम Loan, EMI और Best Lenders (2026)","https://www.goldshub.com/2026/08/lucknow-gold-loan.html"],
+["Gold Loan","RBI Gold Loan New Rules 2026: अब कितना Gold Loan मिलेगा? 85% LTV, Tenure और नए नियम जानें","https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html"]
+];
+
+const grid=document.getElementById("articleGrid");
+const search=document.getElementById("search");
+const filter=document.getElementById("filter");
+const status=document.getElementById("status");
+
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+
+function renderArticles(){
+  const q=search.value.trim().toLowerCase();
+  const f=filter.value;
+  const list=seed.filter(x=>{
+    const matchesFolder=!f || x[0]===f;
+    const matchesSearch=!q || (x[0]+" "+x[1]).toLowerCase().includes(q);
+    return matchesFolder && matchesSearch;
+  });
+  status.textContent=list.length+" articles";
+  grid.innerHTML=list.map(x=>`
+    <article class="article">
+      <div class="tag">${escapeHTML(x[0])}</div>
+      <h3>${escapeHTML(x[1])}</h3>
+      <a class="open" href="${x[2]}" target="_blank" rel="noopener">Open article →</a>
+    </article>
+  `).join("") || `<div class="article"><h3>कोई article नहीं मिला।</h3></div>`;
+}
+
+search.addEventListener("input",renderArticles);
+filter.addEventListener("change",renderArticles);
+
+/* Category buttons filter the article library to the requested folder. */
+document.querySelectorAll("[data-category-link]").forEach(el=>{
+  el.addEventListener("click",()=>{
+    filter.value=el.dataset.categoryLink;
+    renderArticles();
+  });
+});
+
+renderArticles();
+
+/*
+  Optional Blogger sync:
+  For production, fetch:
+  https://www.goldshub.com/feeds/posts/default?alt=json&max-results=150
+  Then read entry labels and map them to the same folder names.
+  The seed links above remain the fixed reference links.
+*/
+const labelMap={
+  "gold loan":"Gold Loan","goldloan":"Gold Loan",
+  "gold rate":"Gold Rate","goldrate":"Gold Rate",
+  "silver rate":"Silver Rate","silverrate":"Silver Rate",
+  "investment":"Investment",
+  "gold analysis":"Gold Analysis","goldanalysis":"Gold Analysis",
+  "gold knowledge":"Gold Knowledge","goldknowledge":"Gold Knowledge",
+  "loan knowledge":"Loan Knowledge","loanknowledge":"Loan Knowledge",
+  "silver analysis":"Silver Analysis","silveranalysis":"Silver Analysis"
+};
+</script>
+</body>
+</html>
