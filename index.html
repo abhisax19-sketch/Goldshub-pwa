@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <meta name="theme-color" content="#050505">
-<meta name="description" content="GOLDShub — Live Gold Price, Gold Loan, Investment, Calculators, Research और India के शहरों के Gold Rate.">
+
+<meta name="description"
+      content="GOLDShub — Live Gold Price, Gold Loan, Investment, Calculators, Research और India के शहरों के Gold Rate.">
+
 <link rel="manifest" href="manifest.json">
+
 <title>GOLDShub — Gold Price • Investment • Loan • Research</title>
 
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
 
 :root{
  --bg:#050505;
@@ -118,7 +137,7 @@ button{
  border-radius:50%;
  right:6px;
  top:5px;
- background:#e53935;
+ background:#21c77a;
 }
 
 
@@ -231,215 +250,58 @@ button{
  border-radius:12px;
  font-weight:800;
  font-size:13px;
-
  background:
  linear-gradient(
    135deg,
    #f5ca4e,
    #b78a18
  );
-
  color:#090909;
 }
-<!-- =========================
-     LIVE PRICE — PER GRAM
-========================= -->
 
-<section class="section" id="market">
-
- <div class="head">
-  <h2>🇮🇳 Live Gold & Silver Rate</h2>
-  <span style="color:#9a9ba1;font-size:11px;">
-   Per Gram
-  </span>
- </div>
-
- <div class="rate-grid">
-
-  <!-- 24K -->
-  <article class="rate-card">
-   <div class="rate-top">
-    <div>
-     <small>24K GOLD</small>
-     <h3>24K Gold / Gram</h3>
-    </div>
-    <div class="rate-icon">🪙</div>
-   </div>
-
-   <div class="rate-price" id="gold24">
-    ₹—
-   </div>
-
-   <div class="rate-change neutral" id="change24">
-    Loading...
-   </div>
-
-   <div class="rate-details">
-    <div>
-     <span>Today</span>
-     <b id="today24">₹—</b>
-    </div>
-
-    <div>
-     <span>Opening</span>
-     <b id="open24">₹—</b>
-    </div>
-
-    <div>
-     <span>Yesterday Close</span>
-     <b id="close24">₹—</b>
-    </div>
-   </div>
-
-   <a
-    class="rate-link"
-    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-    target="_blank">
-    Full Gold Price →
-   </a>
-  </article>
-
-
-  <!-- 22K -->
-  <article class="rate-card">
-   <div class="rate-top">
-    <div>
-     <small>22K GOLD</small>
-     <h3>22K Gold / Gram</h3>
-    </div>
-    <div class="rate-icon">🪙</div>
-   </div>
-
-   <div class="rate-price" id="gold22">
-    ₹—
-   </div>
-
-   <div class="rate-change neutral" id="change22">
-    Loading...
-   </div>
-
-   <div class="rate-details">
-    <div>
-     <span>Today</span>
-     <b id="today22">₹—</b>
-    </div>
-
-    <div>
-     <span>Opening</span>
-     <b id="open22">₹—</b>
-    </div>
-
-    <div>
-     <span>Yesterday Close</span>
-     <b id="close22">₹—</b>
-    </div>
-   </div>
-
-   <a
-    class="rate-link"
-    href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html"
-    target="_blank">
-    Full Gold Price →
-   </a>
-  </article>
-
-
-  <!-- 18K -->
-  <article class="rate-card">
-   <div class="rate-top">
-    <div>
-     <small>18K GOLD</small>
-     <h3>18K Gold / Gram</h3>
-    </div>
-    <div class="rate-icon">🪙</div>
-   </div>
-
-   <div class="rate-price" id="gold18">
-    ₹—
-   </div>
-
-   <div class="rate-change neutral" id="change18">
-    Loading...
-   </div>
-
-   <div class="rate-details">
-    <div>
-     <span>Today</span>
-     <b id="today18">₹—</b>
-    </div>
-
-    <div>
-     <span>Opening</span>
-     <b id="open18">₹—</b>
-    </div>
-
-    <div>
-     <span>Yesterday Close</span>
-     <b id="close18">₹—</b>
-    </div>
-   </div>
-
-   <a
-    class="rate-link"
-    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-    target="_blank">
-    Full Gold Price →
-   </a>
-  </article>
-
-
-  <!-- SILVER -->
-  <article class="rate-card">
-   <div class="rate-top">
-    <div>
-     <small>SILVER</small>
-     <h3>Silver / Gram</h3>
-    </div>
-    <div class="rate-icon">🥈</div>
-   </div>
-
-   <div class="rate-price" id="silver">
-    ₹—
-   </div>
-
-   <div class="rate-change neutral" id="changeSilver">
-    Loading...
-   </div>
-
-   <div class="rate-details">
-    <div>
-     <span>Today</span>
-     <b id="todaySilver">₹—</b>
-    </div>
-
-    <div>
-     <span>Opening</span>
-     <b id="openSilver">₹—</b>
-    </div>
-
-    <div>
-     <span>Yesterday Close</span>
-     <b id="closeSilver">₹—</b>
-    </div>
-   </div>
-
-   <a
-    class="rate-link"
-    href="https://www.goldshub.com/2026/03/meerut-silver-rate-today.html"
-    target="_blank">
-    Full Silver Price →
-   </a>
-  </article>
-
- </div>
-
- <div class="rate-note">
-  <span>●</span>
-  Live rate • All prices shown per gram
- </div>
-
-</section>
+.btn.out{
+ border:1px solid #806a23;
+ background:#111214;
+ color:var(--gold3);
 }
+
+
+/* =========================
+   TICKER
+========================= */
+
+.ticker{
+ margin-top:12px;
+ display:flex;
+ overflow:auto;
+ scrollbar-width:none;
+ border:1px solid #292a2d;
+ border-radius:14px;
+ background:#0d0e10;
+}
+
+.ticker::-webkit-scrollbar{
+ display:none;
+}
+
+.ticker a{
+ flex:none;
+}
+
+.ticker span{
+ display:block;
+ padding:9px 14px;
+ border-right:1px solid #292a2d;
+ font-size:11px;
+ color:#b7b8bd;
+}
+
+.ticker b{
+ color:#f3c84c;
+ margin-left:4px;
+}
+
+
 /* =========================
    LIVE RATE CARDS
 ========================= */
@@ -454,12 +316,14 @@ button{
  border:1px solid #4d3e17;
  border-radius:20px;
  padding:18px;
+
  background:
  linear-gradient(
   145deg,
   #201806,
   #111214 65%
  );
+
  box-shadow:0 12px 35px rgba(0,0,0,.25);
 }
 
@@ -561,29 +425,6 @@ button{
 
 .rate-note span{
  color:#21c77a;
-}
-
-@media(max-width:560px){
-
- .rate-grid{
-  grid-template-columns:1fr;
- }
-
- .rate-price{
-  font-size:30px;
- }
-
-}
-.ticker span{
- padding:9px 14px;
- border-right:1px solid #292a2d;
- font-size:11px;
- color:#b7b8bd;
-}
-
-.ticker b{
- color:#f3c84c;
- margin-left:4px;
 }
 
 
@@ -1068,6 +909,10 @@ footer b{
 
 @media(max-width:560px){
 
+ .rate-grid{
+  grid-template-columns:1fr;
+ }
+
  .pricegrid{
   grid-template-columns:1fr;
  }
@@ -1085,8 +930,23 @@ footer b{
   font-size:31px;
  }
 
+ .rate-price{
+  font-size:30px;
+ }
+
+ .optiongrid{
+  grid-template-columns:1fr;
+ }
+
+ .newsimg{
+  width:58px;
+  height:52px;
+ }
+
 }
+
 </style>
+
 </head>
 
 
@@ -1105,8 +965,11 @@ footer b{
    class="circlebtn"
    onclick="openMenu()"
    aria-label="Menu">
+
    ☰
+
   </button>
+
 
   <div class="brand">
 
@@ -1120,10 +983,12 @@ footer b{
 
   </div>
 
+
   <a
    class="circlebtn dot"
    href="https://www.goldshub.com/"
    target="_blank"
+   rel="noopener"
    aria-label="GoldShub">
 
    ♧
@@ -1168,16 +1033,19 @@ footer b{
    <a
     class="btn"
     href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-    target="_blank">
+    target="_blank"
+    rel="noopener">
 
     🪙 Live Gold Price →
 
    </a>
 
+
    <a
     class="btn out"
     href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html"
-    target="_blank">
+    target="_blank"
+    rel="noopener">
 
     Investment Guide
 
@@ -1199,9 +1067,11 @@ footer b{
  class="ticker"
  aria-label="GoldShub live links">
 
+
  <a
   href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-  target="_blank">
+  target="_blank"
+  rel="noopener">
 
   <span>
    24K <b>LIVE</b>
@@ -1209,9 +1079,11 @@ footer b{
 
  </a>
 
+
  <a
   href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html"
-  target="_blank">
+  target="_blank"
+  rel="noopener">
 
   <span>
    22K <b>LIVE</b>
@@ -1219,9 +1091,11 @@ footer b{
 
  </a>
 
+
  <a
   href="https://www.goldshub.com/2026/03/india-gold-rate-today.html"
-  target="_blank">
+  target="_blank"
+  rel="noopener">
 
   <span>
    India Gold <b>LIVE</b>
@@ -1229,9 +1103,11 @@ footer b{
 
  </a>
 
+
  <a
   href="https://www.goldshub.com/2026/03/meerut-gold-rate-today.html"
-  target="_blank">
+  target="_blank"
+  rel="noopener">
 
   <span>
    Meerut <b>LIVE</b>
@@ -1239,9 +1115,11 @@ footer b{
 
  </a>
 
+
  <a
   href="https://www.goldshub.com/2026/03/meerut-silver-rate-today.html"
-  target="_blank">
+  target="_blank"
+  rel="noopener">
 
   <span>
    Silver <b>LIVE</b>
@@ -1254,12 +1132,453 @@ footer b{
 
 
 <!-- =========================
-     LIVE PRICE
+     LIVE PRICE PER GRAM
 ========================= -->
 
-<section
- class="pricegrid"
- id="market">
+<section class="section" id="market">
+
+ <div class="head">
+
+  <h2>
+   🇮🇳 Live Gold & Silver Rate
+  </h2>
+
+  <span style="color:#9a9ba1;font-size:11px;">
+   Per Gram
+  </span>
+
+ </div>
+
+
+ <div class="rate-grid">
+
+
+  <!-- 24K -->
+
+  <article class="rate-card">
+
+   <div class="rate-top">
+
+    <div>
+
+     <small>
+      24K GOLD
+     </small>
+
+     <h3>
+      24K Gold / Gram
+     </h3>
+
+    </div>
+
+
+    <div class="rate-icon">
+     🪙
+    </div>
+
+   </div>
+
+
+   <div
+    class="rate-price"
+    id="gold24">
+
+    ₹—
+
+   </div>
+
+
+   <div
+    class="rate-change neutral"
+    id="change24">
+
+    Loading...
+
+   </div>
+
+
+   <div class="rate-details">
+
+
+    <div>
+
+     <span>
+      Today
+     </span>
+
+     <b id="today24">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Opening
+     </span>
+
+     <b id="open24">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Yesterday Close
+     </span>
+
+     <b id="close24">
+      ₹—
+     </b>
+
+    </div>
+
+   </div>
+
+
+   <a
+    class="rate-link"
+    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
+    target="_blank"
+    rel="noopener">
+
+    Full Gold Price →
+
+   </a>
+
+  </article>
+
+
+
+  <!-- 22K -->
+
+  <article class="rate-card">
+
+   <div class="rate-top">
+
+    <div>
+
+     <small>
+      22K GOLD
+     </small>
+
+     <h3>
+      22K Gold / Gram
+     </h3>
+
+    </div>
+
+
+    <div class="rate-icon">
+     🪙
+    </div>
+
+   </div>
+
+
+   <div
+    class="rate-price"
+    id="gold22">
+
+    ₹—
+
+   </div>
+
+
+   <div
+    class="rate-change neutral"
+    id="change22">
+
+    Loading...
+
+   </div>
+
+
+   <div class="rate-details">
+
+
+    <div>
+
+     <span>
+      Today
+     </span>
+
+     <b id="today22">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Opening
+     </span>
+
+     <b id="open22">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Yesterday Close
+     </span>
+
+     <b id="close22">
+      ₹—
+     </b>
+
+    </div>
+
+   </div>
+
+
+   <a
+    class="rate-link"
+    href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html"
+    target="_blank"
+    rel="noopener">
+
+    Full Gold Price →
+
+   </a>
+
+  </article>
+
+
+
+  <!-- 18K -->
+
+  <article class="rate-card">
+
+   <div class="rate-top">
+
+    <div>
+
+     <small>
+      18K GOLD
+     </small>
+
+     <h3>
+      18K Gold / Gram
+     </h3>
+
+    </div>
+
+
+    <div class="rate-icon">
+     🪙
+    </div>
+
+   </div>
+
+
+   <div
+    class="rate-price"
+    id="gold18">
+
+    ₹—
+
+   </div>
+
+
+   <div
+    class="rate-change neutral"
+    id="change18">
+
+    Loading...
+
+   </div>
+
+
+   <div class="rate-details">
+
+
+    <div>
+
+     <span>
+      Today
+     </span>
+
+     <b id="today18">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Opening
+     </span>
+
+     <b id="open18">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Yesterday Close
+     </span>
+
+     <b id="close18">
+      ₹—
+     </b>
+
+    </div>
+
+   </div>
+
+
+   <a
+    class="rate-link"
+    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
+    target="_blank"
+    rel="noopener">
+
+    Full Gold Price →
+
+   </a>
+
+  </article>
+
+
+
+  <!-- SILVER -->
+
+  <article class="rate-card">
+
+   <div class="rate-top">
+
+    <div>
+
+     <small>
+      SILVER
+     </small>
+
+     <h3>
+      Silver / Gram
+     </h3>
+
+    </div>
+
+
+    <div class="rate-icon">
+     🥈
+    </div>
+
+   </div>
+
+
+   <div
+    class="rate-price"
+    id="silver">
+
+    ₹—
+
+   </div>
+
+
+   <div
+    class="rate-change neutral"
+    id="changeSilver">
+
+    Loading...
+
+   </div>
+
+
+   <div class="rate-details">
+
+
+    <div>
+
+     <span>
+      Today
+     </span>
+
+     <b id="todaySilver">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Opening
+     </span>
+
+     <b id="openSilver">
+      ₹—
+     </b>
+
+    </div>
+
+
+    <div>
+
+     <span>
+      Yesterday Close
+     </span>
+
+     <b id="closeSilver">
+      ₹—
+     </b>
+
+    </div>
+
+   </div>
+
+
+   <a
+    class="rate-link"
+    href="https://www.goldshub.com/2026/03/meerut-silver-rate-today.html"
+    target="_blank"
+    rel="noopener">
+
+    Full Silver Price →
+
+   </a>
+
+  </article>
+
+
+ </div>
+
+
+ <div class="rate-note">
+
+  <span>●</span>
+  Live rate • All prices shown per gram
+
+ </div>
+
+</section>
+
+
+
+<!-- =========================
+     PRICE
+========================= -->
+
+<section class="pricegrid">
 
 
  <article class="pricecard">
@@ -1285,16 +1604,19 @@ footer b{
    <a
     class="mini"
     href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-    target="_blank">
+    target="_blank"
+    rel="noopener">
 
     View Live Price
 
    </a>
 
+
    <a
     class="mini"
     href="https://www.goldshub.com/2026/03/india-gold-rate-today.html"
-    target="_blank">
+    target="_blank"
+    rel="noopener">
 
     India Rate
 
@@ -1319,52 +1641,18 @@ footer b{
 
   </div>
 
+
   <div class="bars">
 
-   <i
-    class="bar"
-    style="height:34%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:47%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:42%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:57%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:51%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:68%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:62%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:80%">
-   </i>
-
-   <i
-    class="bar"
-    style="height:92%">
-   </i>
+   <i class="bar" style="height:34%"></i>
+   <i class="bar" style="height:47%"></i>
+   <i class="bar" style="height:42%"></i>
+   <i class="bar" style="height:57%"></i>
+   <i class="bar" style="height:51%"></i>
+   <i class="bar" style="height:68%"></i>
+   <i class="bar" style="height:62%"></i>
+   <i class="bar" style="height:80%"></i>
+   <i class="bar" style="height:92%"></i>
 
   </div>
 
@@ -1388,7 +1676,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    View All →
 
@@ -1403,19 +1692,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    🪙
-   </div>
+   <div class="ico">🪙</div>
 
-   <b>
-    Gold Price
-   </b>
+   <b>Gold Price</b>
 
-   <small>
-    आज का भाव
-   </small>
+   <small>आज का भाव</small>
 
   </a>
 
@@ -1423,19 +1707,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    📈
-   </div>
+   <div class="ico">📈</div>
 
-   <b>
-    Investment
-   </b>
+   <b>Investment</b>
 
-   <small>
-    ETF • SGB • SIP
-   </small>
+   <small>ETF • SGB • SIP</small>
 
   </a>
 
@@ -1443,19 +1722,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ₹
-   </div>
+   <div class="ico">₹</div>
 
-   <b>
-    Gold Loan
-   </b>
+   <b>Gold Loan</b>
 
-   <small>
-    Loan guide
-   </small>
+   <small>Loan guide</small>
 
   </a>
 
@@ -1463,19 +1737,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/p/gold-loan-calculator.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    🧮
-   </div>
+   <div class="ico">🧮</div>
 
-   <b>
-    Calculators
-   </b>
+   <b>Calculators</b>
 
-   <small>
-    Smart tools
-   </small>
+   <small>Smart tools</small>
 
   </a>
 
@@ -1483,19 +1752,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/p/digital-gold-sip-calculator-10-daily.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    🐷
-   </div>
+   <div class="ico">🐷</div>
 
-   <b>
-    Gold Savings
-   </b>
+   <b>Gold Savings</b>
 
-   <small>
-    SIP & saving
-   </small>
+   <small>SIP & saving</small>
 
   </a>
 
@@ -1503,19 +1767,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ⌁
-   </div>
+   <div class="ico">⌁</div>
 
-   <b>
-    Research
-   </b>
+   <b>Research</b>
 
-   <small>
-    Market analysis
-   </small>
+   <small>Market analysis</small>
 
   </a>
 
@@ -1523,19 +1782,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ▤
-   </div>
+   <div class="ico">▤</div>
 
-   <b>
-    News
-   </b>
+   <b>News</b>
 
-   <small>
-    Latest updates
-   </small>
+   <small>Latest updates</small>
 
   </a>
 
@@ -1543,19 +1797,14 @@ footer b{
   <a
    class="tile"
    href="https://forms.zohopublic.in/contactgold1/form/Untitled/formperma/TV3zJQDYZVLZCD9vwAZbVu3i2M-TN5lZ7pxYOL0pSC4"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ✦
-   </div>
+   <div class="ico">✦</div>
 
-   <b>
-    Contact
-   </b>
+   <b>Contact</b>
 
-   <small>
-    GoldShub form
-   </small>
+   <small>GoldShub form</small>
 
   </a>
 
@@ -1563,19 +1812,14 @@ footer b{
   <a
    class="tile"
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    •••
-   </div>
+   <div class="ico">•••</div>
 
-   <b>
-    More
-   </b>
+   <b>More</b>
 
-   <small>
-    All guides
-   </small>
+   <small>All guides</small>
 
   </a>
 
@@ -1590,9 +1834,7 @@ footer b{
      CALCULATORS
 ========================= -->
 
-<section
- class="section"
- id="tools">
+<section class="section" id="tools">
 
  <div class="head">
 
@@ -1602,7 +1844,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    All Tools →
 
@@ -1617,19 +1860,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/gold-loan-calculator.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    🧮
-   </div>
+   <div class="ico">🧮</div>
 
-   <b>
-    Gold Loan Eligibility
-   </b>
+   <b>Gold Loan Eligibility</b>
 
-   <small>
-    Weight से loan amount
-   </small>
+   <small>Weight से loan amount</small>
 
   </a>
 
@@ -1637,19 +1875,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/gold-loan-emi-calculater.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ₹
-   </div>
+   <div class="ico">₹</div>
 
-   <b>
-    Gold Loan EMI
-   </b>
+   <b>Gold Loan EMI</b>
 
-   <small>
-    EMI & total repayment
-   </small>
+   <small>EMI & total repayment</small>
 
   </a>
 
@@ -1657,19 +1890,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/gold-loan-per-gram-calculator-2026.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ⚖
-   </div>
+   <div class="ico">⚖</div>
 
-   <b>
-    Per Gram Loan
-   </b>
+   <b>Per Gram Loan</b>
 
-   <small>
-    1 gram value check
-   </small>
+   <small>1 gram value check</small>
 
   </a>
 
@@ -1677,19 +1905,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/gold-sip-calculator-2026-100-monthly.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    📊
-   </div>
+   <div class="ico">📊</div>
 
-   <b>
-    Gold SIP
-   </b>
+   <b>Gold SIP</b>
 
-   <small>
-    1–50 year returns
-   </small>
+   <small>1–50 year returns</small>
 
   </a>
 
@@ -1697,19 +1920,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/digital-gold-sip-calculator-10-daily.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    💰
-   </div>
+   <div class="ico">💰</div>
 
-   <b>
-    Digital Gold SIP
-   </b>
+   <b>Digital Gold SIP</b>
 
-   <small>
-    ₹10 daily से
-   </small>
+   <small>₹10 daily से</small>
 
   </a>
 
@@ -1717,19 +1935,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/gold-capital-gains-tax-calculator.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    %
-   </div>
+   <div class="ico">%</div>
 
-   <b>
-    Capital Gains Tax
-   </b>
+   <b>Capital Gains Tax</b>
 
-   <small>
-    Tax estimate
-   </small>
+   <small>Tax estimate</small>
 
   </a>
 
@@ -1737,19 +1950,14 @@ footer b{
   <a
    class="hcard"
    href="https://www.goldshub.com/p/goldshub-npa-loan-closure-calculator.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <div class="ico">
-    ✓
-   </div>
+   <div class="ico">✓</div>
 
-   <b>
-    Loan Closure
-   </b>
+   <b>Loan Closure</b>
 
-   <small>
-    Interest + penalty
-   </small>
+   <small>Interest + penalty</small>
 
   </a>
 
@@ -1774,7 +1982,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    More →
 
@@ -1789,7 +1998,8 @@ footer b{
   <a
    class="item"
    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    <div class="newsimg">
     🪙
@@ -1807,9 +2017,7 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
@@ -1817,7 +2025,8 @@ footer b{
   <a
    class="item"
    href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    <div class="newsimg">
     🏦
@@ -1835,9 +2044,7 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
@@ -1845,7 +2052,8 @@ footer b{
   <a
    class="item"
    href="https://www.goldshub.com/2026/07/gold-loan-interest-rate-india.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    <div class="newsimg">
     %
@@ -1863,9 +2071,7 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
@@ -1880,9 +2086,7 @@ footer b{
      CITY GOLD RATES
 ========================= -->
 
-<section
- class="section"
- id="city">
+<section class="section" id="city">
 
  <div class="head">
 
@@ -1892,7 +2096,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/p/live-gold-silver-price-today.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    Live →
 
@@ -1904,24 +2109,18 @@ footer b{
  <div class="list two">
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/04/today-gold-price-delhi.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/04/today-gold-price-delhi.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Delhi Gold Rate
-    </b>
+    <b>Delhi Gold Rate</b>
 
-    <small>
-     24K • 22K • Live Update
-    </small>
+    <small>24K • 22K • Live Update</small>
 
    </main>
 
@@ -1930,24 +2129,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/03/lucknow-gold-price-today.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/03/lucknow-gold-price-today.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Lucknow Gold Rate
-    </b>
+    <b>Lucknow Gold Rate</b>
 
-    <small>
-     24K • 22K • 18K
-    </small>
+    <small>24K • 22K • 18K</small>
 
    </main>
 
@@ -1956,24 +2149,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/03/meerut-gold-rate-today.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/03/meerut-gold-rate-today.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Meerut Gold Rate
-    </b>
+    <b>Meerut Gold Rate</b>
 
-    <small>
-     Gold price today
-    </small>
+    <small>Gold price today</small>
 
    </main>
 
@@ -1982,24 +2169,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/04/today-gold-price-varanasi.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/04/today-gold-price-varanasi.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Varanasi Gold Rate
-    </b>
+    <b>Varanasi Gold Rate</b>
 
-    <small>
-     24K • 22K • 18K
-    </small>
+    <small>24K • 22K • 18K</small>
 
    </main>
 
@@ -2008,24 +2189,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/03/today-gold-price-agra.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/03/today-gold-price-agra.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Agra Gold Rate
-    </b>
+    <b>Agra Gold Rate</b>
 
-    <small>
-     Live city rate
-    </small>
+    <small>Live city rate</small>
 
    </main>
 
@@ -2034,24 +2209,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/05/noida-gold-rate-today.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/05/noida-gold-rate-today.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Noida Gold Rate
-    </b>
+    <b>Noida Gold Rate</b>
 
-    <small>
-     24K • 22K • 18K
-    </small>
+    <small>24K • 22K • 18K</small>
 
    </main>
 
@@ -2060,24 +2229,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Muradabad Gold Rate
-    </b>
+    <b>Muradabad Gold Rate</b>
 
-    <small>
-     Live update 2026
-    </small>
+    <small>Live update 2026</small>
 
    </main>
 
@@ -2086,24 +2249,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/07/today-gold-price-bareilly.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/07/today-gold-price-bareilly.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Bareilly Gold Rate
-    </b>
+    <b>Bareilly Gold Rate</b>
 
-    <small>
-     24K • 22K • Live
-    </small>
+    <small>24K • 22K • Live</small>
 
    </main>
 
@@ -2112,24 +2269,18 @@ footer b{
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/12/today-gold-price-kanpur.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/12/today-gold-price-kanpur.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏙
-   </div>
+   <div class="ico">🏙</div>
 
    <main>
 
-    <b>
-     Kanpur Gold Rate
-    </b>
+    <b>Kanpur Gold Rate</b>
 
-    <small>
-     24K • 22K • 18K
-    </small>
+    <small>24K • 22K • 18K</small>
 
    </main>
 
@@ -2158,7 +2309,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    Guide →
 
@@ -2176,91 +2328,79 @@ footer b{
   <p>
    ETF, Digital Gold, SGB, SIP और Physical Gold
    की जानकारी एक जगह। हर card सीधे आपके
-   live GoldShub article पर जाता है।
+   GoldShub article पर जाता है।
   </p>
 
 
   <div class="optiongrid">
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2025/05/gold-etf-kya-hai-sip-investment-2040-price-prediction.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2025/05/gold-etf-kya-hai-sip-investment-2040-price-prediction.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Gold ETF
-    </b>
+    <b>Gold ETF</b>
 
     ₹1000 SIP से 2040 तक
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2025/06/gold-locker-app-kya-hai-digital-gold-investment.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2025/06/gold-locker-app-kya-hai-digital-gold-investment.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Digital Gold
-    </b>
+    <b>Digital Gold</b>
 
     Gold Locker & safety
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2025/11/sovereign-gold-bond-2025-rbi-policy.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2025/11/sovereign-gold-bond-2025-rbi-policy.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     SGB
-    </b>
+    <b>SGB</b>
 
     RBI policy & alternatives
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2025/03/physical-gold-vs-digital-gold-vs-sgbs.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2025/03/physical-gold-vs-digital-gold-vs-sgbs.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Physical Gold
-    </b>
+    <b>Physical Gold</b>
 
     Digital vs SGB comparison
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2025/07/500-gold-sip-jar-paytm-groww.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2025/07/500-gold-sip-jar-paytm-groww.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Gold SIP
-    </b>
+    <b>Gold SIP</b>
 
     Jar • Paytm • Groww
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/p/wealth-creation-guide-2026-1.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/p/wealth-creation-guide-2026-1.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Wealth Guide
-    </b>
+    <b>Wealth Guide</b>
 
     ₹1 lakh से wealth plan
 
@@ -2279,9 +2419,7 @@ footer b{
      GOLD LOAN
 ========================= -->
 
-<section
- class="section"
- id="loan">
+<section class="section" id="loan">
 
  <div class="head">
 
@@ -2291,7 +2429,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    Full Guide →
 
@@ -2316,112 +2455,96 @@ footer b{
   <div class="optiongrid">
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/07/gold-loan-requirement-documents.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/07/gold-loan-requirement-documents.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Documents
-    </b>
+    <b>Documents</b>
 
     कौन-कौन से papers चाहिए?
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     RBI Rules
-    </b>
+    <b>RBI Rules</b>
 
     New 2026 rules & LTV
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/02/gold-loan-per-gram-2026-10-gram.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/02/gold-loan-per-gram-2026-10-gram.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Per Gram
-    </b>
+    <b>Per Gram</b>
 
     10g पर कितना loan?
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/06/gold-loan-auction-guide-india.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/06/gold-loan-auction-guide-india.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Auction
-    </b>
+    <b>Auction</b>
 
     सोना कब नीलाम होता है?
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/07/best-gold-loan-in-muradabad.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/07/best-gold-loan-in-muradabad.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Muradabad
-    </b>
+    <b>Muradabad</b>
 
     Best gold loan companies
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/08/lucknow-gold-loan.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/08/lucknow-gold-loan.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Lucknow
-    </b>
+    <b>Lucknow</b>
 
     Rate • EMI • lenders
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/08/meerut-gold-loan.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/08/meerut-gold-loan.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Meerut
-    </b>
+    <b>Meerut</b>
 
     Rate • EMI • companies
 
    </a>
 
 
-   <a
-    class="option"
-    href="https://www.goldshub.com/2026/07/agra-gold-loan.html"
-    target="_blank">
+   <a class="option"
+      href="https://www.goldshub.com/2026/07/agra-gold-loan.html"
+      target="_blank"
+      rel="noopener">
 
-    <b>
-     Agra
-    </b>
+    <b>Agra</b>
 
     Rate • EMI • documents
 
@@ -2450,7 +2573,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/2025/03/indias-best-gold-loan-providers-2025.html"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    Compare →
 
@@ -2462,20 +2586,16 @@ footer b{
  <div class="list two">
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/04/sbi-hdfc-icici-vs-muthoot-gold-loan.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/04/sbi-hdfc-icici-vs-muthoot-gold-loan.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏦
-   </div>
+   <div class="ico">🏦</div>
 
    <main>
 
-    <b>
-     SBI vs HDFC vs ICICI vs Muthoot
-    </b>
+    <b>SBI vs HDFC vs ICICI vs Muthoot</b>
 
     <small>
      Interest rate & loan comparison
@@ -2483,27 +2603,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/05/muthoot-finance-review-gold-loan-india-2025.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/05/muthoot-finance-review-gold-loan-india-2025.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏦
-   </div>
+   <div class="ico">🏦</div>
 
    <main>
 
-    <b>
-     Muthoot Finance Review
-    </b>
+    <b>Muthoot Finance Review</b>
 
     <small>
      Gold loan company guide
@@ -2511,27 +2625,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/06/iifl-gold-loan-rbi-ban-removed-2024-recovery-2025.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/06/iifl-gold-loan-rbi-ban-removed-2024-recovery-2025.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏦
-   </div>
+   <div class="ico">🏦</div>
 
    <main>
 
-    <b>
-     IIFL Gold Loan
-    </b>
+    <b>IIFL Gold Loan</b>
 
     <small>
      RBI update & recovery
@@ -2539,27 +2647,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/02/capri-gold-loan-per-gram-rate-today.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/02/capri-gold-loan-per-gram-rate-today.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🏦
-   </div>
+   <div class="ico">🏦</div>
 
    <main>
 
-    <b>
-     Capri Gold Loan
-    </b>
+    <b>Capri Gold Loan</b>
 
     <small>
      Per gram rate & calculator
@@ -2567,9 +2669,7 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
@@ -2584,9 +2684,7 @@ footer b{
      RESEARCH
 ========================= -->
 
-<section
- class="section"
- id="research">
+<section class="section" id="research">
 
  <div class="head">
 
@@ -2596,7 +2694,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    Research →
 
@@ -2608,20 +2707,16 @@ footer b{
  <div class="list two">
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/05/gold-price-prediction-2030-2040-2045-2050.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/05/gold-price-prediction-2030-2040-2045-2050.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    📈
-   </div>
+   <div class="ico">📈</div>
 
    <main>
 
-    <b>
-     Gold Price 2050
-    </b>
+    <b>Gold Price 2050</b>
 
     <small>
      Long-term price scenario
@@ -2629,27 +2724,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/05/gold-price-prediction-2045-india.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/05/gold-price-prediction-2045-india.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    📈
-   </div>
+   <div class="ico">📈</div>
 
    <main>
 
-    <b>
-     Gold Price 2045
-    </b>
+    <b>Gold Price 2045</b>
 
     <small>
      20-year projection
@@ -2657,27 +2746,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🌍
-   </div>
+   <div class="ico">🌍</div>
 
    <main>
 
-    <b>
-     Global Recession
-    </b>
+    <b>Global Recession</b>
 
     <small>
      Gold price scenario
@@ -2685,27 +2768,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/12/sona-kyu-bhartiyon-ki-pahli-pasand-gold-price-history.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/12/sona-kyu-bhartiyon-ki-pahli-pasand-gold-price-history.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    ⌁
-   </div>
+   <div class="ico">⌁</div>
 
    <main>
 
-    <b>
-     100 Years Gold History
-    </b>
+    <b>100 Years Gold History</b>
 
     <small>
      ₹10 से ₹1.56 लाख तक
@@ -2713,27 +2790,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2026/01/silver-price-forecast-2035.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2026/01/silver-price-forecast-2035.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    🥈
-   </div>
+   <div class="ico">🥈</div>
 
    <main>
 
-    <b>
-     Silver Forecast 2035
-    </b>
+    <b>Silver Forecast 2035</b>
 
     <small>
      Long-term silver outlook
@@ -2741,27 +2812,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/10/gold-price-crash-history-in-india.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/10/gold-price-crash-history-in-india.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    📉
-   </div>
+   <div class="ico">📉</div>
 
    <main>
 
-    <b>
-     Gold Crash History
-    </b>
+    <b>Gold Crash History</b>
 
     <small>
      1964–2025 analysis
@@ -2769,9 +2834,7 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
@@ -2796,7 +2859,8 @@ footer b{
 
   <a
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
    Read →
 
@@ -2808,20 +2872,16 @@ footer b{
  <div class="list two">
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/11/bis-hallmark-kya-hai-huid-guide-2025.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/11/bis-hallmark-kya-hai-huid-guide-2025.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    ✓
-   </div>
+   <div class="ico">✓</div>
 
    <main>
 
-    <b>
-     BIS Hallmark & HUID
-    </b>
+    <b>BIS Hallmark & HUID</b>
 
     <small>
      असली gold पहचानें
@@ -2829,27 +2889,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/11/9k-gold-jewellery-kya-hai.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/11/9k-gold-jewellery-kya-hai.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    G
-   </div>
+   <div class="ico">G</div>
 
    <main>
 
-    <b>
-     9K vs 22K vs 24K
-    </b>
+    <b>9K vs 22K vs 24K</b>
 
     <small>
      Gold purity guide
@@ -2857,21 +2911,17 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/11/ghar-par-sona-banaya-ja-sakta-hai-science-truth-investment.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/11/ghar-par-sona-banaya-ja-sakta-hai-science-truth-investment.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    ⚗
-   </div>
+   <div class="ico">⚗</div>
 
    <main>
 
@@ -2885,27 +2935,21 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
 
-  <a
-   class="item"
-   href="https://www.goldshub.com/2025/03/gold-ki-history.html"
-   target="_blank">
+  <a class="item"
+     href="https://www.goldshub.com/2025/03/gold-ki-history.html"
+     target="_blank"
+     rel="noopener">
 
-   <div class="ico">
-    ⌛
-   </div>
+   <div class="ico">⌛</div>
 
    <main>
 
-    <b>
-     Gold का इतिहास
-    </b>
+    <b>Gold का इतिहास</b>
 
     <small>
      6000+ साल की कहानी
@@ -2913,9 +2957,7 @@ footer b{
 
    </main>
 
-   <span class="arrow">
-    ›
-   </span>
+   <span class="arrow">›</span>
 
   </a>
 
@@ -2964,9 +3006,7 @@ footer b{
    class="active"
    href="#home">
 
-   <span>
-    ⌂
-   </span>
+   <span>⌂</span>
 
    Home
 
@@ -2976,9 +3016,7 @@ footer b{
   <a
    href="#market">
 
-   <span>
-    ₹
-   </span>
+   <span>₹</span>
 
    Market
 
@@ -2988,9 +3026,7 @@ footer b{
   <a
    href="#tools">
 
-   <span>
-    ⌘
-   </span>
+   <span>⌘</span>
 
    Tools
 
@@ -3000,9 +3036,7 @@ footer b{
   <a
    href="#research">
 
-   <span>
-    ▤
-   </span>
+   <span>▤</span>
 
    News
 
@@ -3011,11 +3045,10 @@ footer b{
 
   <a
    href="https://www.goldshub.com/"
-   target="_blank">
+   target="_blank"
+   rel="noopener">
 
-   <span>
-    ○
-   </span>
+   <span>○</span>
 
    Profile
 
@@ -3048,4 +3081,5 @@ function openMenu(){
 
 
 </body>
+
 </html>
