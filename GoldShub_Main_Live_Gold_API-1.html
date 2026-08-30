@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="GOLDShub — Live Gold Price, Gold Loan, Investment, Calculators, Research और India के शहरों के Gold Rate.">
+<link rel="manifest" href="manifest.json">
+<title>GOLDShub — Gold Price • Investment • Loan • Research</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#050505;--surface:#0d0e10;--card:#131416;--card2:#191a1d;
+ --line:#292a2d;--gold:#d4af37;--gold2:#f4c542;--gold3:#ffdf72;
+ --muted:#9a9ba1;--white:#fff;--green:#21c77a
+}
+html{scroll-behavior:smooth}
+body{
+ font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ background:var(--bg);color:var(--white);padding-bottom:84px;line-height:1.4
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.wrap{width:min(1120px,100%);margin:auto;padding:0 16px}
+
+/* HEADER */
+.top{position:sticky;top:0;z-index:1000;height:72px;background:rgba(5,5,5,.94);
+ backdrop-filter:blur(18px);border-bottom:1px solid #242528}
+.topin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.circlebtn{width:42px;height:42px;border:1px solid #292a2d;border-radius:13px;
+ background:#111214;color:#fff;display:grid;place-items:center;font-size:21px}
+.brand{text-align:center}
+.brand b{font-size:27px;letter-spacing:-1px}
+.brand b span{color:var(--gold2)}
+.brand small{display:block;color:#bfc0c5;font-size:10px;margin-top:2px}
+.dot{position:relative}.dot:after{content:"";position:absolute;width:7px;height:7px;
+ border-radius:50%;right:6px;top:5px;background:#21c77a}
+
+/* HERO */
+.hero{margin-top:16px;min-height:340px;border:1px solid #514318;border-radius:25px;
+ overflow:hidden;position:relative;padding:28px;background:
+ radial-gradient(circle at 83% 28%,rgba(212,175,55,.25),transparent 28%),
+ radial-gradient(circle at 80% 100%,rgba(212,175,55,.12),transparent 30%),
+ linear-gradient(125deg,#090909 0%,#161107 58%,#070707 100%);
+ box-shadow:0 25px 70px rgba(0,0,0,.4)}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(212,175,55,.23);
+ border-radius:50%;pointer-events:none}
+.hero:before{width:390px;height:390px;right:-180px;top:-150px}
+.hero:after{width:500px;height:500px;right:-235px;top:-205px;opacity:.45}
+.heroText{position:relative;z-index:2;max-width:620px}
+.pill{display:inline-flex;border:1px solid #715d22;border-radius:999px;padding:7px 13px;
+ color:var(--gold3);font-size:11px;background:rgba(212,175,55,.06);margin-bottom:16px}
+.hero h1{font-size:clamp(30px,6vw,54px);line-height:1.06;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--gold2)}
+.hero p{color:#c4c5ca;max-width:560px;font-size:14px;margin-top:14px;line-height:1.75}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;
+ border-radius:12px;font-weight:800;font-size:13px;background:linear-gradient(135deg,#f5ca4e,#b78a18);color:#090909}
+.btn.out{border:1px solid #806a23;background:#111214;color:var(--gold3)}
+
+/* TICKER */
+.ticker{margin-top:12px;display:flex;overflow:auto;scrollbar-width:none;border:1px solid #292a2d;
+ border-radius:14px;background:#0d0e10}
+.ticker::-webkit-scrollbar{display:none}.ticker a{flex:none}
+.ticker span{display:block;padding:9px 14px;border-right:1px solid #292a2d;font-size:11px;color:#b7b8bd}
+.ticker b{color:#f3c84c;margin-left:4px}
+
+/* RATE CARDS */
+.rate-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.rate-card{border:1px solid #4d3e17;border-radius:20px;padding:18px;background:linear-gradient(145deg,#201806,#111214 65%);
+ box-shadow:0 12px 35px rgba(0,0,0,.25)}
+.rate-top{display:flex;justify-content:space-between;align-items:center}
+.rate-top small{color:#9a9ba1;font-size:10px;letter-spacing:.8px}
+.rate-top h3{font-size:15px;margin-top:4px}
+.rate-icon{width:42px;height:42px;border-radius:13px;border:1px solid #514318;background:#0b0b0c;
+ display:grid;place-items:center;font-size:21px}
+.rate-price{font-size:32px;font-weight:900;letter-spacing:-1px;margin-top:14px}
+.rate-change{display:inline-block;margin-top:5px;font-size:12px;font-weight:800}
+.rate-change.positive{color:#21c77a}.rate-change.negative{color:#ff4d4d}.rate-change.neutral{color:#9a9ba1}
+.rate-details{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}
+.rate-details div{background:#090a0b;border:1px solid #292a2d;border-radius:10px;padding:9px 7px}
+.rate-details span{display:block;color:#85868b;font-size:9px}.rate-details b{display:block;margin-top:4px;font-size:11px}
+.rate-link{display:block;margin-top:12px;color:#f4c542;font-size:11px;font-weight:800}
+.rate-note{margin-top:10px;color:#85868b;font-size:10px;text-align:right}.rate-note span{color:#21c77a}
+
+/* PRICE */
+.pricegrid{display:grid;grid-template-columns:1.3fr 1fr;gap:12px;margin-top:14px}
+.pricecard{min-height:205px;border-radius:21px;border:1px solid #4d3e17;padding:20px;
+ background:linear-gradient(135deg,#231b08,#0e0e0e 75%);position:relative;overflow:hidden}
+.pricecard:after{content:"";position:absolute;right:-70px;bottom:-100px;width:260px;height:260px;border-radius:50%;
+ border:1px solid rgba(212,175,55,.15);box-shadow:0 0 0 35px rgba(212,175,55,.025)}
+.kicker{color:#a9a9ad;font-size:12px}.pricecard h2{font-size:18px;margin-top:4px}
+.bigprice{font-size:38px;font-weight:900;letter-spacing:-1px;margin-top:8px}.up{color:var(--green);font-size:12px}
+.pricebuttons{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.mini{padding:9px 12px;border-radius:10px;border:1px solid #806a23;background:#111;color:var(--gold3);font-size:11px;font-weight:700}
+.chartbox{min-height:205px;border:1px solid #292a2d;border-radius:21px;background:#101113;padding:16px}
+.charthead{display:flex;justify-content:space-between;font-size:12px}.charthead b{color:var(--gold2)}
+.bars{height:140px;margin-top:13px;display:flex;align-items:flex-end;gap:5px}
+.bar{flex:1;border-radius:5px 5px 1px 1px;background:linear-gradient(to top,#8d6718,#f4c542);min-width:5px}
+
+/* SECTIONS */
+.section{margin-top:27px}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.head h2{font-size:20px;letter-spacing:-.3px}.head a{color:var(--gold2);font-size:12px}
+
+/* EXPLORE */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.tile{min-height:122px;border-radius:17px;border:1px solid var(--line);background:linear-gradient(145deg,#18191c,#0d0e0f);
+ padding:14px 7px;text-align:center;transition:transform .15s,border-color .15s;cursor:pointer}
+.tile:active{transform:scale(.97)}
+.ico{width:43px;height:43px;border-radius:13px;margin:auto;display:grid;place-items:center;border:1px solid #4b3d18;
+ background:#0b0b0c;color:var(--gold2);font-size:22px}
+.tile b{display:block;font-size:13px;margin-top:9px}.tile small{display:block;color:#85868b;font-size:9px;margin-top:3px}
+
+/* LIST */
+.list{display:grid;gap:9px}.item{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid #292a2d;
+ border-radius:15px;background:#111214}.item .ico{margin:0;width:40px;height:40px;flex:none}
+.item main{min-width:0;flex:1}.item b{display:block;font-size:12px}.item small{display:block;color:#85868b;font-size:10px;margin-top:3px}
+.arrow{color:var(--gold2);font-size:22px}
+
+/* HORIZONTAL */
+.hscroll{display:flex;gap:10px;overflow:auto;scrollbar-width:none;padding-bottom:2px}.hscroll::-webkit-scrollbar{display:none}
+.hcard{min-width:160px;border:1px solid #292a2d;border-radius:16px;background:#111214;padding:15px}
+.hcard .ico{margin:0 0 10px}.hcard b{font-size:12px;display:block}.hcard small{color:#85868b;font-size:10px;display:block;margin-top:5px}
+
+/* FEATURE */
+.feature{border:1px solid #4d3e17;border-radius:20px;padding:20px;background:radial-gradient(circle at 92% 10%,rgba(212,175,55,.15),transparent 30%),#111214}
+.feature h3{font-size:18px}.feature p{color:#9b9ca1;font-size:12px;line-height:1.7;margin-top:6px}
+.optiongrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:15px}
+.option{padding:12px;border:1px solid #2a2b2e;border-radius:12px;background:#090a0b;font-size:11px}
+.option b{display:block;color:var(--gold2);margin-bottom:2px}
+
+/* NEWS */
+.newsimg{width:68px;height:56px;flex:none;border-radius:10px;background:radial-gradient(circle,#e7c452 0,#8c6515 34%,#211807 70%);
+ display:grid;place-items:center;font-size:24px}
+
+/* BOTTOM */
+.bottom{position:fixed;left:0;right:0;bottom:0;height:72px;z-index:3000;background:rgba(8,8,9,.97);
+ backdrop-filter:blur(18px);border-top:1px solid #292a2d}
+.nav{width:min(700px,100%);height:100%;margin:auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#777;font-size:10px}
+.nav a span{font-size:20px}.nav a.active{color:var(--gold2)}
+
+/* FOOTER */
+footer{text-align:center;border-top:1px solid #25262a;margin-top:32px;padding:28px 10px;color:#777;font-size:10px}
+footer b{color:var(--gold2)}
+
+/* LIVE GOLD MODAL */
+.gold-modal{position:fixed;inset:0;z-index:6000;display:none;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);padding:14px}
+.gold-modal.show{display:flex;align-items:center;justify-content:center}
+.gold-panel{width:min(560px,100%);max-height:92vh;overflow:auto;border:1px solid #6b551c;border-radius:24px;
+ background:linear-gradient(145deg,#171204,#0b0c0e 65%);box-shadow:0 30px 90px rgba(0,0,0,.7)}
+.gold-panel-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;
+ padding:17px 18px;border-bottom:1px solid #302816;background:rgba(12,12,12,.96);backdrop-filter:blur(12px)}
+.gold-panel-head small{display:block;color:#999;font-size:9px;letter-spacing:1px}
+.gold-panel-head h2{font-size:19px;margin-top:2px}
+.close-gold{width:38px;height:38px;border:1px solid #3b331e;border-radius:12px;background:#151515;color:#fff;font-size:22px;cursor:pointer}
+.gold-content{padding:16px}.api-status{font-size:10px;color:#9a9ba1;margin-bottom:10px}
+.live-badge{color:#21c77a}
+.combined-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.gold-box{border:1px solid #3b321b;border-radius:16px;padding:14px;background:#101112}
+.gold-box .label{font-size:10px;color:#999}.gold-box h3{font-size:15px;margin-top:3px}
+.gold-box .modal-price{font-size:25px;font-weight:900;margin-top:10px;color:#fff}
+.gold-box .modal-sub{font-size:10px;color:#888;margin-top:3px}
+.modal-details{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}
+.modal-details div{border:1px solid #292a2d;border-radius:9px;background:#090a0b;padding:8px 6px}
+.modal-details span{display:block;color:#777;font-size:8px}.modal-details b{display:block;font-size:10px;margin-top:3px}
+.modal-footer{margin-top:12px;border-top:1px solid #292a2d;padding-top:12px;color:#777;font-size:9px;text-align:center}
+.error-box{display:none;border:1px solid #5c2828;background:#1a0d0d;color:#ffb0b0;border-radius:12px;padding:11px;font-size:10px;margin-bottom:10px}
+.loading{color:#f4c542}
+.gold-tile-rate{display:block;color:#f4c542;font-size:9px;font-weight:800;margin-top:3px;min-height:13px}
+
+@media(min-width:760px){
+ .wrap{padding:0 22px}.hero{min-height:390px;padding:42px}.grid3{grid-template-columns:repeat(6,1fr)}
+ .tile{min-height:140px}.list.two{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+ .rate-grid{grid-template-columns:1fr}.pricegrid{grid-template-columns:1fr}.hero{padding:23px;min-height:350px}
+ .hero h1{font-size:30px}.bigprice{font-size:31px}.rate-price{font-size:30px}.optiongrid{grid-template-columns:1fr}
+ .newsimg{width:58px;height:52px}.combined-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+ <div class="wrap topin">
+  <button class="circlebtn" onclick="openMenu()" aria-label="Menu">☰</button>
+  <div class="brand"><b><span>GOLD</span>SHUB</b><small>Gold Price • Investment • Loan • Research • Tools</small></div>
+  <a class="circlebtn dot" href="https://www.goldshub.com/" target="_blank" rel="noopener" aria-label="GoldShub">♧</a>
+ </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero" id="home">
+ <div class="heroText">
+  <div class="pill">✦ NEW GOLDShub APP EXPERIENCE</div>
+  <h1>सोने की दुनिया की <em>पूरी जानकारी</em> एक जगह</h1>
+  <p>Live Gold Price, Gold Loan, Investment, Calculators, City-wise Rates, News और Gold Research — सीधे आपके GoldShub app में।</p>
+  <div class="actions">
+   <a class="btn" href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener">🪙 Live Gold Price →</a>
+   <a class="btn out" href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html" target="_blank" rel="noopener">Investment Guide</a>
+  </div>
+ </div>
+</section>
+
+<div class="ticker" aria-label="GoldShub live links">
+ <a href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener"><span>24K <b>LIVE</b></span></a>
+ <a href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html" target="_blank" rel="noopener"><span>22K <b>LIVE</b></span></a>
+ <a href="https://www.goldshub.com/2026/03/india-gold-rate-today.html" target="_blank" rel="noopener"><span>India Gold <b>LIVE</b></span></a>
+ <a href="https://www.goldshub.com/2026/03/meerut-gold-rate-today.html" target="_blank" rel="noopener"><span>Meerut <b>LIVE</b></span></a>
+ <a href="https://www.goldshub.com/2026/03/meerut-silver-rate-today.html" target="_blank" rel="noopener"><span>Silver <b>LIVE</b></span></a>
+</div>
+
+<section class="section" id="market">
+ <div class="head"><h2>🇮🇳 Live Gold & Silver Rate</h2><span style="color:#9a9ba1;font-size:11px;">Per Gram</span></div>
+ <div class="rate-grid">
+
+  <article class="rate-card">
+   <div class="rate-top"><div><small>24K GOLD</small><h3>24K Gold / Gram</h3></div><div class="rate-icon">🪙</div></div>
+   <div class="rate-price" id="gold24">₹—</div><div class="rate-change neutral" id="change24">Loading...</div>
+   <div class="rate-details"><div><span>Today</span><b id="today24">₹—</b></div><div><span>Opening</span><b id="open24">₹—</b></div><div><span>Yesterday Close</span><b id="close24">₹—</b></div></div>
+   <a class="rate-link" href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener">Full Gold Price →</a>
+  </article>
+
+  <article class="rate-card">
+   <div class="rate-top"><div><small>22K GOLD</small><h3>22K Gold / Gram</h3></div><div class="rate-icon">🪙</div></div>
+   <div class="rate-price" id="gold22">₹—</div><div class="rate-change neutral" id="change22">Loading...</div>
+   <div class="rate-details"><div><span>Today</span><b id="today22">₹—</b></div><div><span>Opening</span><b id="open22">₹—</b></div><div><span>Yesterday Close</span><b id="close22">₹—</b></div></div>
+   <a class="rate-link" href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html" target="_blank" rel="noopener">Full Gold Price →</a>
+  </article>
+
+  <article class="rate-card">
+   <div class="rate-top"><div><small>18K GOLD</small><h3>18K Gold / Gram</h3></div><div class="rate-icon">🪙</div></div>
+   <div class="rate-price" id="gold18">₹—</div><div class="rate-change neutral" id="change18">Loading...</div>
+   <div class="rate-details"><div><span>Today</span><b id="today18">₹—</b></div><div><span>Opening</span><b id="open18">₹—</b></div><div><span>Yesterday Close</span><b id="close18">₹—</b></div></div>
+   <a class="rate-link" href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener">Full Gold Price →</a>
+  </article>
+
+  <article class="rate-card">
+   <div class="rate-top"><div><small>SILVER</small><h3>Silver / Gram</h3></div><div class="rate-icon">🥈</div></div>
+   <div class="rate-price" id="silver">₹—</div><div class="rate-change neutral" id="changeSilver">Loading...</div>
+   <div class="rate-details"><div><span>Today</span><b id="todaySilver">₹—</b></div><div><span>Opening</span><b id="openSilver">₹—</b></div><div><span>Yesterday Close</span><b id="closeSilver">₹—</b></div></div>
+   <a class="rate-link" href="https://www.goldshub.com/2026/03/meerut-silver-rate-today.html" target="_blank" rel="noopener">Full Silver Price →</a>
+  </article>
+ </div>
+ <div class="rate-note"><span>●</span> Live rate • All prices shown per gram</div>
+</section>
+
+<section class="pricegrid">
+ <article class="pricecard">
+  <div class="kicker">🇮🇳 India • Live Gold Price</div><h2>24K Gold — 10 Gram</h2>
+  <div class="bigprice" id="tenGramPrice">Live ↗</div><div class="up" id="tenGramStatus">● Current price on GoldShub</div>
+  <div class="pricebuttons">
+   <a class="mini" href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener">View Live Price</a>
+   <a class="mini" href="https://www.goldshub.com/2026/03/india-gold-rate-today.html" target="_blank" rel="noopener">India Rate</a>
+  </div>
+ </article>
+ <article class="chartbox">
+  <div class="charthead"><b>Gold Market</b><span>Live page ↗</span></div>
+  <div class="bars"><i class="bar" style="height:34%"></i><i class="bar" style="height:47%"></i><i class="bar" style="height:42%"></i><i class="bar" style="height:57%"></i><i class="bar" style="height:51%"></i><i class="bar" style="height:68%"></i><i class="bar" style="height:62%"></i><i class="bar" style="height:80%"></i><i class="bar" style="height:92%"></i></div>
+ </article>
+</section>
+
+<section class="section">
+ <div class="head"><h2>Explore GoldShub</h2><a href="https://www.goldshub.com/" target="_blank" rel="noopener">View All →</a></div>
+ <div class="grid3">
+
+  <!-- ONLY THIS GOLD PRICE TILE WAS CHANGED: it opens the combined live-rate window -->
+  <a class="tile" href="#" onclick="openGoldModal();return false;" aria-label="Open live Gold Price">
+   <div class="ico">🪙</div><b>Gold Price</b>
+   <small>आज का भाव</small>
+   <span class="gold-tile-rate" id="tileGold24">24K 1g: Loading…</span>
+  </a>
+
+  <a class="tile" href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html" target="_blank" rel="noopener"><div class="ico">📈</div><b>Investment</b><small>ETF • SGB • SIP</small></a>
+  <a class="tile" href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html" target="_blank" rel="noopener"><div class="ico">₹</div><b>Gold Loan</b><small>Loan guide</small></a>
+  <a class="tile" href="https://www.goldshub.com/p/gold-loan-calculator.html" target="_blank" rel="noopener"><div class="ico">🧮</div><b>Calculators</b><small>Smart tools</small></a>
+  <a class="tile" href="https://www.goldshub.com/p/digital-gold-sip-calculator-10-daily.html" target="_blank" rel="noopener"><div class="ico">🐷</div><b>Gold Savings</b><small>SIP & saving</small></a>
+  <a class="tile" href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html" target="_blank" rel="noopener"><div class="ico">⌁</div><b>Research</b><small>Market analysis</small></a>
+  <a class="tile" href="https://www.goldshub.com/" target="_blank" rel="noopener"><div class="ico">▤</div><b>News</b><small>Latest updates</small></a>
+  <a class="tile" href="https://forms.zohopublic.in/contactgold1/form/Untitled/formperma/TV3zJQDYZVLZCD9vwAZbVu3i2M-TN5lZ7pxYOL0pSC4" target="_blank" rel="noopener"><div class="ico">✦</div><b>Contact</b><small>GoldShub form</small></a>
+  <a class="tile" href="https://www.goldshub.com/" target="_blank" rel="noopener"><div class="ico">•••</div><b>More</b><small>All guides</small></a>
+ </div>
+</section>
+
+<section class="section" id="tools">
+ <div class="head"><h2>GoldShub Calculators</h2><a href="https://www.goldshub.com/" target="_blank" rel="noopener">All Tools →</a></div>
+ <div class="hscroll">
+  <a class="hcard" href="https://www.goldshub.com/p/gold-loan-calculator.html" target="_blank" rel="noopener"><div class="ico">🧮</div><b>Gold Loan Eligibility</b><small>Weight से loan amount</small></a>
+  <a class="hcard" href="https://www.goldshub.com/p/gold-loan-emi-calculater.html" target="_blank" rel="noopener"><div class="ico">₹</div><b>Gold Loan EMI</b><small>EMI & total repayment</small></a>
+  <a class="hcard" href="https://www.goldshub.com/p/gold-loan-per-gram-calculator-2026.html" target="_blank" rel="noopener"><div class="ico">⚖</div><b>Per Gram Loan</b><small>1 gram value check</small></a>
+  <a class="hcard" href="https://www.goldshub.com/p/gold-sip-calculator-2026-100-monthly.html" target="_blank" rel="noopener"><div class="ico">📊</div><b>Gold SIP</b><small>1–50 year returns</small></a>
+  <a class="hcard" href="https://www.goldshub.com/p/digital-gold-sip-calculator-10-daily.html" target="_blank" rel="noopener"><div class="ico">💰</div><b>Digital Gold SIP</b><small>₹10 daily से</small></a>
+  <a class="hcard" href="https://www.goldshub.com/p/gold-capital-gains-tax-calculator.html" target="_blank" rel="noopener"><div class="ico">%</div><b>Capital Gains Tax</b><small>Tax estimate</small></a>
+  <a class="hcard" href="https://www.goldshub.com/p/goldshub-npa-loan-closure-calculator.html" target="_blank" rel="noopener"><div class="ico">✓</div><b>Loan Closure</b><small>Interest + penalty</small></a>
+ </div>
+</section>
+
+<section class="section">
+ <div class="head"><h2>Today's Gold Update</h2><a href="https://www.goldshub.com/" target="_blank" rel="noopener">More →</a></div>
+ <div class="list">
+  <a class="item" href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener"><div class="newsimg">🪙</div><main><b>आज का सोने और चांदी का भाव — Live</b><small>24K • 22K • 18K • Silver</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html" target="_blank" rel="noopener"><div class="newsimg">🏦</div><main><b>RBI Gold Loan New Rules 2026</b><small>85% LTV, Tenure और नए नियम</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/07/gold-loan-interest-rate-india.html" target="_blank" rel="noopener"><div class="newsimg">%</div><main><b>Gold Loan Interest Rate 2026</b><small>Live Gold Rate + RBI LTV</small></main><span class="arrow">›</span></a>
+ </div>
+</section>
+
+<section class="section" id="city">
+ <div class="head"><h2>City-wise Gold Rates</h2><a href="https://www.goldshub.com/p/live-gold-silver-price-today.html" target="_blank" rel="noopener">Live →</a></div>
+ <div class="list two">
+  <a class="item" href="https://www.goldshub.com/2026/04/today-gold-price-delhi.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Delhi Gold Rate</b><small>24K • 22K • Live Update</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/03/lucknow-gold-price-today.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Lucknow Gold Rate</b><small>24K • 22K • 18K</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/03/meerut-gold-rate-today.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Meerut Gold Rate</b><small>Gold price today</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/04/today-gold-price-varanasi.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Varanasi Gold Rate</b><small>24K • 22K • 18K</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/03/today-gold-price-agra.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Agra Gold Rate</b><small>Live city rate</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/05/noida-gold-rate-today.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Noida Gold Rate</b><small>24K • 22K • 18K</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/06/live-24k-22k-18k-gold-rate-24k-22k-18k.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Muradabad Gold Rate</b><small>Live update 2026</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/07/today-gold-price-bareilly.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Bareilly Gold Rate</b><small>24K • 22K • Live</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/12/today-gold-price-kanpur.html" target="_blank" rel="noopener"><div class="ico">🏙</div><main><b>Kanpur Gold Rate</b><small>24K • 22K • 18K</small></main><span class="arrow">›</span></a>
+ </div>
+</section>
+
+<section class="section">
+ <div class="head"><h2>Gold Investment</h2><a href="https://www.goldshub.com/p/gold-investment-guide-2026-goldshub-etf.html" target="_blank" rel="noopener">Guide →</a></div>
+ <div class="feature"><h3>💰 Gold में Investment के विकल्प</h3><p>ETF, Digital Gold, SGB, SIP और Physical Gold की जानकारी एक जगह। हर card सीधे आपके GoldShub article पर जाता है।</p>
+  <div class="optiongrid">
+   <a class="option" href="https://www.goldshub.com/2025/05/gold-etf-kya-hai-sip-investment-2040-price-prediction.html" target="_blank" rel="noopener"><b>Gold ETF</b>₹1000 SIP से 2040 तक</a>
+   <a class="option" href="https://www.goldshub.com/2025/06/gold-locker-app-kya-hai-digital-gold-investment.html" target="_blank" rel="noopener"><b>Digital Gold</b>Gold Locker & safety</a>
+   <a class="option" href="https://www.goldshub.com/2025/11/sovereign-gold-bond-2025-rbi-policy.html" target="_blank" rel="noopener"><b>SGB</b>RBI policy & alternatives</a>
+   <a class="option" href="https://www.goldshub.com/2025/03/physical-gold-vs-digital-gold-vs-sgbs.html" target="_blank" rel="noopener"><b>Physical Gold</b>Digital vs SGB comparison</a>
+   <a class="option" href="https://www.goldshub.com/2025/07/500-gold-sip-jar-paytm-groww.html" target="_blank" rel="noopener"><b>Gold SIP</b>Jar • Paytm • Groww</a>
+   <a class="option" href="https://www.goldshub.com/p/wealth-creation-guide-2026-1.html" target="_blank" rel="noopener"><b>Wealth Guide</b>₹1 lakh से wealth plan</a>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="loan">
+ <div class="head"><h2>Gold Loan Hub</h2><a href="https://www.goldshub.com/p/gold-loan-guide-2026-gold-loan.html" target="_blank" rel="noopener">Full Guide →</a></div>
+ <div class="feature"><h3>🏦 Gold Loan — एक ही जगह पूरी जानकारी</h3><p>Interest rate, RBI rules, LTV, eligibility, documents, per-gram loan, EMI, auction और city-wise lenders.</p>
+  <div class="optiongrid">
+   <a class="option" href="https://www.goldshub.com/2026/07/gold-loan-requirement-documents.html" target="_blank" rel="noopener"><b>Documents</b>कौन-कौन से papers चाहिए?</a>
+   <a class="option" href="https://www.goldshub.com/2026/08/rbi-gold-loan-new-rules.html" target="_blank" rel="noopener"><b>RBI Rules</b>New 2026 rules & LTV</a>
+   <a class="option" href="https://www.goldshub.com/2026/02/gold-loan-per-gram-2026-10-gram.html" target="_blank" rel="noopener"><b>Per Gram</b>10g पर कितना loan?</a>
+   <a class="option" href="https://www.goldshub.com/2026/06/gold-loan-auction-guide-india.html" target="_blank" rel="noopener"><b>Auction</b>सोना कब नीलाम होता है?</a>
+   <a class="option" href="https://www.goldshub.com/2026/07/best-gold-loan-in-muradabad.html" target="_blank" rel="noopener"><b>Muradabad</b>Best gold loan companies</a>
+   <a class="option" href="https://www.goldshub.com/2026/08/lucknow-gold-loan.html" target="_blank" rel="noopener"><b>Lucknow</b>Rate • EMI • lenders</a>
+   <a class="option" href="https://www.goldshub.com/2026/08/meerut-gold-loan.html" target="_blank" rel="noopener"><b>Meerut</b>Rate • EMI • companies</a>
+   <a class="option" href="https://www.goldshub.com/2026/07/agra-gold-loan.html" target="_blank" rel="noopener"><b>Agra</b>Rate • EMI • documents</a>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="head"><h2>Gold Loan Companies</h2><a href="https://www.goldshub.com/2025/03/indias-best-gold-loan-providers-2025.html" target="_blank" rel="noopener">Compare →</a></div>
+ <div class="list two">
+  <a class="item" href="https://www.goldshub.com/2025/04/sbi-hdfc-icici-vs-muthoot-gold-loan.html" target="_blank" rel="noopener"><div class="ico">🏦</div><main><b>SBI vs HDFC vs ICICI vs Muthoot</b><small>Interest rate & loan comparison</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/05/muthoot-finance-review-gold-loan-india-2025.html" target="_blank" rel="noopener"><div class="ico">🏦</div><main><b>Muthoot Finance Review</b><small>Gold loan company guide</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/06/iifl-gold-loan-rbi-ban-removed-2024-recovery-2025.html" target="_blank" rel="noopener"><div class="ico">🏦</div><main><b>IIFL Gold Loan</b><small>RBI update & recovery</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/02/capri-gold-loan-per-gram-rate-today.html" target="_blank" rel="noopener"><div class="ico">🏦</div><main><b>Capri Gold Loan</b><small>Per gram rate & calculator</small></main><span class="arrow">›</span></a>
+ </div>
+</section>
+
+<section class="section" id="research">
+ <div class="head"><h2>Gold Research & Future</h2><a href="https://www.goldshub.com/" target="_blank" rel="noopener">Research →</a></div>
+ <div class="list two">
+  <a class="item" href="https://www.goldshub.com/2026/05/gold-price-prediction-2030-2040-2045-2050.html" target="_blank" rel="noopener"><div class="ico">📈</div><main><b>Gold Price 2050</b><small>Long-term price scenario</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/05/gold-price-prediction-2045-india.html" target="_blank" rel="noopener"><div class="ico">📈</div><main><b>Gold Price 2045</b><small>20-year projection</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/06/global-recession-gold-price-prediction.html" target="_blank" rel="noopener"><div class="ico">🌍</div><main><b>Global Recession</b><small>Gold price scenario</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/12/sona-kyu-bhartiyon-ki-pahli-pasand-gold-price-history.html" target="_blank" rel="noopener"><div class="ico">⌁</div><main><b>100 Years Gold History</b><small>₹10 से ₹1.56 लाख तक</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2026/01/silver-price-forecast-2035.html" target="_blank" rel="noopener"><div class="ico">🥈</div><main><b>Silver Forecast 2035</b><small>Long-term silver outlook</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/10/gold-price-crash-history-in-india.html" target="_blank" rel="noopener"><div class="ico">📉</div><main><b>Gold Crash History</b><small>1964–2025 analysis</small></main><span class="arrow">›</span></a>
+ </div>
+</section>
+
+<section class="section">
+ <div class="head"><h2>Gold Knowledge</h2><a href="https://www.goldshub.com/" target="_blank" rel="noopener">Read →</a></div>
+ <div class="list two">
+  <a class="item" href="https://www.goldshub.com/2025/11/bis-hallmark-kya-hai-huid-guide-2025.html" target="_blank" rel="noopener"><div class="ico">✓</div><main><b>BIS Hallmark & HUID</b><small>असली gold पहचानें</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/11/9k-gold-jewellery-kya-hai.html" target="_blank" rel="noopener"><div class="ico">G</div><main><b>9K vs 22K vs 24K</b><small>Gold purity guide</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/11/ghar-par-sona-banaya-ja-sakta-hai-science-truth-investment.html" target="_blank" rel="noopener"><div class="ico">⚗</div><main><b>क्या घर पर सोना बनाया जा सकता है?</b><small>Science & truth</small></main><span class="arrow">›</span></a>
+  <a class="item" href="https://www.goldshub.com/2025/03/gold-ki-history.html" target="_blank" rel="noopener"><div class="ico">⌛</div><main><b>Gold का इतिहास</b><small>6000+ साल की कहानी</small></main><span class="arrow">›</span></a>
+ </div>
+</section>
+
+<footer><b>GOLDShub</b><br><br>Gold Price • Investment • Loan • Research • Tools<br><br>© 2026 GoldShub. All Rights Reserved.</footer>
+</main>
+
+<nav class="bottom">
+ <div class="nav">
+  <a class="active" href="#home"><span>⌂</span>Home</a>
+  <a href="#market"><span>₹</span>Market</a>
+  <a href="#tools"><span>⌘</span>Tools</a>
+  <a href="#research"><span>▤</span>News</a>
+  <a href="https://www.goldshub.com/" target="_blank" rel="noopener"><span>○</span>Profile</a>
+ </div>
+</nav>
+
+<!-- COMBINED LIVE GOLD PRICE WINDOW -->
+<div class="gold-modal" id="goldModal" role="dialog" aria-modal="true" aria-labelledby="goldModalTitle">
+ <div class="gold-panel">
+  <div class="gold-panel-head">
+   <div><small>GOLDSHUB • INDIA</small><h2 id="goldModalTitle">🪙 Live Gold & Silver Rate</h2></div>
+   <button class="close-gold" onclick="closeGoldModal()" aria-label="Close">×</button>
+  </div>
+  <div class="gold-content">
+   <div class="api-status" id="apiStatus"><span class="loading">●</span> Google Script से live rate लिया जा रहा है…</div>
+   <div class="error-box" id="apiError"></div>
+   <div class="combined-grid">
+    <div class="gold-box">
+     <div class="label">24K GOLD</div><h3>24K Gold / Gram</h3>
+     <div class="modal-price" id="m24">₹—</div><div class="modal-sub" id="m24change">—</div>
+     <div class="modal-details"><div><span>Today</span><b id="m24today">₹—</b></div><div><span>Opening</span><b id="m24open">₹—</b></div><div><span>Yesterday</span><b id="m24close">₹—</b></div></div>
+    </div>
+    <div class="gold-box">
+     <div class="label">22K GOLD</div><h3>22K Gold / Gram</h3>
+     <div class="modal-price" id="m22">₹—</div><div class="modal-sub" id="m22change">—</div>
+     <div class="modal-details"><div><span>Today</span><b id="m22today">₹—</b></div><div><span>Opening</span><b id="m22open">₹—</b></div><div><span>Yesterday</span><b id="m22close">₹—</b></div></div>
+    </div>
+    <div class="gold-box">
+     <div class="label">18K GOLD</div><h3>18K Gold / Gram</h3>
+     <div class="modal-price" id="m18">₹—</div><div class="modal-sub" id="m18change">—</div>
+     <div class="modal-details"><div><span>Today</span><b id="m18today">₹—</b></div><div><span>Opening</span><b id="m18open">₹—</b></div><div><span>Yesterday</span><b id="m18close">₹—</b></div></div>
+    </div>
+    <div class="gold-box">
+     <div class="label">SILVER</div><h3>Silver / Gram</h3>
+     <div class="modal-price" id="msilver">₹—</div><div class="modal-sub" id="msilverchange">—</div>
+     <div class="modal-details"><div><span>Today</span><b id="msilvertoday">₹—</b></div><div><span>Opening</span><b id="msilveropen">₹—</b></div><div><span>Yesterday</span><b id="msilverclose">₹—</b></div></div>
+    </div>
+   </div>
+   <div class="modal-footer">● Live rate • India • All prices shown per gram • Source: GoldShub Google Script</div>
+  </div>
+ </div>
+</div>
+
+<script>
+/* ==========================================================
+   GOLDShub LIVE RATE API
+   Only the Gold Price tile/modal was added; other links remain unchanged.
+========================================================== */
+const GOLD_API =
+  "https://script.google.com/macros/s/AKfycbzE4km4kklPb9OkgJEUMQB-BleQdl1IL-eKMll_RqTvkq7fRDEPnd6Xk6oSv6CTtiv4/exec?city=India";
+
+let goldData = null;
+let goldLoaded = false;
+
+function openMenu(){
+ alert("GOLDShub Menu\n\nGold Price • Investment • Gold Loan • Calculators • Research • City Rates");
+}
+
+function openGoldModal(){
+ const modal = document.getElementById("goldModal");
+ modal.classList.add("show");
+ document.body.style.overflow = "hidden";
+ if(!goldLoaded) loadGoldRates();
+}
+
+function closeGoldModal(){
+ document.getElementById("goldModal").classList.remove("show");
+ document.body.style.overflow = "";
+}
+
+document.getElementById("goldModal").addEventListener("click", function(e){
+ if(e.target === this) closeGoldModal();
+});
+
+document.addEventListener("keydown", function(e){
+ if(e.key === "Escape") closeGoldModal();
+});
+
+/* ---------- Flexible API parser ----------
+   Supports common Google Script response formats:
+   {data:{...}}, {rates:{...}}, direct objects, arrays, and
+   keys such as 24k, gold24, gold_24k, silver, today/open/close/change.
+*/
+function normalizeKey(k){
+ return String(k ?? "").toLowerCase().replace(/[^a-z0-9]/g,"");
+}
+
+function flatten(obj, prefix="", out={}){
+ if(obj === null || obj === undefined) return out;
+ if(typeof obj !== "object"){ out[normalizeKey(prefix)] = obj; return out; }
+
+ if(Array.isArray(obj)){
+   obj.forEach((v,i)=> flatten(v, prefix + "[" + i + "]", out));
+   return out;
+ }
+
+ Object.keys(obj).forEach(k=>{
+   const nk = normalizeKey(k);
+   const p = prefix ? prefix + "." + k : k;
+   if(obj[k] && typeof obj[k] === "object") flatten(obj[k], p, out);
+   else {
+     out[nk] = obj[k];
+     out[normalizeKey(p)] = obj[k];
+   }
+ });
+ return out;
+}
+
+function findValue(obj, aliases){
+ const flat = flatten(obj);
+ const keys = Object.keys(flat);
+
+ for(const alias of aliases){
+   const a = normalizeKey(alias);
+   if(Object.prototype.hasOwnProperty.call(flat,a) && flat[a] !== "") return flat[a];
+ }
+ for(const alias of aliases){
+   const a = normalizeKey(alias);
+   const hit = keys.find(k => k === a || k.endsWith(a) || k.includes(a));
+   if(hit && flat[hit] !== "") return flat[hit];
+ }
+ return null;
+}
+
+function pickMetal(root, metal){
+ const aliases = metal==="silver"
+   ? ["silver","silverrate","silverprice","silverpergram","silver1gram"]
+   : [
+      metal, "gold"+metal, metal+"gold", metal+"rate", metal+"price",
+      metal+"pergram", metal+"1gram", metal+"goldrate", metal+"goldprice"
+     ];
+ const v = findValue(root, aliases);
+ if(v && typeof v === "object") return v;
+ return {value:v};
+}
+
+function numberValue(v){
+ if(v === null || v === undefined || v === "") return null;
+ if(typeof v === "number") return v;
+ const s = String(v).replace(/,/g,"").replace(/[₹$£€\s]/g,"");
+ const n = parseFloat(s.replace(/[^\d.-]/g,""));
+ return Number.isFinite(n) ? n : null;
+}
+
+function displayPrice(v){
+ const n = numberValue(v);
+ if(n === null) return (v === null || v === undefined || v === "") ? "₹—" : "₹"+String(v);
+ return "₹" + n.toLocaleString("en-IN",{maximumFractionDigits:2});
+}
+
+function metalInfo(root, metal){
+ const obj = pickMetal(root, metal);
+ const base = obj && typeof obj==="object" ? obj : {value:obj};
+
+ const value = findValue(base, ["value","rate","price","current","today","live","pergram","1gram"]);
+ const today = findValue(base, ["today","todayrate","todayprice","current","live","value","rate","price"]);
+ const opening = findValue(base, ["opening","open","openrate","openprice"]);
+ const close = findValue(base, ["yesterdayclose","yesterday","previousclose","prevclose","close","closing"]);
+ const change = findValue(base, ["change","changepercent","percentchange","percentage","gainloss","movement"]);
+
+ return {value:value ?? today, today:today ?? value, opening, close, change};
+}
+
+function setText(id, text){
+ const el=document.getElementById(id);
+ if(el) el.textContent=text;
+}
+
+function setChange(id, change){
+ const el=document.getElementById(id);
+ if(!el) return;
+ if(change===null || change===undefined || change===""){
+   el.textContent="Live rate";
+   el.className="rate-change neutral";
+   return;
+ }
+ const s=String(change);
+ const n=numberValue(change);
+ el.textContent = (n!==null && n>0 ? "▲ " : n!==null && n<0 ? "▼ " : "") + s;
+ el.className="rate-change " + (n!==null && n>0 ? "positive" : n!==null && n<0 ? "negative" : "neutral");
+}
+
+function updateMetalUI(metal, info){
+ const suffix = metal==="silver" ? "Silver" : metal;
+ const ids = metal==="silver"
+   ? {price:"silver",change:"changeSilver",today:"todaySilver",open:"openSilver",close:"closeSilver"}
+   : {price:"gold"+metal,change:"change"+metal,today:"today"+metal,open:"open"+metal,close:"close"+metal};
+
+ setText(ids.price,displayPrice(info.value));
+ setText(ids.today,displayPrice(info.today));
+ setText(ids.open,displayPrice(info.opening));
+ setText(ids.close,displayPrice(info.close));
+ setChange(ids.change,info.change);
+}
+
+function updateModalMetal(metal, info){
+ const p=metal==="silver" ? "silver" : metal;
+ setText("m"+p,displayPrice(info.value));
+ setText("m"+p+"today",displayPrice(info.today));
+ setText("m"+p+"open",displayPrice(info.opening));
+ setText("m"+p+"close",displayPrice(info.close));
+ setText("m"+p+"change",info.change ? String(info.change) : "Live rate");
+}
+
+async function loadGoldRates(){
+ const status=document.getElementById("apiStatus");
+ const error=document.getElementById("apiError");
+
+ status.innerHTML='<span class="loading">●</span> Google Script से live rate लिया जा रहा है…';
+ error.style.display="none";
+
+ try{
+   const response = await fetch(GOLD_API,{
+     method:"GET",
+     cache:"no-store",
+     redirect:"follow"
+   });
+
+   if(!response.ok) throw new Error("API HTTP "+response.status);
+
+   const text = await response.text();
+   let json;
+
+   try{
+     json=JSON.parse(text);
+   }catch(parseErr){
+     throw new Error("Google Script ने JSON response नहीं दिया");
+   }
+
+   goldData=json;
+   goldLoaded=true;
+
+   const info24=metalInfo(json,"24k");
+   const info22=metalInfo(json,"22k");
+   const info18=metalInfo(json,"18k");
+   const infoSilver=metalInfo(json,"silver");
+
+   updateMetalUI("24k",info24);
+   updateMetalUI("22k",info22);
+   updateMetalUI("18k",info18);
+   updateMetalUI("silver",infoSilver);
+
+   updateModalMetal("24k",info24);
+   updateModalMetal("22k",info22);
+   updateModalMetal("18k",info18);
+   updateModalMetal("silver",infoSilver);
+
+   const n24=numberValue(info24.value);
+   if(n24!==null){
+     setText("tileGold24","24K 1g: "+displayPrice(n24));
+     setText("tenGramPrice",displayPrice(n24*10));
+     setText("tenGramStatus","● Google Script • Live 24K rate");
+   }else{
+     setText("tileGold24","24K 1g: ₹—");
+     setText("tenGramPrice","Live ↗");
+   }
+
+   status.innerHTML='<span class="live-badge">● LIVE</span>  Google Script • India rate loaded';
+ }catch(err){
+   console.error(err);
+   status.innerHTML='<span style="color:#ffb0b0">● Rate load failed</span>';
+   error.textContent="Live rate अभी load नहीं हो पाया। Google Script URL/JSON response check करें. ("+err.message+")";
+   error.style.display="block";
+ }
+}
+
+/* Load the rate on page open so the Gold Price icon can show 24K 1g. */
+loadGoldRates();
+
+/* Refresh every 5 minutes. */
+setInterval(loadGoldRates,5*60*1000);
+</script>
+
+</body>
+</html>
