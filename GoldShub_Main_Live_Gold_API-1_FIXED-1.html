@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="GoldShub Live Gold & Silver Rate">
+<title>GoldShub — Live Gold & Silver Rate</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050505;
+  --panel:#101113;
+  --panel2:#0b0c0e;
+  --gold:#f4c52f;
+  --gold2:#ffd95a;
+  --line:#3a321b;
+  --muted:#999b9f;
+  --white:#f7f7f7;
+  --green:#19c978;
+  --red:#ff5b5b;
+}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--white);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+button{font:inherit}
+a{color:inherit;text-decoration:none}
+
+.top{
+  position:sticky;top:0;z-index:20;
+  height:72px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 18px;
+  background:rgba(5,5,5,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid #242424;
+}
+.brand{
+  text-align:center;line-height:1;
+  flex:1;
+}
+.brand strong{
+  font-size:25px;letter-spacing:-1px;
+}
+.brand strong span{color:var(--gold)}
+.brand small{
+  display:block;margin-top:7px;color:#a8a8aa;
+  font-size:11px;letter-spacing:.5px;
+}
+.iconbtn{
+  width:46px;height:46px;border-radius:14px;
+  border:1px solid #3a3a3a;background:#111214;
+  color:white;display:grid;place-items:center;
+  cursor:pointer;
+}
+.iconbtn svg{width:23px;height:23px}
+
+.wrap{max-width:760px;margin:auto;padding:14px 16px 38px}
+
+.statusbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:7px 4px 14px;
+  color:#a6a6a8;font-size:12px;
+}
+.statusbar .live{color:var(--green);font-weight:700}
+
+.hero{
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(244,197,47,.12),transparent 45%),
+    linear-gradient(145deg,#121315,#090a0b);
+  padding:20px;
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+.kicker{color:#b7b7b9;font-size:12px;letter-spacing:2px}
+.hero h1{font-size:26px;margin-top:5px}
+.hero h1 .coin{font-size:25px}
+.hero-sub{color:#8e9094;font-size:13px;margin-top:5px}
+.hero-rate{
+  margin-top:18px;
+  font-size:38px;font-weight:800;letter-spacing:-1px;
+}
+.hero-note{color:#a4a5a8;margin-top:2px;font-size:13px}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+.card{
+  background:linear-gradient(145deg,#111315,#0b0c0e);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:16px;
+  min-height:152px;
+}
+.card .label{
+  color:#9c9da0;font-size:12px;
+  text-transform:uppercase;letter-spacing:1px;
+}
+.card h2{font-size:20px;margin-top:6px}
+.rate{
+  font-size:27px;font-weight:800;margin-top:14px;
+  letter-spacing:-.5px;
+}
+.sub{font-size:12px;color:#8e9093;margin-top:4px}
+.card.silver{border-color:#4b4327}
+
+.history{
+  margin-top:14px;
+  background:#0d0e10;border:1px solid #2c2d2f;
+  border-radius:20px;padding:16px;
+}
+.history h3{font-size:17px;margin-bottom:12px}
+.history-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+}
+.hist{
+  background:#08090a;border:1px solid #252628;
+  border-radius:13px;padding:11px;
+}
+.hist span{display:block;color:#888a8d;font-size:11px}
+.hist b{display:block;margin-top:4px;font-size:13px}
+
+.footer{
+  text-align:center;color:#727477;font-size:11px;
+  padding:18px 4px 4px;
+  line-height:1.6;
+}
+.error{
+  display:none;
+  margin-top:12px;padding:12px 14px;
+  border-radius:14px;background:#241010;
+  border:1px solid #4d2222;color:#ffb4b4;
+  font-size:12px;
+}
+.loading{color:#8d8f92}
+
+@media(max-width:430px){
+  .grid{grid-template-columns:1fr}
+  .history-grid{grid-template-columns:1fr 1fr 1fr}
+  .hero-rate{font-size:34px}
+}
+</style>
+</head>
+
+<body>
+<header class="top">
+  <button class="iconbtn" onclick="history.back()" aria-label="Back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+
+  <div class="brand">
+    <strong><span>GOLD</span>SHUB</strong>
+    <small>Gold Price • Investment • Loan • Research • Tools</small>
+  </div>
+
+  <button class="iconbtn" onclick="loadRates()" aria-label="Refresh">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M20 11a8.1 8.1 0 0 0-15-3"/>
+      <path d="M5 4v4h4"/>
+      <path d="M4 13a8.1 8.1 0 0 0 15 3"/>
+      <path d="M19 20v-4h-4"/>
+    </svg>
+  </button>
+</header>
+
+<main class="wrap">
+  <div class="statusbar">
+    <span>GOLDSHUB • INDIA</span>
+    <span class="live">● LIVE</span>
+  </div>
+
+  <section class="hero">
+    <div class="kicker">24K GOLD</div>
+    <h1><span class="coin">🪙</span> 24K Gold / Gram</h1>
+    <div id="mainRate" class="hero-rate loading">₹—</div>
+    <div id="mainNote" class="hero-note">Live rate • Per gram</div>
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <div class="label">22K GOLD</div>
+      <h2>22K Gold / Gram</h2>
+      <div id="gold22" class="rate loading">₹—</div>
+      <div id="gold22Change" class="sub">Live rate</div>
+    </article>
+
+    <article class="card">
+      <div class="label">18K GOLD</div>
+      <h2>18K Gold / Gram</h2>
+      <div id="gold18" class="rate loading">₹—</div>
+      <div id="gold18Change" class="sub">Live rate</div>
+    </article>
+
+    <article class="card silver">
+      <div class="label">SILVER</div>
+      <h2>Silver / Gram</h2>
+      <div id="silver" class="rate loading">₹—</div>
+      <div id="silverChange" class="sub">Live rate</div>
+    </article>
+
+    <article class="card">
+      <div class="label">MARKET DATE</div>
+      <h2 id="date">—</h2>
+      <div id="city" class="sub">India</div>
+    </article>
+  </section>
+
+  <section class="history">
+    <h3>Market Reference</h3>
+    <div class="history-grid">
+      <div class="hist">
+        <span>Yesterday Open</span>
+        <b id="yOpen">₹—</b>
+      </div>
+      <div class="hist">
+        <span>Yesterday Close</span>
+        <b id="yClose">₹—</b>
+      </div>
+      <div class="hist">
+        <span>7 Days</span>
+        <b id="sevenDays">₹—</b>
+      </div>
+    </div>
+  </section>
+
+  <div id="error" class="error"></div>
+
+  <div class="footer">
+    ● Live rate • India • All prices shown per gram<br>
+    Source: GoldShub Google Script
+  </div>
+</main>
+
+<script>
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbzE4km4kklPb9OkgJEUMQB-BleQdl1IL-eKMll_RqTvkq7fRDEPnd6Xk6oSv6CTtiv4/exec?city=India";
+
+const $ = id => document.getElementById(id);
+
+function firstValue(obj, keys, fallback = null){
+  for(const key of keys){
+    if(obj && obj[key] !== undefined && obj[key] !== null && obj[key] !== ""){
+      return obj[key];
+    }
+  }
+  return fallback;
+}
+
+function num(v){
+  if(v === null || v === undefined || v === "") return null;
+  const n = Number(String(v).replace(/,/g,"").replace(/[₹\s]/g,""));
+  return Number.isFinite(n) ? n : null;
+}
+
+function money(v){
+  const n = num(v);
+  if(n === null) return "₹—";
+  return "₹" + Math.round(n).toLocaleString("en-IN");
+}
+
+function setText(id, value){
+  $(id).textContent = value;
+}
+
+function render(data){
+  const d = Array.isArray(data) ? data[0] : data;
+
+  const g24 = firstValue(d, ["gold_24k","gold24k","gold24","24k","gold_24"]);
+  const g22 = firstValue(d, ["gold_22k","gold22k","gold22","22k","gold_22"]);
+  const g18 = firstValue(d, ["gold_18k","gold18k","gold18","18k","gold_18"]);
+  const sil = firstValue(d, ["silver","silver_999","silver999","silver_999_price"]);
+
+  setText("mainRate", money(g24));
+  setText("gold22", money(g22));
+  setText("gold18", money(g18));
+  setText("silver", money(sil));
+
+  setText("yOpen", money(firstValue(d,[
+    "yesterday_open","yesterdayOpen","gold_yesterday_open"
+  ])));
+
+  setText("yClose", money(firstValue(d,[
+    "yesterday_close","yesterdayClose","gold_yesterday_close"
+  ])));
+
+  setText("sevenDays", money(firstValue(d,[
+    "seven_days","sevenDays","seven_day","gold_seven_days"
+  ])));
+
+  const date = firstValue(d,["date","updated","last_updated","market_date"],"—");
+  const city = firstValue(d,["city","City"],"India");
+
+  setText("date", date);
+  setText("city", city);
+
+  const yesterday = num(firstValue(d,["yesterday_close","yesterdayClose"]));
+  if(num(g24)!==null && yesterday!==null){
+    const diff = num(g24) - yesterday;
+    const pct = yesterday ? (diff / yesterday * 100) : 0;
+    const sign = diff >= 0 ? "+" : "";
+    $("mainNote").textContent =
+      "Live rate • " + sign + diff.toLocaleString("en-IN") +
+      " (" + sign + pct.toFixed(2) + "%) vs yesterday close";
+    $("mainNote").style.color = diff >= 0 ? "var(--green)" : "var(--red)";
+  }else{
+    $("mainNote").textContent = "Live rate • Per gram";
+    $("mainNote").style.color = "";
+  }
+
+  ["gold22Change","gold18Change","silverChange"].forEach(id => {
+    $(id).textContent = "Live rate • Per gram";
+  });
+
+  $("error").style.display = "none";
+}
+
+async function loadRates(){
+  $("error").style.display = "none";
+  $("mainRate").textContent = "Loading…";
+  $("gold22").textContent = "Loading…";
+  $("gold18").textContent = "Loading…";
+  $("silver").textContent = "Loading…";
+
+  try{
+    const response = await fetch(API_URL + "&_=" + Date.now(), {
+      method:"GET",
+      cache:"no-store"
+    });
+
+    if(!response.ok) throw new Error("API response " + response.status);
+
+    const data = await response.json();
+    render(data);
+  }catch(err){
+    console.error(err);
+    $("mainRate").textContent = "₹—";
+    $("gold22").textContent = "₹—";
+    $("gold18").textContent = "₹—";
+    $("silver").textContent = "₹—";
+    $("error").textContent =
+      "Live data load नहीं हो पाया। Internet/API connection check करें और Refresh दबाएँ।";
+    $("error").style.display = "block";
+  }
+}
+
+loadRates();
+</script>
+</body>
+</html>
