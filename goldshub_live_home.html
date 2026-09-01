@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>GOLDShub — Live Gold & Silver</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--surface:#101010;--card:#151513;--line:#34312a;
+  --gold:#f0b923;--gold2:#ffd85a;--white:#f7f7f7;--muted:#aaa;
+  --green:#16b84e;--red:#ef4444;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;padding-bottom:82px;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.header{
+  height:96px;padding:15px 18px 10px;display:flex;align-items:center;
+  justify-content:center;position:relative;border-bottom:1px solid #181818;
+}
+.menu,.profile{
+  position:absolute;top:17px;width:54px;height:54px;border:1px solid #4b463b;
+  border-radius:14px;background:#0d0d0d;color:white;display:grid;place-items:center;
+}
+.menu{left:18px}.profile{right:18px}
+.menu span,.menu span:before,.menu span:after{
+  content:"";display:block;width:22px;height:2px;background:#ddd;
+}
+.menu span:before{transform:translateY(-7px)}
+.menu span:after{transform:translateY(5px)}
+.profile{font-size:27px}
+.green-dot{position:absolute;right:-1px;top:-1px;width:11px;height:11px;background:#16bd5a;border-radius:50%}
+.brand{text-align:center}.brand-name{font-size:32px;letter-spacing:2px}
+.brand-name .g{color:var(--gold2)}.brand-sub{font-size:13px;color:#bcbcbc;margin-top:3px}
+
+.wrap{max-width:720px;margin:auto;padding:0 18px}
+.hero{
+  height:334px;margin-top:0;border:1px solid #4a3b20;border-radius:19px;overflow:hidden;
+  position:relative;background:radial-gradient(circle at 83% 52%,rgba(231,174,30,.22),transparent 28%),
+  radial-gradient(circle at 70% 25%,rgba(255,194,43,.08),transparent 32%),
+  linear-gradient(115deg,#11100d,#17140c 58%,#0c0c0c);
+}
+.hero-content{padding:27px 29px;width:58%;position:relative;z-index:2}
+.badge{display:inline-block;border:1px solid #b88b19;color:#ffd65b;padding:9px 13px;border-radius:11px;
+font-weight:700;font-size:12px;background:#1a160b;margin-bottom:18px}
+.hero h1{font-size:29px;line-height:1.28;margin-bottom:12px}.hero h1 span{color:var(--gold2)}
+.hero p{color:#d0d0d0;font-size:15px;line-height:1.55}
+.actions{display:flex;gap:10px;margin-top:21px}
+.btn{border:1px solid #8c6b22;border-radius:7px;padding:12px 15px;font-weight:700;font-size:13px;cursor:pointer}
+.btn.primary{background:linear-gradient(#ffd85b,#e6a91a);color:#15120a}.btn.secondary{background:#12120f;color:#eee}
+.gold-art{position:absolute;right:-4px;bottom:7px;width:46%;height:82%;display:flex;align-items:center;justify-content:center}
+.gold-ring{position:absolute;width:235px;height:235px;border:1px solid #d8a92c;border-radius:50%;box-shadow:0 0 20px rgba(242,185,40,.12)}
+.gold-ring:before,.gold-ring:after{content:"";position:absolute;border:1px solid #9c7b25;border-radius:50%}
+.gold-ring:before{inset:16px}.gold-ring:after{inset:34px}
+.bar{width:125px;height:70px;background:linear-gradient(145deg,#ffe477,#b9820b);transform:rotate(13deg);
+border-radius:5px;border:1px solid #80601c;box-shadow:12px 20px 30px #0008;position:relative;z-index:2}
+.bar:after{content:"FINE GOLD\n999.9";white-space:pre;position:absolute;left:37px;top:20px;font-size:10px;color:#6f5108;font-weight:700;text-align:center}
+.coin{position:absolute;width:42px;height:14px;border-radius:50%;background:linear-gradient(#ffe06b,#bd8610);border:1px solid #75530d}
+.c1{bottom:39px;left:31%}.c2{bottom:28px;left:45%}.c3{bottom:51px;left:55%}
+.dots{text-align:center;margin-top:-18px;position:relative;z-index:3}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#625d51;margin:0 4px}.dot.active{background:#ffd54d}
+
+.ticker{margin-top:13px;height:59px;border:1px solid #383838;border-radius:15px;background:#141414;
+display:flex;align-items:center;overflow:hidden}
+.tick{min-width:20%;display:flex;justify-content:center;align-items:center;gap:7px;border-right:1px solid #3a3a3a;font-size:13px}
+.tick:last-child{border:0}.tick-icon{font-size:19px}.live{background:#138a37;color:#fff;padding:3px 5px;border-radius:3px;font-size:10px;font-weight:700}
+
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:21px 3px 11px}
+.section-head h2{font-size:18px}.section-head small{color:#aaa;font-size:13px}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.price-card{
+  min-height:190px;border:1px solid #403b30;border-radius:17px;background:linear-gradient(145deg,#171715,#10100f);
+  padding:15px;position:relative;overflow:hidden;cursor:pointer;transition:.18s;
+}
+.price-card:active{transform:scale(.985)}.price-card h3{font-size:18px;color:#f3c83d}.price-card.silver h3{color:#ddd}
+.sub{color:#aaa;font-size:12px;margin-top:5px}.price{font-size:28px;font-weight:700;margin-top:8px}
+.change{font-size:13px;margin-top:4px}.up{color:var(--green)}.down{color:var(--red)}.flat{color:#aaa}
+.mini-icon{position:absolute;right:15px;top:17px;width:53px;height:53px;border:1px solid #876b24;border-radius:10px;
+display:grid;place-items:center;font-size:28px;background:#1d1b14}.price-card.silver .mini-icon{border-color:#777;background:#292929}
+.stats{position:absolute;left:15px;right:15px;bottom:10px;border-top:1px solid #292929;display:grid;
+grid-template-columns:1fr 1fr 1fr;padding-top:9px;text-align:center}.stats span{display:block;color:#999;font-size:11px;margin-bottom:5px}.stats b{font-size:13px;font-weight:500}
+
+.overview{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.rate-box,.chart-box{border:1px solid #403b30;border-radius:17px;background:#141412;padding:15px;min-height:205px}
+.rate-title{font-size:14px}.rate-big{font-size:23px;font-weight:700;margin-top:10px}.rate-change{font-size:13px}
+.rate-note{font-size:12px;margin-top:8px}.rate-actions{display:flex;gap:7px;margin-top:13px}
+.small-btn{padding:9px 10px;border-radius:7px;border:1px solid #5c4b25;background:#171610;color:#eee;font-size:11px}
+.small-btn.gold{background:linear-gradient(#ffd653,#e7ad20);color:#111;border-color:#d3a321}
+.chart-head{display:flex;justify-content:space-between;align-items:center}.chart-title{color:#f4c533;font-size:15px;font-weight:700}
+.select{border:1px solid #4a453b;border-radius:9px;padding:7px 9px;color:#ddd;font-size:11px}
+.bars{height:125px;margin-top:15px;display:flex;align-items:end;gap:9px;border-bottom:1px solid #333}
+.bar-col{flex:1;background:linear-gradient(#ffd04a,#b57b10);border-radius:3px 3px 0 0;min-height:4px}
+.labels{display:flex;justify-content:space-between;color:#aaa;font-size:10px;margin-top:5px}
+.explore-title{font-size:19px;margin:23px 3px 10px;display:flex;justify-content:space-between}
+.explore-title a{font-size:13px;color:#e8bd35;font-weight:500}
+.explore{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.explore-card{height:101px;border:1px solid #39362f;border-radius:11px;background:#151514;display:flex;
+flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.explore-card .ico{font-size:28px;color:#f2c338;height:35px}.explore-card strong{font-size:13px;margin-top:4px}
+.explore-card span{font-size:10px;color:#999;margin-top:3px}
+.bottom{position:fixed;left:0;right:0;bottom:0;height:73px;background:#151515;border-top:1px solid #333;
+display:grid;grid-template-columns:repeat(5,1fr);z-index:20}
+.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#aaa;font-size:11px;gap:3px}
+.nav-item .nav-ico{font-size:23px;line-height:1}.nav-item.active{color:#f4c535}.nav-item.active .nav-ico{filter:drop-shadow(0 0 4px #d6a91e)}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:50;align-items:flex-end;justify-content:center}
+.modal.show{display:flex}
+.sheet{width:min(720px,100%);background:#151513;border:1px solid #51472e;border-radius:24px 24px 0 0;
+padding:18px 18px 25px;box-shadow:0 -10px 35px #000b;animation:up .2s ease}
+@keyframes up{from{transform:translateY(30px);opacity:.3}to{transform:none;opacity:1}}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sheet-title{font-size:22px;color:var(--gold2);font-weight:700}.close{width:38px;height:38px;border-radius:50%;
+border:1px solid #555;background:#20201e;color:#fff;font-size:22px;cursor:pointer}
+.detail-main{border:1px solid #403b30;border-radius:15px;background:#10100f;padding:16px;margin-bottom:10px}
+.detail-current{font-size:30px;font-weight:700}.detail-unit{font-size:12px;color:#999;margin-top:3px}
+.detail-change{font-size:14px;font-weight:600;margin-top:7px}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.detail-box{border:1px solid #35322c;border-radius:12px;padding:12px;background:#181816}
+.detail-box span{display:block;color:#999;font-size:11px;margin-bottom:6px}.detail-box b{font-size:16px}
+.detail-note{color:#999;font-size:11px;margin-top:12px;line-height:1.5}
+.loading{opacity:.55}.updated{font-size:10px;color:#777;margin-top:5px;text-align:right}
+
+@media(max-width:600px){
+.header{height:95px}.brand-name{font-size:29px}.hero{height:333px}.hero-content{width:64%;padding:25px 28px}
+.hero h1{font-size:26px}.hero p{font-size:14px}.gold-art{width:48%;opacity:.98}.gold-ring{width:190px;height:190px}.bar{width:105px;height:60px}
+.tick{min-width:20%;font-size:11px}.price-card{min-height:188px}.price{font-size:27px}
+.overview{grid-template-columns:1fr 1fr}.explore{grid-template-columns:repeat(5,1fr)}.explore-card{height:100px}
+}
+@media(max-width:430px){
+.wrap{padding:0 18px}.hero-content{width:72%;padding:24px 25px}.hero h1{font-size:24px}.hero p{font-size:13px}
+.gold-art{width:43%;right:-9px}.gold-ring{width:150px;height:150px}.bar{width:88px;height:51px}
+.actions{gap:7px}.btn{font-size:11px;padding:11px 10px}.ticker{height:57px}.tick{font-size:10px;gap:4px}.tick-icon{font-size:16px}.live{font-size:8px}
+.price-card{min-height:185px;padding:13px}.price{font-size:25px}.price-card h3{font-size:17px}.mini-icon{width:49px;height:49px}
+.overview{gap:9px}.rate-box,.chart-box{padding:13px}.rate-big{font-size:20px}.rate-actions{flex-direction:column}
+.small-btn{font-size:10px;padding:8px}.explore{gap:6px}.explore-card{height:96px}.explore-card .ico{font-size:25px}
+.explore-card strong{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <a class="menu" href="#explore" aria-label="Menu"><span></span></a>
+  <div class="brand">
+    <div class="brand-name"><span class="g">GOLD</span>SHUB</div>
+    <div class="brand-sub">Gold Price • Investment • Loan • Research • Tools</div>
+  </div>
+  <a class="profile" href="#" aria-label="Profile">♔<i class="green-dot"></i></a>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">✦ LIVE GOLDSHUB</div>
+    <h1>सोने की दुनिया की<br>पूरी जानकारी <span>एक जगह</span></h1>
+    <p>Live Gold Price, Gold Loan, Investment, Calculators, City-wise Rates, News और Gold Research — सीधे आपके GoldShub app में।</p>
+    <div class="actions">
+      <a class="btn primary" href="https://www.goldshub.com/" target="_blank">◉ Live Gold Price →</a>
+      <a class="btn secondary" href="#">Investment Guide</a>
+    </div>
+  </div>
+  <div class="gold-art" aria-hidden="true">
+    <div class="gold-ring"></div><div class="bar"></div>
+    <i class="coin c1"></i><i class="coin c2"></i><i class="coin c3"></i>
+  </div>
+</section>
+
+<div class="dots"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+
+<div class="ticker">
+  <div class="tick"><span class="tick-icon">🪙</span>24K <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">🪙</span>22K <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">🪙</span>18K <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">⚪</span>Silver <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">🇮🇳</span>India Gold <b class="live">LIVE</b></div>
+</div>
+
+<div class="section-head">
+  <h2>🇮🇳 Live Gold &amp; Silver Rate</h2><small>Per Gram</small>
+</div>
+
+<section class="price-grid">
+
+  <article class="price-card" onclick="openDetails('24K GOLD')">
+    <h3>24K GOLD</h3><div class="sub">24K Gold / Gram</div>
+    <div class="price loading" id="gold24">Loading...</div><div class="change" id="chg24">● Connecting...</div>
+    <div class="mini-icon">🪙</div>
+    <div class="stats">
+      <div><span>Today</span><b id="today24">—</b></div>
+      <div><span>Opening</span><b id="open24">—</b></div>
+      <div><span>Yesterday Close</span><b id="close24">—</b></div>
+    </div>
+  </article>
+
+  <article class="price-card" onclick="openDetails('22K GOLD')">
+    <h3>22K GOLD</h3><div class="sub">22K Gold / Gram</div>
+    <div class="price loading" id="gold22">Loading...</div><div class="change" id="chg22">● Connecting...</div>
+    <div class="mini-icon">🪙</div>
+    <div class="stats">
+      <div><span>Today</span><b id="today22">—</b></div>
+      <div><span>Opening</span><b id="open22">—</b></div>
+      <div><span>Yesterday Close</span><b id="close22">—</b></div>
+    </div>
+  </article>
+
+  <article class="price-card" onclick="openDetails('18K GOLD')">
+    <h3>18K GOLD</h3><div class="sub">18K Gold / Gram</div>
+    <div class="price loading" id="gold18">Loading...</div><div class="change" id="chg18">● Connecting...</div>
+    <div class="mini-icon">🪙</div>
+    <div class="stats">
+      <div><span>Today</span><b id="today18">—</b></div>
+      <div><span>Opening</span><b id="open18">—</b></div>
+      <div><span>Yesterday Close</span><b id="close18">—</b></div>
+    </div>
+  </article>
+
+  <article class="price-card silver" onclick="openDetails('SILVER')">
+    <h3>SILVER</h3><div class="sub">Silver / Gram</div>
+    <div class="price loading" id="silver">Loading...</div><div class="change" id="chgSilver">● Connecting...</div>
+    <div class="mini-icon">⚪</div>
+    <div class="stats">
+      <div><span>Today</span><b id="todaySilver">—</b></div>
+      <div><span>Opening</span><b id="openSilver">—</b></div>
+      <div><span>Yesterday Close</span><b id="closeSilver">—</b></div>
+    </div>
+  </article>
+
+</section>
+
+<div style="text-align:center;color:#8d8d8d;font-size:12px;margin:11px 0">
+  🟢 Live rate • All prices shown per gram
+  <div class="updated" id="updated">Connecting to GoldShub...</div>
+</div>
+
+<section class="overview">
+
+  <article class="rate-box">
+    <div class="rate-title">🇮🇳 India · Live Gold Price</div>
+    <div style="font-size:20px;font-weight:700;margin-top:9px">24K Gold — 10 Gram</div>
+    <div class="rate-big" id="gold10">—</div>
+    <div class="rate-note" id="rateNote">● Live price from GoldShub</div>
+    <div class="rate-actions">
+      <a class="small-btn gold" href="https://www.goldshub.com/" target="_blank">⌁ View Live Price</a>
+      <a class="small-btn" href="#">⌖ India Rate</a>
+    </div>
+  </article>
+
+  <article class="chart-box">
+    <div class="chart-head"><div class="chart-title">Gold Market Overview</div><div class="select">7 Days</div></div>
+    <div class="bars" id="bars"></div>
+    <div class="labels" id="labels"></div>
+  </article>
+
+</section>
+
+<h2 class="explore-title"><span>Explore GoldShub</span><a href="#">View All →</a></h2>
+
+<section class="explore" id="explore">
+  <a class="explore-card" href="#"><div class="ico">🪙</div><strong>Gold Price</strong><span>आज का भाव</span></a>
+  <a class="explore-card" href="#"><div class="ico">📈</div><strong>Investment</strong><span>ETF • SGB • SIP</span></a>
+  <a class="explore-card" href="#"><div class="ico">💰</div><strong>Gold Loan</strong><span>Loan guide</span></a>
+  <a class="explore-card" href="#"><div class="ico">▣</div><strong>Calculators</strong><span>Smart tools</span></a>
+  <a class="explore-card" href="#"><div class="ico">🐷</div><strong>Gold Savings</strong><span>SIP &amp; saving</span></a>
+  <a class="explore-card" href="#"><div class="ico">◉</div><strong>Research</strong><span>Market analysis</span></a>
+  <a class="explore-card" href="#"><div class="ico">▤</div><strong>News</strong><span>Latest updates</span></a>
+  <a class="explore-card" href="#"><div class="ico">▥</div><strong>City Rates</strong><span>Live city rates</span></a>
+  <a class="explore-card" href="#"><div class="ico">✉</div><strong>Contact</strong><span>GoldShub form</span></a>
+  <a class="explore-card" href="#"><div class="ico">•••</div><strong>More</strong><span>All guides</span></a>
+</section>
+
+</main>
+
+<nav class="bottom">
+  <a class="nav-item active" href="#"><span class="nav-ico">⌂</span>Home</a>
+  <a class="nav-item" href="#"><span class="nav-ico">₹</span>Market</a>
+  <a class="nav-item" href="#"><span class="nav-ico">⌘</span>Tools</a>
+  <a class="nav-item" href="#"><span class="nav-ico">▤</span>News</a>
+  <a class="nav-item" href="#"><span class="nav-ico">◯</span>Profile</a>
+</nav>
+
+<div class="modal" id="modal" onclick="closeIfOutside(event)">
+  <div class="sheet">
+    <div class="sheet-head">
+      <div class="sheet-title" id="modalTitle">24K GOLD</div>
+      <button class="close" onclick="closeDetails()">×</button>
+    </div>
+
+    <div class="detail-main">
+      <div class="detail-current" id="modalCurrent">—</div>
+      <div class="detail-unit">Current live price / Gram</div>
+      <div class="detail-change" id="modalChange">—</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-box"><span>Today</span><b id="modalToday">—</b></div>
+      <div class="detail-box"><span>Opening</span><b id="modalOpen">—</b></div>
+      <div class="detail-box"><span>Yesterday Close</span><b id="modalClose">—</b></div>
+      <div class="detail-box"><span>Difference</span><b id="modalDiff">—</b></div>
+    </div>
+
+    <div class="detail-note" id="modalNote">
+      Difference and percentage are calculated automatically against Yesterday Close.
+      If today's opening field is not supplied by the API, Opening will show unavailable.
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================
+   GOLDShub LIVE API
+   ========================================================== */
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbzE4km4kklPb9OkgJEUMQB-BleQdl1IL-eKMll_RqTvkq7fRDEPnd6Xk6oSv6CTtiv4/exec?city=India";
+
+let liveData = {};
+let instruments = {};
+
+/* API may return rupees per 10g for gold and per kg for silver.
+   These factors convert them to the per-gram values used by this UI. */
+const GOLD_DIVISOR = 10;
+const SILVER_DIVISOR = 1000;
+
+const $ = id => document.getElementById(id);
+
+function num(v){
+  if(v === null || v === undefined || v === "") return null;
+  if(typeof v === "number") return Number.isFinite(v) ? v : null;
+  const n = Number(String(v).replace(/[₹,\s]/g,""));
+  return Number.isFinite(n) ? n : null;
+}
+
+function firstNumber(obj, keys){
+  for(const key of keys){
+    if(obj && obj[key] !== undefined){
+      const n = num(obj[key]);
+      if(n !== null) return n;
+    }
+  }
+  return null;
+}
+
+function money(v){
+  if(v === null || v === undefined || !Number.isFinite(v)) return "—";
+  return "₹" + v.toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function signedMoney(v){
+  if(v === null || !Number.isFinite(v)) return "—";
+  return (v >= 0 ? "+" : "−") + money(Math.abs(v));
+}
+
+function percent(v){
+  if(v === null || !Number.isFinite(v)) return "—";
+  return (v >= 0 ? "+" : "−") + Math.abs(v).toFixed(2) + "%";
+}
+
+function setChange(el, diff, pct){
+  if(diff === null || pct === null){
+    el.textContent = "● Change unavailable";
+    el.className = "change flat";
+    return;
+  }
+  const arrow = diff > 0 ? "▲" : diff < 0 ? "▼" : "●";
+  el.textContent = arrow + " " + signedMoney(diff) + " (" + percent(pct) + ")";
+  el.className = "change " + (diff > 0 ? "up" : diff < 0 ? "down" : "flat");
+}
+
+function getTodayOpen(data, item){
+  return firstNumber(item,["today_open","todayOpening","opening","open","open_price"]) ??
+         firstNumber(data,["today_open","todayOpening","opening","open","open_price"]);
+}
+
+function getYesterdayClose(data,item){
+  return firstNumber(item,["yesterday_close","yesterdayClose","previous_close","prev_close"]) ??
+         firstNumber(data,["yesterday_close","yesterdayClose","previous_close","prev_close"]);
+}
+
+function normalizeGold(raw, divisor){
+  const current = num(raw) === null ? null : num(raw) / divisor;
+  return current;
+}
+
+function normalizeSilver(raw){
+  const n = num(raw);
+  return n === null ? null : n / SILVER_DIVISOR;
+}
+
+function extractSevenDays(data){
+  const raw = data.seven_days || data.sevenDays || data.history || data.chart || [];
+  if(Array.isArray(raw)) return raw;
+  if(raw && typeof raw === "object") return Object.entries(raw).map(([date,val])=>({date,gold:val}));
+  return [];
+}
+
+function getHistoryGold(item){
+  if(typeof item === "number") return item;
+  const n = firstNumber(item,["gold_24k","gold24","gold","value","price"]);
+  return n === null ? null : (n > 50000 ? n / GOLD_DIVISOR : n);
+}
+
+async function loadRates(){
+  try{
+    const response = await fetch(API_URL + (API_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {
+      cache:"no-store"
+    });
+    if(!response.ok) throw new Error("HTTP " + response.status);
+
+    const data = await response.json();
+    liveData = data || {};
+
+    /* Current values from the API */
+    const g24raw = firstNumber(data,["gold_24k","gold24","gold24k"]);
+    const g22raw = firstNumber(data,["gold_22k","gold22","gold22k"]);
+    const g18raw = firstNumber(data,["gold_18k","gold18","gold18k"]);
+    const sraw   = firstNumber(data,["silver_999","silver999","silver"]);
+
+    const g24 = normalizeGold(g24raw,GOLD_DIVISOR);
+    const g22 = normalizeGold(g22raw,GOLD_DIVISOR);
+    const g18 = normalizeGold(g18raw,GOLD_DIVISOR);
+    const silver = normalizeSilver(sraw);
+
+    /* API screenshot shows yesterday_open / yesterday_close.
+       If a today's opening field is later added to the Script, this
+       HTML automatically uses it. */
+    const apiOpen = getTodayOpen(data,data);
+    const yCloseRaw = getYesterdayClose(data,data);
+
+    const yCloseGold = yCloseRaw !== null ? yCloseRaw / GOLD_DIVISOR : null;
+
+    instruments = {
+      "24K GOLD": {current:g24, today:g24, open:apiOpen!==null?apiOpen/GOLD_DIVISOR:null, close:yCloseGold},
+      "22K GOLD": {current:g22, today:g22, open:apiOpen!==null?apiOpen/GOLD_DIVISOR:null, close:yCloseGold},
+      "18K GOLD": {current:g18, today:g18, open:apiOpen!==null?apiOpen/GOLD_DIVISOR:null, close:yCloseGold},
+      "SILVER": {
+        current:silver,today:silver,
+        open:firstNumber(data,["today_open_silver","silver_open","silver_today_open"]) !== null ?
+             firstNumber(data,["today_open_silver","silver_open","silver_today_open"]) / SILVER_DIVISOR : null,
+        close:firstNumber(data,["yesterday_close_silver","silver_yesterday_close"]) !== null ?
+             firstNumber(data,["yesterday_close_silver","silver_yesterday_close"]) / SILVER_DIVISOR : null
+      }
+    };
+
+    updateCard("24K GOLD","gold24","chg24","today24","open24","close24");
+    updateCard("22K GOLD","gold22","chg22","today22","open22","close22");
+    updateCard("18K GOLD","gold18","chg18","today18","open18","close18");
+    updateCard("SILVER","silver","chgSilver","todaySilver","openSilver","closeSilver");
+
+    if(g24 !== null){
+      $("gold10").textContent = money(g24 * 10);
+    }
+
+    const updatedValue = data.updated_at || data.updatedAt || data.timestamp || data.time || "";
+    $("updated").textContent = updatedValue ? "Updated: " + updatedValue : "● Live • Auto refresh every 60 seconds";
+    $("rateNote").textContent = "● Live price from GoldShub";
+
+    renderChart(extractSevenDays(data));
+
+  }catch(error){
+    console.error(error);
+    $("updated").textContent = "⚠ Live data connection failed";
+    ["chg24","chg22","chg18","chgSilver"].forEach(id=>{
+      $(id).textContent = "⚠ Unable to load live data";
+      $(id).className = "change flat";
+    });
+  }
+}
+
+function updateCard(name,priceId,changeId,todayId,openId,closeId){
+  const x = instruments[name];
+  if(!x) return;
+
+  $(priceId).classList.remove("loading");
+  $(priceId).textContent = money(x.current);
+  $(todayId).textContent = money(x.today);
+  $(openId).textContent = money(x.open);
+  $(closeId).textContent = money(x.close);
+
+  const diff = x.current !== null && x.close !== null ? x.current - x.close : null;
+  const pct = diff !== null && x.close !== 0 ? (diff / x.close) * 100 : null;
+  setChange($(changeId),diff,pct);
+}
+
+function renderChart(items){
+  const bars = $("bars"), labels = $("labels");
+  bars.innerHTML = ""; labels.innerHTML = "";
+
+  if(!items.length){
+    for(let i=0;i<7;i++){
+      const b=document.createElement("i"); b.className="bar-col"; b.style.height="10px"; bars.appendChild(b);
+      const l=document.createElement("span"); l.textContent=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][i]; labels.appendChild(l);
+    }
+    return;
+  }
+
+  const cleaned = items.map((x,i)=>{
+    let value = getHistoryGold(x);
+    let label = typeof x === "object" ? (x.date || x.day || x.label || "") : "";
+    return {value,label:label || ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][i] || ""};
+  }).filter(x=>x.value!==null);
+
+  const last7 = cleaned.slice(-7);
+  const values = last7.map(x=>x.value);
+  const min = Math.min(...values), max = Math.max(...values);
+  const range = max-min || 1;
+
+  last7.forEach(x=>{
+    const b=document.createElement("i");
+    b.className="bar-col";
+    b.style.height=(28 + ((x.value-min)/range)*105) + "px";
+    b.title=money(x.value);
+    bars.appendChild(b);
+
+    const l=document.createElement("span");
+    l.textContent=x.label;
+    labels.appendChild(l);
+  });
+}
+
+function openDetails(name){
+  const x = instruments[name];
+  if(!x) return;
+
+  $("modalTitle").textContent = name;
+  $("modalCurrent").textContent = money(x.current);
+  $("modalToday").textContent = money(x.today);
+  $("modalOpen").textContent = money(x.open);
+  $("modalClose").textContent = money(x.close);
+
+  const diff = x.current !== null && x.close !== null ? x.current-x.close : null;
+  const pct = diff !== null && x.close !== 0 ? (diff/x.close)*100 : null;
+
+  $("modalDiff").textContent = signedMoney(diff);
+  $("modalDiff").className = diff > 0 ? "up" : diff < 0 ? "down" : "";
+
+  if(diff !== null && pct !== null){
+    $("modalChange").textContent =
+      (diff>0 ? "▲ " : diff<0 ? "▼ " : "● ") +
+      signedMoney(diff) + "  (" + percent(pct) + ")";
+    $("modalChange").className = "detail-change " + (diff>0 ? "up" : diff<0 ? "down" : "flat");
+  }else{
+    $("modalChange").textContent = "Change unavailable";
+    $("modalChange").className = "detail-change flat";
+  }
+
+  if(x.open === null){
+    $("modalNote").textContent =
+      "Today's opening price is not supplied by the current Google Script response. " +
+      "The page is ready to use it automatically when a today_open field is added.";
+  }else{
+    $("modalNote").textContent =
+      "Difference and percentage are calculated automatically against Yesterday Close. " +
+      "Live data is fetched directly from your GoldShub Google Apps Script.";
+  }
+
+  $("modal").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+
+function closeDetails(){
+  $("modal").classList.remove("show");
+  document.body.style.overflow="";
+}
+
+function closeIfOutside(e){
+  if(e.target.id==="modal") closeDetails();
+}
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape") closeDetails();
+});
+
+loadRates();
+/* Refresh live data every 60 seconds */
+setInterval(loadRates,60000);
+</script>
+
+</body>
+</html>
