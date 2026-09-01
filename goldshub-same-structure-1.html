@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080808">
+<title>GOLDShub — Gold Price • Investment • Loan • Research • Tools</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--surface:#101010;--card:#151513;--line:#34312a;
+  --gold:#f0b923;--gold2:#ffd85a;--white:#f7f7f7;--muted:#aaa;
+  --green:#16b84e;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:82px;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+
+/* HEADER */
+.header{
+  height:96px;padding:15px 18px 10px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;border-bottom:1px solid #181818;
+}
+.menu,.profile{
+  position:absolute;top:17px;width:54px;height:54px;
+  border:1px solid #4b463b;border-radius:14px;
+  background:#0d0d0d;color:white;display:grid;place-items:center;
+}
+.menu{left:18px}.profile{right:18px}
+.menu span,.menu span:before,.menu span:after{
+  content:"";display:block;width:22px;height:2px;background:#ddd;
+}
+.menu span:before{transform:translateY(-7px)}
+.menu span:after{transform:translateY(5px)}
+.profile{font-size:27px}
+.green-dot{
+  position:absolute;right:-1px;top:-1px;width:11px;height:11px;
+  background:#16bd5a;border-radius:50%;
+}
+.brand{text-align:center}
+.brand-name{font-size:32px;letter-spacing:2px}
+.brand-name .g{color:var(--gold2)}
+.brand-sub{font-size:13px;color:#bcbcbc;margin-top:3px}
+
+/* HERO */
+.wrap{max-width:720px;margin:auto;padding:0 18px}
+.hero{
+  height:334px;margin-top:0;border:1px solid #4a3b20;
+  border-radius:19px;overflow:hidden;position:relative;
+  background:
+   radial-gradient(circle at 83% 52%,rgba(231,174,30,.22),transparent 28%),
+   radial-gradient(circle at 70% 25%,rgba(255,194,43,.08),transparent 32%),
+   linear-gradient(115deg,#11100d,#17140c 58%,#0c0c0c);
+}
+.hero-content{padding:27px 29px;width:58%;position:relative;z-index:2}
+.badge{
+  display:inline-block;border:1px solid #b88b19;color:#ffd65b;
+  padding:9px 13px;border-radius:11px;font-weight:700;font-size:12px;
+  background:#1a160b;margin-bottom:18px;
+}
+.hero h1{font-size:29px;line-height:1.28;margin-bottom:12px}
+.hero h1 span{color:var(--gold2)}
+.hero p{color:#d0d0d0;font-size:15px;line-height:1.55}
+.actions{display:flex;gap:10px;margin-top:21px}
+.btn{
+  border:1px solid #8c6b22;border-radius:7px;padding:12px 15px;
+  font-weight:700;font-size:13px;cursor:pointer;
+}
+.btn.primary{background:linear-gradient(#ffd85b,#e6a91a);color:#15120a}
+.btn.secondary{background:#12120f;color:#eee}
+.gold-art{
+  position:absolute;right:-4px;bottom:7px;width:46%;height:82%;
+  display:flex;align-items:center;justify-content:center;
+}
+.gold-ring{
+  position:absolute;width:235px;height:235px;border:1px solid #d8a92c;
+  border-radius:50%;box-shadow:0 0 20px rgba(242,185,40,.12);
+}
+.gold-ring:before,.gold-ring:after{
+  content:"";position:absolute;border:1px solid #9c7b25;border-radius:50%;
+}
+.gold-ring:before{inset:16px}.gold-ring:after{inset:34px}
+.bar{
+  width:125px;height:70px;background:linear-gradient(145deg,#ffe477,#b9820b);
+  transform:rotate(13deg);border-radius:5px;border:1px solid #80601c;
+  box-shadow:12px 20px 30px #0008;position:relative;z-index:2;
+}
+.bar:after{content:"FINE GOLD\n999.9";white-space:pre;position:absolute;
+  left:37px;top:20px;font-size:10px;color:#6f5108;font-weight:700;text-align:center}
+.coin{position:absolute;width:42px;height:14px;border-radius:50%;
+  background:linear-gradient(#ffe06b,#bd8610);border:1px solid #75530d}
+.c1{bottom:39px;left:31%}.c2{bottom:28px;left:45%}.c3{bottom:51px;left:55%}
+.dots{text-align:center;margin-top:-18px;position:relative;z-index:3}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#625d51;margin:0 4px}
+.dot.active{background:#ffd54d}
+
+/* TICKER */
+.ticker{
+  margin-top:13px;height:59px;border:1px solid #383838;border-radius:15px;
+  background:#141414;display:flex;align-items:center;overflow:hidden;
+}
+.tick{min-width:20%;display:flex;justify-content:center;align-items:center;gap:7px;
+  border-right:1px solid #3a3a3a;font-size:13px}
+.tick:last-child{border:0}
+.tick-icon{font-size:19px}
+.live{background:#138a37;color:#fff;padding:3px 5px;border-radius:3px;font-size:10px;font-weight:700}
+
+/* TITLES */
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:21px 3px 11px}
+.section-head h2{font-size:18px}
+.section-head small{color:#aaa;font-size:13px}
+
+/* PRICE GRID */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.price-card{
+  min-height:190px;border:1px solid #403b30;border-radius:17px;
+  background:linear-gradient(145deg,#171715,#10100f);padding:15px;
+  position:relative;overflow:hidden;
+}
+.price-card h3{font-size:18px;color:#f3c83d}
+.price-card.silver h3{color:#ddd}
+.sub{color:#aaa;font-size:12px;margin-top:5px}
+.price{font-size:28px;font-weight:700;margin-top:8px}
+.change{color:#19b64b;font-size:13px;margin-top:4px}
+.mini-icon{
+  position:absolute;right:15px;top:17px;width:53px;height:53px;
+  border:1px solid #876b24;border-radius:10px;display:grid;place-items:center;
+  font-size:28px;background:#1d1b14;
+}
+.price-card.silver .mini-icon{border-color:#777;background:#292929}
+.stats{position:absolute;left:15px;right:15px;bottom:10px;border-top:1px solid #292929;
+  display:grid;grid-template-columns:1fr 1fr 1fr;padding-top:9px;text-align:center}
+.stats span{display:block;color:#999;font-size:11px;margin-bottom:5px}
+.stats b{font-size:13px;font-weight:500}
+
+/* OVERVIEW */
+.overview{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.rate-box,.chart-box{
+  border:1px solid #403b30;border-radius:17px;background:#141412;padding:15px;min-height:205px
+}
+.rate-title{font-size:14px}
+.rate-big{font-size:23px;font-weight:700;margin-top:10px}
+.rate-change{color:#1dbb4f;font-size:13px}
+.rate-note{color:#1ab54c;font-size:12px;margin-top:8px}
+.rate-actions{display:flex;gap:7px;margin-top:13px}
+.small-btn{padding:9px 10px;border-radius:7px;border:1px solid #5c4b25;background:#171610;color:#eee;font-size:11px}
+.small-btn.gold{background:linear-gradient(#ffd653,#e7ad20);color:#111;border-color:#d3a321}
+.chart-head{display:flex;justify-content:space-between;align-items:center}
+.chart-title{color:#f4c533;font-size:15px;font-weight:700}
+.select{border:1px solid #4a453b;border-radius:9px;padding:7px 9px;color:#ddd;font-size:11px}
+.bars{height:125px;margin-top:15px;display:flex;align-items:end;gap:9px;border-bottom:1px solid #333}
+.bar-col{flex:1;background:linear-gradient(#ffd04a,#b57b10);border-radius:3px 3px 0 0}
+.labels{display:flex;justify-content:space-between;color:#aaa;font-size:10px;margin-top:5px}
+
+/* EXPLORE */
+.explore-title{font-size:19px;margin:23px 3px 10px;display:flex;justify-content:space-between}
+.explore-title a{font-size:13px;color:#e8bd35;font-weight:500}
+.explore{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.explore-card{
+  height:101px;border:1px solid #39362f;border-radius:11px;background:#151514;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.explore-card .ico{font-size:28px;color:#f2c338;height:35px}
+.explore-card strong{font-size:13px;margin-top:4px}
+.explore-card span{font-size:10px;color:#999;margin-top:3px}
+
+/* BOTTOM NAV */
+.bottom{
+  position:fixed;left:0;right:0;bottom:0;height:73px;background:#151515;
+  border-top:1px solid #333;display:grid;grid-template-columns:repeat(5,1fr);
+  z-index:20;
+}
+.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#aaa;font-size:11px;gap:3px}
+.nav-item .nav-ico{font-size:23px;line-height:1}
+.nav-item.active{color:#f4c535}
+.nav-item.active .nav-ico{filter:drop-shadow(0 0 4px #d6a91e)}
+
+/* MOBILE */
+@media(max-width:600px){
+  .header{height:95px}.brand-name{font-size:29px}
+  .hero{height:333px}.hero-content{width:64%;padding:25px 28px}
+  .hero h1{font-size:26px}.hero p{font-size:14px}
+  .gold-art{width:48%;opacity:.98}
+  .gold-ring{width:190px;height:190px}.bar{width:105px;height:60px}
+  .tick{min-width:20%;font-size:11px}.tick:nth-child(4),.tick:nth-child(5){display:flex}
+  .price-card{min-height:188px}.price{font-size:27px}
+  .overview{grid-template-columns:1fr 1fr}.rate-box,.chart-box{min-height:205px}
+  .explore{grid-template-columns:repeat(5,1fr)}
+  .explore-card{height:100px}.explore-card strong{font-size:11px}
+  .explore-card span{font-size:9px}
+}
+@media(max-width:430px){
+  .wrap{padding:0 18px}
+  .hero-content{width:72%;padding:24px 25px}.hero h1{font-size:24px}
+  .hero p{font-size:13px}.gold-art{width:43%;right:-9px}
+  .gold-ring{width:150px;height:150px}.bar{width:88px;height:51px}
+  .actions{gap:7px}.btn{font-size:11px;padding:11px 10px}
+  .ticker{height:57px}.tick{font-size:10px;gap:4px}.tick-icon{font-size:16px}.live{font-size:8px}
+  .price-card{min-height:185px;padding:13px}.price{font-size:25px}
+  .price-card h3{font-size:17px}.mini-icon{width:49px;height:49px}
+  .overview{gap:9px}.rate-box,.chart-box{padding:13px}
+  .rate-big{font-size:20px}.rate-actions{flex-direction:column}
+  .small-btn{font-size:10px;padding:8px}
+  .explore{gap:6px}.explore-card{height:96px}
+  .explore-card .ico{font-size:25px}.explore-card strong{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <a class="menu" href="#explore" aria-label="Menu"><span></span></a>
+  <div class="brand">
+    <div class="brand-name"><span class="g">GOLD</span>SHUB</div>
+    <div class="brand-sub">Gold Price • Investment • Loan • Research • Tools</div>
+  </div>
+  <a class="profile" href="#" aria-label="Profile">♔<i class="green-dot"></i></a>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">✦ NEW GOLDSHUB EXPERIENCE</div>
+    <h1>सोने की दुनिया की<br>पूरी जानकारी <span>एक जगह</span></h1>
+    <p>Live Gold Price, Gold Loan, Investment, Calculators, City-wise Rates, News और Gold Research — सीधे आपके GoldShub app में।</p>
+    <div class="actions">
+      <!-- MAIN GOLDShub URL -->
+      <a class="btn primary" href="https://www.goldshub.com/" target="_blank">◉ Live Gold Price →</a>
+      <!-- ADD LINK LATER -->
+      <a class="btn secondary" href="#">Investment Guide</a>
+    </div>
+  </div>
+  <div class="gold-art" aria-hidden="true">
+    <div class="gold-ring"></div><div class="bar"></div>
+    <i class="coin c1"></i><i class="coin c2"></i><i class="coin c3"></i>
+  </div>
+</section>
+
+<div class="dots"><i class="dot active"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+
+<div class="ticker">
+  <div class="tick"><span class="tick-icon">🪙</span>24K <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">🪙</span>22K <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">🪙</span>18K <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">⚪</span>Silver <b class="live">LIVE</b></div>
+  <div class="tick"><span class="tick-icon">🇮🇳</span>India Gold <b class="live">LIVE</b></div>
+</div>
+
+<div class="section-head">
+  <h2>🇮🇳 Live Gold &amp; Silver Rate</h2><small>Per Gram</small>
+</div>
+
+<section class="price-grid">
+
+  <article class="price-card">
+    <h3>24K GOLD</h3><div class="sub">24K Gold / Gram</div>
+    <div class="price">₹6,245.30</div><div class="change">▲ 12.40 (0.20%)</div>
+    <div class="mini-icon">🪙</div>
+    <div class="stats"><div><span>Today</span><b>₹6,245.30</b></div><div><span>Opening</span><b>₹6,232.90</b></div><div><span>Yesterday Close</span><b>₹6,232.90</b></div></div>
+  </article>
+
+  <article class="price-card">
+    <h3>22K GOLD</h3><div class="sub">22K Gold / Gram</div>
+    <div class="price">₹5,725.60</div><div class="change">▲ 9.80 (0.17%)</div>
+    <div class="mini-icon">🪙</div>
+    <div class="stats"><div><span>Today</span><b>₹5,725.60</b></div><div><span>Opening</span><b>₹5,715.20</b></div><div><span>Yesterday Close</span><b>₹5,715.20</b></div></div>
+  </article>
+
+  <article class="price-card">
+    <h3>18K GOLD</h3><div class="sub">18K Gold / Gram</div>
+    <div class="price">₹4,683.20</div><div class="change">▲ 7.10 (0.15%)</div>
+    <div class="mini-icon">🪙</div>
+    <div class="stats"><div><span>Today</span><b>₹4,683.20</b></div><div><span>Opening</span><b>₹4,676.10</b></div><div><span>Yesterday Close</span><b>₹4,676.10</b></div></div>
+  </article>
+
+  <article class="price-card silver">
+    <h3>SILVER</h3><div class="sub">Silver / Gram</div>
+    <div class="price">₹78.45</div><div class="change">▲ 0.15 (0.19%)</div>
+    <div class="mini-icon">⚪</div>
+    <div class="stats"><div><span>Today</span><b>₹78.45</b></div><div><span>Opening</span><b>₹78.30</b></div><div><span>Yesterday Close</span><b>₹78.30</b></div></div>
+  </article>
+
+</section>
+
+<div style="text-align:center;color:#8d8d8d;font-size:12px;margin:11px 0">🟢 Live rate • All prices shown per gram</div>
+
+<section class="overview">
+
+  <article class="rate-box">
+    <div class="rate-title">🇮🇳 India · Live Gold Price</div>
+    <div style="font-size:20px;font-weight:700;margin-top:9px">24K Gold — 10 Gram</div>
+    <div class="rate-big">₹62,453 <span class="rate-change">▲ 0.21%</span></div>
+    <div class="rate-note">● Current price on GoldShub</div>
+    <div class="rate-actions">
+      <a class="small-btn gold" href="#">⌁ View Live Price</a>
+      <a class="small-btn" href="#">⌖ India Rate</a>
+    </div>
+  </article>
+
+  <article class="chart-box">
+    <div class="chart-head"><div class="chart-title">Gold Market Overview</div><div class="select">7 Days　⌄</div></div>
+    <div class="bars">
+      <i class="bar-col" style="height:52px"></i><i class="bar-col" style="height:70px"></i>
+      <i class="bar-col" style="height:84px"></i><i class="bar-col" style="height:99px"></i>
+      <i class="bar-col" style="height:105px"></i><i class="bar-col" style="height:118px"></i>
+      <i class="bar-col" style="height:140px"></i>
+    </div>
+    <div class="labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+  </article>
+
+</section>
+
+<h2 class="explore-title"><span>Explore GoldShub</span><a href="#">View All →</a></h2>
+
+<section class="explore" id="explore">
+
+  <!-- हर icon/card का href बाद में update करें -->
+  <a class="explore-card" href="#"><div class="ico">🪙</div><strong>Gold Price</strong><span>आज का भाव</span></a>
+  <a class="explore-card" href="#"><div class="ico">📈</div><strong>Investment</strong><span>ETF • SGB • SIP</span></a>
+  <a class="explore-card" href="#"><div class="ico">💰</div><strong>Gold Loan</strong><span>Loan guide</span></a>
+  <a class="explore-card" href="#"><div class="ico">▣</div><strong>Calculators</strong><span>Smart tools</span></a>
+  <a class="explore-card" href="#"><div class="ico">🐷</div><strong>Gold Savings</strong><span>SIP &amp; saving</span></a>
+
+  <a class="explore-card" href="#"><div class="ico">◉</div><strong>Research</strong><span>Market analysis</span></a>
+  <a class="explore-card" href="#"><div class="ico">▤</div><strong>News</strong><span>Latest updates</span></a>
+  <a class="explore-card" href="#"><div class="ico">▥</div><strong>City Rates</strong><span>Live city rates</span></a>
+  <a class="explore-card" href="#"><div class="ico">✉</div><strong>Contact</strong><span>GoldShub form</span></a>
+  <a class="explore-card" href="#"><div class="ico">•••</div><strong>More</strong><span>All guides</span></a>
+
+</section>
+
+</main>
+
+<nav class="bottom">
+  <!-- इन links को भी बाद में update करें -->
+  <a class="nav-item active" href="#"><span class="nav-ico">⌂</span>Home</a>
+  <a class="nav-item" href="#"><span class="nav-ico">₹</span>Market</a>
+  <a class="nav-item" href="#"><span class="nav-ico">⌘</span>Tools</a>
+  <a class="nav-item" href="#"><span class="nav-ico">▤</span>News</a>
+  <a class="nav-item" href="#"><span class="nav-ico">◯</span>Profile</a>
+</nav>
+
+</body>
+</html>
