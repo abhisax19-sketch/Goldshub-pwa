@@ -440,5 +440,19 @@ button{font:inherit}
   <a class="nav-item" href="#"><span class="nav-ico">◯</span>Profile</a>
 </nav>
 
+  <script>
+const API_URL =
+"https://script.google.com/macros/s/AKfycbzE4km4kklPb9OkgJEUMQB-BleQdl1IL-eKMll_RqTvkq7fRDEPnd6Xk6oSv6CTtiv4/exec?city=India";
+
+fetch(API_URL)
+  .then(response => response.json())
+  .then(data => {
+    console.log("GoldShub API Data:", data);
+  })
+  .catch(error => {
+    console.error("API Error:", error);
+  });
+</script>
+  
 </body>
 </html>
