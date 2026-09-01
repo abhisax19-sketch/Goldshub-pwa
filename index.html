@@ -439,6 +439,7 @@ button{font:inherit}
   <a class="nav-item" href="#"><span class="nav-ico">◯</span>Profile</a>
 </nav>
 
+  
   <script>
 const API_URL =
 "https://script.google.com/macros/s/AKfycbzE4km4kklPb9OkgJEUMQB-BleQdl1IL-eKMll_RqTvkq7fRDEPnd6Xk6oSv6CTtiv4/exec?city=India";
@@ -446,34 +447,120 @@ const API_URL =
 const money = n =>
   "₹" + Number(n || 0).toLocaleString("en-IN");
 
-/* STEP 1 — पहले saved rate तुरंत दिखाओ */
+function updateRates(data) {
+
+  /* =========================
+     24K GOLD
+  ========================= */
+
+  if (data.gold_24k) {
+    const price24 = Number(data.gold_24k) / 10;
+
+    document.getElementById("gold24-price").textContent =
+      money(price24);
+
+    document.getElementById("gold24-today").textContent =
+      money(price24);
+  }
+
+  /* 24K Opening */
+  if (data.yesterday_open) {
+    document.getElementById("gold24-open").textContent =
+      money(Number(data.yesterday_open) / 10);
+  }
+
+  /* 24K Yesterday Close */
+  if (data.yesterday_close) {
+    document.getElementById("gold24-close").textContent =
+      money(Number(data.yesterday_close) / 10);
+  }
+
+
+  /* =========================
+     22K GOLD
+  ========================= */
+
+  if (data.gold_22k) {
+    const price22 = Number(data.gold_22k) / 10;
+
+    document.getElementById("gold22-price").textContent =
+      money(price22);
+
+    document.getElementById("gold22-today").textContent =
+      money(price22);
+  }
+
+
+  /* =========================
+     18K GOLD
+  ========================= */
+
+  if (data.gold_18k) {
+    const price18 = Number(data.gold_18k) / 10;
+
+    document.getElementById("gold18-price").textContent =
+      money(price18);
+
+    document.getElementById("gold18-today").textContent =
+      money(price18);
+  }
+
+
+  /* =========================
+     SILVER
+  ========================= */
+
+  if (data.silver_999) {
+    const silver = Number(data.silver_999) / 10;
+
+    document.getElementById("silver-price").textContent =
+      money(silver);
+
+    document.getElementById("silver-today").textContent =
+      money(silver);
+  }
+}
+
+
+/* =========================
+   CACHE — तुरंत पुराना rate
+========================= */
+
 const cached = localStorage.getItem("goldshub_rates");
 
 if (cached) {
   try {
     updateRates(JSON.parse(cached));
-  } catch(e) {}
+  } catch(e) {
+    console.log("Cache error:", e);
+  }
 }
 
-/* STEP 2 — API से नया rate लो */
+
+/* =========================
+   API — नया LIVE rate
+========================= */
+
 fetch(API_URL, {
   cache: "no-store"
 })
 .then(response => {
-  if (!response.ok) throw new Error("API failed");
+
+  if (!response.ok)
+    throw new Error("API failed");
+
   return response.json();
+
 })
 .then(data => {
 
   console.log("GoldShub API Data:", data);
 
-  /* नया data save */
   localStorage.setItem(
     "goldshub_rates",
     JSON.stringify(data)
   );
 
-  /* page update */
   updateRates(data);
 
 })
@@ -481,82 +568,7 @@ fetch(API_URL, {
 
   console.error("GoldShub API Error:", error);
 
-  /* अगर API देर करे तो Loading ही रहने दो */
 });
-
-
-function updateRates(data) {
-
-  /* 24K GOLD */
-  if (data.gold_24k) {
-
-    document.getElementById("gold24-price").textContent =
-      money(data.gold_24k);
-
-    document.getElementById("gold24-today").textContent =
-      money(data.gold_24k);
-  }
-
-
-  /* 22K GOLD */
-  if (data.gold_22k) {
-
-    document.getElementById("gold22-price").textContent =
-      money(data.gold_22k);
-
-    document.getElementById("gold22-today").textContent =
-      money(data.gold_22k);
-  }
-
-
-  /* 18K GOLD */
-  if (data.gold_18k) {
-
-    document.getElementById("gold18-price").textContent =
-      money(data.gold_18k);
-
-    document.getElementById("gold18-today").textContent =
-      money(data.gold_18k);
-  }
-
-
-  /* SILVER */
-  if (data.silver_999) {
-
-    document.getElementById("silver-price").textContent =
-      money(data.silver_999);
-
-    document.getElementById("silver-today").textContent =
-      money(data.silver_999);
-  }
-
-
-  /* OPENING */
-  if (data.yesterday_open) {
-
-    const el =
-      document.getElementById("gold24-open");
-
-    if (el) {
-      el.textContent =
-        money(data.yesterday_open);
-    }
-  }
-
-
-  /* YESTERDAY CLOSE */
-  if (data.yesterday_close) {
-
-    const el =
-      document.getElementById("gold24-close");
-
-    if (el) {
-      el.textContent =
-        money(data.yesterday_close);
-    }
-  }
-}
 </script>
-  
 </body>
 </html>
