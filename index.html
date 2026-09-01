@@ -261,33 +261,124 @@ button{font:inherit}
 
 <section class="price-grid">
 
-  <article class="price-card">
-    <h3>24K GOLD</h3><div class="sub">24K Gold / Gram</div>
-    <div class="price">₹6,245.30</div><div class="change">▲ 12.40 (0.20%)</div>
+  <section class="price-grid">
+
+  <!-- 24K GOLD -->
+  <article class="price-card" onclick="openPriceDetail('24K GOLD')">
+    <h3>24K GOLD</h3>
+    <div class="sub">24K Gold / Gram</div>
+
+    <div class="price" id="gold24-price">₹--</div>
+    <div class="change" id="gold24-change">● Loading...</div>
+
     <div class="mini-icon">🪙</div>
-    <div class="stats"><div><span>Today</span><b>₹6,245.30</b></div><div><span>Opening</span><b>₹6,232.90</b></div><div><span>Yesterday Close</span><b>₹6,232.90</b></div></div>
+
+    <div class="stats">
+      <div>
+        <span>Today</span>
+        <b id="gold24-today">₹--</b>
+      </div>
+
+      <div>
+        <span>Opening</span>
+        <b id="gold24-open">₹--</b>
+      </div>
+
+      <div>
+        <span>Yesterday Close</span>
+        <b id="gold24-close">₹--</b>
+      </div>
+    </div>
   </article>
 
-  <article class="price-card">
-    <h3>22K GOLD</h3><div class="sub">22K Gold / Gram</div>
-    <div class="price">₹5,725.60</div><div class="change">▲ 9.80 (0.17%)</div>
+
+  <!-- 22K GOLD -->
+  <article class="price-card" onclick="openPriceDetail('22K GOLD')">
+    <h3>22K GOLD</h3>
+    <div class="sub">22K Gold / Gram</div>
+
+    <div class="price" id="gold22-price">₹--</div>
+    <div class="change" id="gold22-change">● Loading...</div>
+
     <div class="mini-icon">🪙</div>
-    <div class="stats"><div><span>Today</span><b>₹5,725.60</b></div><div><span>Opening</span><b>₹5,715.20</b></div><div><span>Yesterday Close</span><b>₹5,715.20</b></div></div>
+
+    <div class="stats">
+      <div>
+        <span>Today</span>
+        <b id="gold22-today">₹--</b>
+      </div>
+
+      <div>
+        <span>Opening</span>
+        <b id="gold22-open">₹--</b>
+      </div>
+
+      <div>
+        <span>Yesterday Close</span>
+        <b id="gold22-close">₹--</b>
+      </div>
+    </div>
   </article>
 
-  <article class="price-card">
-    <h3>18K GOLD</h3><div class="sub">18K Gold / Gram</div>
-    <div class="price">₹4,683.20</div><div class="change">▲ 7.10 (0.15%)</div>
+
+  <!-- 18K GOLD -->
+  <article class="price-card" onclick="openPriceDetail('18K GOLD')">
+    <h3>18K GOLD</h3>
+    <div class="sub">18K Gold / Gram</div>
+
+    <div class="price" id="gold18-price">₹--</div>
+    <div class="change" id="gold18-change">● Loading...</div>
+
     <div class="mini-icon">🪙</div>
-    <div class="stats"><div><span>Today</span><b>₹4,683.20</b></div><div><span>Opening</span><b>₹4,676.10</b></div><div><span>Yesterday Close</span><b>₹4,676.10</b></div></div>
+
+    <div class="stats">
+      <div>
+        <span>Today</span>
+        <b id="gold18-today">₹--</b>
+      </div>
+
+      <div>
+        <span>Opening</span>
+        <b id="gold18-open">₹--</b>
+      </div>
+
+      <div>
+        <span>Yesterday Close</span>
+        <b id="gold18-close">₹--</b>
+      </div>
+    </div>
   </article>
 
-  <article class="price-card silver">
-    <h3>SILVER</h3><div class="sub">Silver / Gram</div>
-    <div class="price">₹78.45</div><div class="change">▲ 0.15 (0.19%)</div>
+
+  <!-- SILVER -->
+  <article class="price-card silver" onclick="openPriceDetail('SILVER')">
+    <h3>SILVER</h3>
+    <div class="sub">Silver / Gram</div>
+
+    <div class="price" id="silver-price">₹--</div>
+    <div class="change" id="silver-change">● Loading...</div>
+
     <div class="mini-icon">⚪</div>
-    <div class="stats"><div><span>Today</span><b>₹78.45</b></div><div><span>Opening</span><b>₹78.30</b></div><div><span>Yesterday Close</span><b>₹78.30</b></div></div>
+
+    <div class="stats">
+      <div>
+        <span>Today</span>
+        <b id="silver-today">₹--</b>
+      </div>
+
+      <div>
+        <span>Opening</span>
+        <b id="silver-open">₹--</b>
+      </div>
+
+      <div>
+        <span>Yesterday Close</span>
+        <b id="silver-close">₹--</b>
+      </div>
+    </div>
   </article>
+
+</section>
 
 </section>
 
