@@ -443,59 +443,119 @@ button{font:inherit}
 const API_URL =
 "https://script.google.com/macros/s/AKfycbzE4km4kklPb9OkgJEUMQB-BleQdl1IL-eKMll_RqTvkq7fRDEPnd6Xk6oSv6CTtiv4/exec?city=India";
 
-fetch(API_URL)
-  .then(response => response.json())
-  .then(data => {
+const money = n =>
+  "₹" + Number(n || 0).toLocaleString("en-IN");
 
-    console.log("GoldShub API Data:", data);
+/* STEP 1 — पहले saved rate तुरंत दिखाओ */
+const cached = localStorage.getItem("goldshub_rates");
 
-    // 24K GOLD
-    if (data.gold_24k) {
-      document.getElementById("gold24-price").textContent =
-        "₹" + Math.round(data.gold_24k / 10).toLocaleString("en-IN");
+if (cached) {
+  try {
+    updateRates(JSON.parse(cached));
+  } catch(e) {}
+}
 
-      document.getElementById("gold24-today").textContent =
-        "₹" + Math.round(data.gold_24k / 10).toLocaleString("en-IN");
+/* STEP 2 — API से नया rate लो */
+fetch(API_URL, {
+  cache: "no-store"
+})
+.then(response => {
+  if (!response.ok) throw new Error("API failed");
+  return response.json();
+})
+.then(data => {
+
+  console.log("GoldShub API Data:", data);
+
+  /* नया data save */
+  localStorage.setItem(
+    "goldshub_rates",
+    JSON.stringify(data)
+  );
+
+  /* page update */
+  updateRates(data);
+
+})
+.catch(error => {
+
+  console.error("GoldShub API Error:", error);
+
+  /* अगर API देर करे तो Loading ही रहने दो */
+});
+
+
+function updateRates(data) {
+
+  /* 24K GOLD */
+  if (data.gold_24k) {
+
+    document.getElementById("gold24-price").textContent =
+      money(data.gold_24k);
+
+    document.getElementById("gold24-today").textContent =
+      money(data.gold_24k);
+  }
+
+
+  /* 22K GOLD */
+  if (data.gold_22k) {
+
+    document.getElementById("gold22-price").textContent =
+      money(data.gold_22k);
+
+    document.getElementById("gold22-today").textContent =
+      money(data.gold_22k);
+  }
+
+
+  /* 18K GOLD */
+  if (data.gold_18k) {
+
+    document.getElementById("gold18-price").textContent =
+      money(data.gold_18k);
+
+    document.getElementById("gold18-today").textContent =
+      money(data.gold_18k);
+  }
+
+
+  /* SILVER */
+  if (data.silver_999) {
+
+    document.getElementById("silver-price").textContent =
+      money(data.silver_999);
+
+    document.getElementById("silver-today").textContent =
+      money(data.silver_999);
+  }
+
+
+  /* OPENING */
+  if (data.yesterday_open) {
+
+    const el =
+      document.getElementById("gold24-open");
+
+    if (el) {
+      el.textContent =
+        money(data.yesterday_open);
     }
+  }
 
-    // 22K GOLD
-    if (data.gold_22k) {
-      document.getElementById("gold22-price").textContent =
-        "₹" + Math.round(data.gold_22k / 10).toLocaleString("en-IN");
 
-      document.getElementById("gold22-today").textContent =
-        "₹" + Math.round(data.gold_22k / 10).toLocaleString("en-IN");
+  /* YESTERDAY CLOSE */
+  if (data.yesterday_close) {
+
+    const el =
+      document.getElementById("gold24-close");
+
+    if (el) {
+      el.textContent =
+        money(data.yesterday_close);
     }
-
-    // 18K GOLD
-    if (data.gold_18k) {
-      document.getElementById("gold18-price").textContent =
-        "₹" + Math.round(data.gold_18k / 10).toLocaleString("en-IN");
-
-      document.getElementById("gold18-today").textContent =
-        "₹" + Math.round(data.gold_18k / 10).toLocaleString("en-IN");
-    }
-
-    // SILVER
-    if (data.silver) {
-      document.getElementById("silver-price").textContent =
-        "₹" + Math.round(data.silver / 10).toLocaleString("en-IN");
-
-      document.getElementById("silver-today").textContent =
-        "₹" + Math.round(data.silver / 10).toLocaleString("en-IN");
-    }
-
-  })
-  .catch(error => {
-
-    console.error("GoldShub API Error:", error);
-
-    document.querySelectorAll(".change").forEach(el => {
-      el.textContent = "• Rate unavailable";
-      el.style.color = "#d9534f";
-    });
-
-  });
+  }
+}
 </script>
   
 </body>
